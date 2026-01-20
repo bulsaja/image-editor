@@ -120,6 +120,12 @@ export default class BasicService {
           console.warn('요청이 취소되었습니다');
           return Promise.reject('요청이 취소되었습니다');
         }
+        // Authorization 관련 에러는 조용히 처리 (로그인 안한 상태)
+        const errMsg = err?.response?.data?.message || err?.message || '';
+        if (errMsg.includes('authorization') || errMsg.includes('授权') || errMsg.includes('Authorization')) {
+          console.warn('인증 토큰이 없습니다. 로그인이 필요합니다.');
+          return [null, '로그인이 필요합니다'];
+        }
         console.error('err', err);
         return Promise.reject(err);
       });
