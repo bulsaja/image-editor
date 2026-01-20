@@ -1,6 +1,7 @@
 import BasicService from './BasicService';
 import { user } from '@stores/user';
 import { util } from '@utils/index';
+import { config } from '@config/index';
 
 const _window = window as any;
 
@@ -189,6 +190,86 @@ class UserService extends BasicService {
     }
     user.setUserInfo(res);
     return [res, err];
+  };
+
+  // ============ Bulsaja API Integration ============
+
+  /**
+   * Bulsaja Email/Password Login
+   */
+  loginBulsaja = async (params: { email: string; password: string }) => {
+    try {
+      const response = await fetch(`${config.bulsajaApiHost}/auth/local/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(params),
+      });
+      const res = await response.json();
+
+      if (res && res.loginSuccess) {
+        this._setRqHeaderToken(res.accessToken);
+        user.setToken(res.accessToken);
+        user.setUserInfo({
+          id: res.userData.user_id,
+          nick_name: res.userData.nickname || res.userData.email,
+          avatar: res.userData.profile_image || '',
+          email: res.userData.email,
+          ...res.userData,
+        });
+        return [res, null];
+      }
+      return [null, res.message || '로그인 실패'];
+    } catch (err: any) {
+      console.error('Bulsaja login error:', err);
+      return [null, err.message || '로그인 중 오류 발생'];
+    }
+  };
+
+  /**
+   * Bulsaja Get User Info
+   */
+  getUserDetailBulsaja = async () => {
+    try {
+      const token = user.getToken();
+      if (!token) {
+        return [null, '로그인이 필요합니다'];
+      }
+      const response = await fetch(`${config.bulsajaApiHost}/api/auth/me`, {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+      });
+      const res = await response.json();
+
+      if (res && res.user_id) {
+        user.setUserInfo({
+          id: res.user_id,
+          nick_name: res.nickname || res.email,
+          avatar: res.profile_image || '',
+          email: res.email,
+          ...res,
+        });
+        return [res, null];
+      }
+      return [null, '사용자 정보 조회 실패'];
+    } catch (err: any) {
+      console.error('Bulsaja get user error:', err);
+      user.logout();
+      return [null, err.message || '사용자 정보 조회 중 오류 발생'];
+    }
+  };
+
+  /**
+   * Bulsaja Logout
+   */
+  logoutBulsaja = async () => {
+    user.clearUserInfo();
+    _window.RouterHistory.push('/');
+    return [true, null];
   };
 }
 

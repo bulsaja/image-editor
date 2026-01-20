@@ -153,6 +153,8 @@ export default function List(props: IProps) {
                 Modal.confirm({
                   title: 'Delete these materials?',
                   content: 'This action cannot be undone. Please proceed with caution.',
+                  okText: '확인',
+                  cancelText: '취소',
                   onOk: async () => {
                     // Confirm delete
                     const [res, err] = await server.deleteMaterial([...checkboxs]);

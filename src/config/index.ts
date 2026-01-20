@@ -1,7 +1,11 @@
 // Configuration
 const config = {
-  secretKey: 'x&S#acLCx', //
+  secretKey: 'x&S#acLCx',
   apiHost: '',
+  // Bulsaja API Host
+  bulsajaApiHost: import.meta.env.DEV
+    ? 'http://localhost:8888'
+    : 'https://api.bulsaja.com',
   prefix: 'img', // Project prefix, used for localStorage name
   resourcesHost: 'https://cdn.h5ds.com', // CDN resource path
   host: 'https://video.h5ds.com', // Used for QR code scanning

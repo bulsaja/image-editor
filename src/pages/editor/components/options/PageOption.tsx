@@ -117,6 +117,8 @@ function PageOption(props: IProps) {
                   Modal.confirm({
                     title: language.val('page_resize_confirm_title'),
                     content: language.val('page_resize_confirm_content'),
+                    okText: '확인',
+                    cancelText: '취소',
                     onOk: () => {
                       pageData.height = d.height;
                       pageData.width = d.width;

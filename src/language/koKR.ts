@@ -209,4 +209,17 @@ export const koKR = {
   category_动物: '동물',
   category_节日: '축제/명절',
   category_风景: '풍경',
+  category_自然: '자연',
+  category_天空: '하늘',
+
+  // Template categories (translations from Chinese)
+  category_大花花: '꽃',
+  category_企业: '기업',
+  category_促销: '프로모션',
+  category_vlog: 'vlog',
+  category_日常: '일상',
+  category_旅游: '여행',
+  category_写真: '사진',
+  category_美女: '인물',
+  category_大购物: '쇼핑',
 };

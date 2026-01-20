@@ -43,6 +43,8 @@ export default function Projects(props: IProps) {
               Modal.confirm({
                 title: 'Create new project?',
                 content: 'Please save current project before creating a new one',
+                okText: '확인',
+                cancelText: '취소',
                 onOk: async () => {
                   const ndata = getInitData();
                   const [res, err] = await server.createVideo({
@@ -90,6 +92,8 @@ export default function Projects(props: IProps) {
                   Modal.confirm({
                     title: 'Create new project?',
                     content: 'Please save current project before creating a new one',
+                    okText: '확인',
+                    cancelText: '취소',
                     onOk: async () => {
                       const ndata = getInitData();
                       ndata.pages[0].width = d.width;
@@ -132,6 +136,8 @@ export default function Projects(props: IProps) {
                       Modal.confirm({
                         title: 'Confirm delete?',
                         content: 'This action cannot be undone. Please proceed with caution.',
+                        okText: '확인',
+                        cancelText: '취소',
                         onOk: async () => {
                           await server.deleteDraft({ id: item.id });
                           params.current.page = 1;
@@ -168,6 +174,8 @@ export default function Projects(props: IProps) {
                 Modal.confirm({
                   title: 'Switch project?',
                   content: 'Please save current project before switching',
+                  okText: '확인',
+                  cancelText: '취소',
                   onOk: () => {
                     location.href = `/editor/${item.id}`;
                   },
