@@ -7,6 +7,7 @@ import { useReducer } from 'react';
 // import { util } from '@utils/index';
 // import { pubsub } from '@utils/pubsub';
 import { Lock, Unlock, Group, DeleteOne, PreviewOpen, Copy, PreviewCloseOne } from '@icon-park/react';
+import { language } from '@language';
 
 export interface IProps {}
 
@@ -15,10 +16,10 @@ function GroupFast(props: IProps) {
   const [, forceUpdate] = useReducer(x => x + 1, 0);
 
   return (
-    <Item title="快捷操作">
+    <Item title={language.val('fast_operations')}>
       {/* <div>边框，阴影，裁剪、图层、下移、上移、置顶、置底</div> */}
       <div className={styles.position}>
-        <Tooltip content="合并图层">
+        <Tooltip content={language.val('tooltip_merge_layers')}>
           <a
             onClick={() => {
               console.log([...editor.selectedElementIds]);
@@ -31,7 +32,7 @@ function GroupFast(props: IProps) {
             <Group theme="filled" size="20" fill="var(--theme-icon)" />
           </a>
         </Tooltip>
-        <Tooltip content="锁定/解锁">
+        <Tooltip content={language.val('tooltip_lock_unlock')}>
           <a
             onClick={() => {
               console.log('锁定');
@@ -53,7 +54,7 @@ function GroupFast(props: IProps) {
             )}
           </a>
         </Tooltip>
-        <Tooltip content="可见/隐藏">
+        <Tooltip content={language.val('tooltip_visible_hidden')}>
           <a
             onClick={() => {
               console.log('可见');
@@ -75,7 +76,7 @@ function GroupFast(props: IProps) {
             )}
           </a>
         </Tooltip>
-        <Tooltip content="复制">
+        <Tooltip content={language.val('tooltip_copy')}>
           <a
             onClick={() => {
               console.log('复制');
@@ -86,7 +87,7 @@ function GroupFast(props: IProps) {
             <Copy size={20} color="var(--theme-icon)" />
           </a>
         </Tooltip>
-        <Tooltip content="删除">
+        <Tooltip content={language.val('tooltip_delete')}>
           <a
             onClick={() => {
               console.log(

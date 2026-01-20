@@ -175,4 +175,33 @@ export const koKR = {
   record_modify_text_stroke: '텍스트 윤곽선 수정',
   record_modify_text_stroke_color: '텍스트 윤곽선 색상 수정',
   record_modify_text_content: '텍스트 내용 수정',
+
+  // Background tabs
+  background_color_tab: '배경색',
+  background_image_tab: '배경 이미지',
+
+  // Fast operations (quick actions)
+  fast_operations: '빠른 작업',
+
+  // Size
+  prop_size: '크기',
+
+  // Tooltips
+  tooltip_merge_layers: '레이어 합치기',
+  tooltip_lock_unlock: '잠금/해제',
+  tooltip_visible_hidden: '표시/숨기기',
+  tooltip_copy: '복사',
+  tooltip_delete: '삭제',
+  tooltip_flip_horizontal: '수평 뒤집기',
+  tooltip_flip_vertical: '수직 뒤집기',
+  tooltip_ungroup: '그룹 해제',
+  tooltip_crop: '자르기',
+
+  // About
+  about_us: '정보',
+
+  // QR Code plugin
+  qr_background_color: '배경색',
+  qr_content: 'QR 코드 내용',
+  qr_foreground_color: '전경색',
 };

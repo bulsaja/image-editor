@@ -385,10 +385,22 @@
   dependencies:
     classnames "^2.2.6"
 
+"@douyinfe/semi-icons@^2.57.0":
+  version "2.90.13"
+  resolved "https://registry.npmmirror.com/@douyinfe/semi-icons/-/semi-icons-2.90.13.tgz#69253e0ba40b3e2255868b169959b2c89cd73a94"
+  integrity sha512-9OiKvleOMB+t0h+Vbq/6Tz90JJPANJDvW5g3XtVWmIwIgScgy/N52fMhWXDf6Avr6wi9MDPcQZ6SYPO2S7m4sQ==
+  dependencies:
+    classnames "^2.2.6"
+
 "@douyinfe/semi-illustrations@2.54.0":
   version "2.54.0"
   resolved "https://registry.npmmirror.com/@douyinfe/semi-illustrations/-/semi-illustrations-2.54.0.tgz#67f35814742ff40ba4b820f7232a472473c7feee"
   integrity sha512-DxvvSjZPMfcK19s5qFcDuv1jDnFCXyP7n7ZnxtvsIjDdtTdhs83YNWBpW6Xwz7RmYnv0Zo4Nk9ASLt3U5M/t6g==
+
+"@douyinfe/semi-illustrations@^2.57.0":
+  version "2.90.13"
+  resolved "https://registry.npmmirror.com/@douyinfe/semi-illustrations/-/semi-illustrations-2.90.13.tgz#56c6f01411aa49178f382118564a8a12e17b33f5"
+  integrity sha512-8gdonacMEw9Q9y3Y34gg1pHa7N5aURVv2qoE3hkPGpmW0RjIET1uaKaKZmGNQiXbgv6jPZ80LV4gxEw3ez4YWg==
 
 "@douyinfe/semi-theme-default@2.54.0":
   version "2.54.0"
@@ -629,7 +641,7 @@
     "@leafer-ui/interface" "1.0.0-rc.21"
     "@leafer/interface" "1.0.0-rc.21"
 
-"@leafer-in/scroll@^1.0.0-rc.21":
+"@leafer-in/scroll@1.0.0-rc.21":
   version "1.0.0-rc.21"
   resolved "https://registry.npmmirror.com/@leafer-in/scroll/-/scroll-1.0.0-rc.21.tgz#92602511a3fba84124e170d72f7f78299ca12dca"
   integrity sha512-yCzuqODKSMPEK99XcxVykbnZN7L4Q1IP00qlJVqeeamRB/P44XtW9/wDn5iXVEO3abrLn3L3Gmz8BFFkshuS4Q==
@@ -769,7 +781,7 @@
     "@leafer-ui/event" "1.0.0-rc.21"
     "@leafer/core" "1.0.0-rc.21"
 
-"@leafer-ui/interface@1.0.0-rc.21", "@leafer-ui/interface@^1.0.0-rc.19", "@leafer-ui/interface@^1.0.0-rc.21":
+"@leafer-ui/interface@1.0.0-rc.21", "@leafer-ui/interface@^1.0.0-rc.19":
   version "1.0.0-rc.21"
   resolved "https://registry.npmmirror.com/@leafer-ui/interface/-/interface-1.0.0-rc.21.tgz#0c74146f12683f54f7f7200ee33257fb9274937e"
   integrity sha512-R2Zm1pm1m5eu61j2vSkXBy2bsO6ViRD+Mf7PHh6lytCfj4ZzcMVJ4bmjx0C1kLR1AQvtBH7FYn92Uqo4oVBl1g==
@@ -1176,10 +1188,10 @@
   dependencies:
     "@types/sizzle" "*"
 
-"@types/lodash@^4.14.197":
-  version "4.17.0"
-  resolved "https://registry.npmmirror.com/@types/lodash/-/lodash-4.17.0.tgz#d774355e41f372d5350a4d0714abb48194a489c3"
-  integrity sha512-t7dhREVv6dbNj0q17X12j7yDG4bD/DHYX7o5/DbDxobP0HnGPgpRz2Ej77aL7TZT3DSw13fqUTj8J4mMnqa7WA==
+"@types/lodash@^4.17.0":
+  version "4.17.23"
+  resolved "https://registry.npmmirror.com/@types/lodash/-/lodash-4.17.23.tgz#c1bb06db218acc8fc232da0447473fc2fb9d9841"
+  integrity sha512-RDvF6wTulMPjrNdCoYRC8gNR880JNGT8uB+REUpC2Ns4pRqQJhGz90wh7rgdXDPpCczF3VGktDuFGVnz8zP7HA==
 
 "@types/node@*":
   version "20.12.7"
@@ -1668,6 +1680,11 @@ cropperjs@^1.5.13, cropperjs@^1.5.5:
   resolved "https://registry.npmmirror.com/cropperjs/-/cropperjs-1.6.1.tgz#fd132021d93b824b1b0f2c2c3b763419fb792d89"
   integrity sha512-F4wsi+XkDHCOMrHMYjrTEE4QBOrsHHN5/2VsVAaRq8P7E5z7xQpT75S+f/9WikmBEailas3+yo+6zPIomW+NOA==
 
+cropperjs@^1.6.2:
+  version "1.6.2"
+  resolved "https://registry.npmmirror.com/cropperjs/-/cropperjs-1.6.2.tgz#d1a5d627d880581cca41b7901f06923500e4201b"
+  integrity sha512-nhymn9GdnV3CqiEHJVai54TULFAE3VshJTXSqSJKa8yXAKyBKDWdhHarnlIPrshJ0WMFTGuFvG02YjLXfPiuOA==
+
 cross-spawn@^7.0.3:
   version "7.0.3"
   resolved "https://registry.npmmirror.com/cross-spawn/-/cross-spawn-7.0.3.tgz#f73a85b9d5d41d045551c177e2882d4ac85728a6"
@@ -2111,7 +2128,7 @@ leafer-ui@1.0.0-rc.21:
     "@leafer/partner" "1.0.0-rc.21"
     "@leafer/web" "1.0.0-rc.21"
 
-leafer-x-ruler@^1.0.7:
+leafer-x-ruler@1.0.7:
   version "1.0.7"
   resolved "https://registry.npmmirror.com/leafer-x-ruler/-/leafer-x-ruler-1.0.7.tgz#bad9a0eda8f1f80a8a08046f74d872af7b378529"
   integrity sha512-k7l6LuatuLBgXkMAul/rnUCmXiEBCldmjf7+4DzgOOgzi2/AZmqYUoTphgeZ1sVq/iBKqwD6gf+hoUrJRtxdJw==
@@ -3161,7 +3178,7 @@ tiny-warning@^1.0.0:
   resolved "https://registry.npmmirror.com/tiny-warning/-/tiny-warning-1.0.3.tgz#94a30db453df4c643d0fd566060d60a875d84754"
   integrity sha512-lBN9zLN/oAf68o3zNXYrdCt1kP8WsiGW8Oo2ka41b2IM5JL/S1CTyX1rW0mb/zSuJun0ZUrDxx4sqvYS2FWzPA==
 
-tinycolor2@^1.4.1:
+tinycolor2@^1.4.1, tinycolor2@^1.6.0:
   version "1.6.0"
   resolved "https://registry.npmmirror.com/tinycolor2/-/tinycolor2-1.6.0.tgz#f98007460169b0263b97072c5ae92484ce02d09e"
   integrity sha512-XPaBkWQJdsf3pLKJV9p4qN/S+fm2Oj8AIPo1BTUhg5oxkvm9+SVEGFdhyOz7tTdUTfvxMiAs4sp6/eZO2Ew+pw==

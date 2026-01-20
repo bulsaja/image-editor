@@ -3,6 +3,7 @@ import { Info, Wechat } from '@icon-park/react';
 import { Modal } from '@douyinfe/semi-ui';
 import styles from './aboutus.module.less';
 import * as icons from './icon';
+import { language } from '@language';
 
 export interface IProps {}
 
@@ -28,7 +29,7 @@ export default function AboutUs(props: IProps) {
     <>
       <Modal
         width={1000}
-        title="关于我们"
+        title={language.val('about_us')}
         visible={visible}
         onCancel={() => setVisible(false)}
         closeOnEsc={true}
@@ -118,7 +119,7 @@ export default function AboutUs(props: IProps) {
       </Modal>
       <a onClick={() => setVisible(true)} className={styles.us}>
         <Info theme="outline" size="22" fill="var(--theme-icon)" />
-        关于我们
+        {language.val('about_us')}
       </a>
     </>
   );

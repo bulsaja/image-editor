@@ -8,6 +8,7 @@ import { QrcodeLayer } from './types';
 import useUpdate from '@options/useUpdate';
 import { TextArea } from '@douyinfe/semi-ui';
 import tinycolor from 'tinycolor2';
+import { language } from '@language';
 
 export interface IProps {}
 
@@ -16,7 +17,7 @@ function QrOption(props: IProps) {
   const [forceUpdate] = useUpdate();
   return (
     <>
-      <Item title="二维码内容">
+      <Item title={language.val('qr_content')}>
         <TextArea
           value={elementData.content}
           onChange={e => {
@@ -34,7 +35,7 @@ function QrOption(props: IProps) {
           }}
         />
       </Item>
-      <Item title="背景色">
+      <Item title={language.val('qr_background_color')}>
         <SetColor
           list={true}
           color={{
@@ -52,7 +53,7 @@ function QrOption(props: IProps) {
           }}
         />
       </Item>
-      <Item title="前景色">
+      <Item title={language.val('qr_foreground_color')}>
         <SetColor
           list={true}
           color={{

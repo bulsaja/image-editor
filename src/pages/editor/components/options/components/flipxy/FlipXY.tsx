@@ -20,6 +20,7 @@ import {
 } from '@icon-park/react';
 import CropperImage from './CropperImage';
 import { GroupLayer, ImageLayer } from '@pages/editor/core/types/data';
+import { language } from '@language';
 
 export interface IProps {}
 
@@ -32,11 +33,11 @@ function FlipXY(props: IProps) {
     return null;
   }
   return (
-    <Item title="快捷操作">
+    <Item title={language.val('fast_operations')}>
       {/* <div>边框，阴影，裁剪、图层、下移、上移、置顶、置底</div> */}
       <div className={styles.position}>
         {(elementData as any).type === 'image' && <CropperImage />}
-        <Tooltip content="水平翻转">
+        <Tooltip content={language.val('tooltip_flip_horizontal')}>
           <a
             onClick={() => {
               elementData.flipx = !elementData.flipx;
@@ -46,7 +47,7 @@ function FlipXY(props: IProps) {
             <FlipHorizontally size={20} color="var(--theme-icon)" />
           </a>
         </Tooltip>
-        <Tooltip content="垂直翻转">
+        <Tooltip content={language.val('tooltip_flip_vertical')}>
           <a
             onClick={() => {
               elementData.flipy = !elementData.flipy;
@@ -56,7 +57,7 @@ function FlipXY(props: IProps) {
             <FlipVertically size={20} color="var(--theme-icon)" />
           </a>
         </Tooltip>
-        <Tooltip content="锁定/解锁">
+        <Tooltip content={language.val('tooltip_lock_unlock')}>
           <a
             onClick={() => {
               console.log('锁定');
@@ -72,7 +73,7 @@ function FlipXY(props: IProps) {
             )}
           </a>
         </Tooltip>
-        <Tooltip content="可见/隐藏">
+        <Tooltip content={language.val('tooltip_visible_hidden')}>
           <a
             onClick={() => {
               console.log('可见');
@@ -88,7 +89,7 @@ function FlipXY(props: IProps) {
             )}
           </a>
         </Tooltip>
-        <Tooltip content="复制">
+        <Tooltip content={language.val('tooltip_copy')}>
           <a
             onClick={() => {
               console.log('复制');
@@ -99,7 +100,7 @@ function FlipXY(props: IProps) {
             <Copy size={20} color="var(--theme-icon)" />
           </a>
         </Tooltip>
-        <Tooltip content="删除">
+        <Tooltip content={language.val('tooltip_delete')}>
           <a
             onClick={() => {
               console.log('删除');
@@ -113,7 +114,7 @@ function FlipXY(props: IProps) {
           </a>
         </Tooltip>
         {(elementData as any).type === 'group' && (
-          <Tooltip content="打散">
+          <Tooltip content={language.val('tooltip_ungroup')}>
             <a
               onClick={() => {
                 console.log('打散到上一层');

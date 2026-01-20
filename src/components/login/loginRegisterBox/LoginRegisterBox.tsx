@@ -22,7 +22,7 @@ function LoginRegisterBox() {
     }
     const { provider, code } = evt.data;
     if (provider) {
-      const hide = Toast.info('登录中，请稍后');
+      const hide = Toast.info('로그인 중, 잠시만 기다려주세요');
       await userService.oauthLogin(code);
       Toast.close(hide);
       (window as any).RouterHistory.push(location.pathname);
@@ -39,38 +39,38 @@ function LoginRegisterBox() {
   return (
     <div className={styles.loginRegisterBox}>
       <div className={styles.loginRegisterInfo}>
-        <h1>无界云图</h1>
+        <h1>불사자</h1>
         <p>
           <Check theme="filled" size="16" fill="#98ff00" />
-          免费开源，可扩展
+          무료 오픈소스, 확장 가능
         </p>
         <p>
           <Check theme="filled" size="16" fill="#98ff00" />
-          海量模版免费使用
+          다양한 템플릿 무료 제공
         </p>
         <p>
           <Check theme="filled" size="16" fill="#98ff00" />
-          支持AI功能集成
+          AI 기능 지원
         </p>
         <p>
           <Check theme="filled" size="16" fill="#98ff00" />
-          操作简单，高效简洁
+          간단한 조작, 효율적인 작업
         </p>
         <p>
           <Check theme="filled" size="16" fill="#98ff00" />
-          多人协同效率翻倍
+          협업 기능으로 생산성 향상
         </p>
         <p>
           <Check theme="filled" size="16" fill="#98ff00" />
-          提供海量素材免费使用
+          다양한 소스 무료 제공
         </p>
         <p>
           <Check theme="filled" size="16" fill="#98ff00" />
-          无需下载，打开浏览器即可使用
+          다운로드 없이 브라우저에서 바로 사용
         </p>
         <p>
           <Check theme="filled" size="16" fill="#98ff00" />
-          云存储，资源安全可靠
+          클라우드 저장으로 안전한 자료 관리
         </p>
       </div>
       <div className={styles.loginRegisterForm}>
@@ -78,15 +78,15 @@ function LoginRegisterBox() {
           {show === 'loginQrcode' && <LoginQrcode />}
           {show === 'loginMobile' && <LoginMobile setShow={setShow} />}
         </div>
-        <Divider>其他登录方式</Divider>
+        <Divider>다른 로그인 방법</Divider>
         <div className={styles.loginRegisterActions}>
           <a className={styles.item} onClick={() => setShow('loginMobile')}>
             <Phone theme="filled" size="24" fill="#666" />
-            <span>手机登录</span>
+            <span>휴대폰 로그인</span>
           </a>
           <a className={styles.item} onClick={() => setShow('loginQrcode')}>
             <Wechat theme="filled" size="24" fill="#666" />
-            <span>微信登录</span>
+            <span>카카오 로그인</span>
           </a>
         </div>
       </div>

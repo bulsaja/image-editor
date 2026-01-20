@@ -7,6 +7,7 @@ import { useReducer } from 'react';
 import { util } from '@utils/index';
 import { pubsub } from '@utils/pubsub';
 import { ImageLayer } from '@pages/editor/core/types/data';
+import { language } from '@language';
 
 export interface IProps {}
 
@@ -18,7 +19,7 @@ function Size(props: IProps) {
     elementData._ratio = util.toNum(elementData.width) / (util.toNum(elementData.height) || 1);
   }
   return (
-    <Item title="尺寸">
+    <Item title={language.val('prop_size')}>
       <div className={styles.size}>
         <InputNumber
           innerButtons

@@ -1,6 +1,6 @@
 export const tdata: any = {
-  name: 'mock数据',
-  desc: '暂无描述',
+  name: '샘플 데이터',
+  desc: '설명 없음',
   version: '1.0.0',
   thumb: '',
   createTime: 0,
