@@ -15,6 +15,7 @@ import { observer } from 'mobx-react';
 import { editor } from '@stores/editor';
 import { pubsub } from '@utils/pubsub';
 import * as aiIco from './icon';
+import { language } from '@language';
 
 export interface IProps {}
 
@@ -22,41 +23,41 @@ function Align(props: IProps) {
   const elementData = editor.getElementData() as any;
   // const { width, height } = editor.data;
   return (
-    <Item title="AI功能">
+    <Item title={language.val('ai_features')}>
       <div className={styles.btns}>
         <a
           onClick={() => {
-            Toast.warning('作者还没时间搞，等你贡献代码');
+            Toast.warning(language.val('toast_wait_contribution'));
           }}
         >
           <aiIco.AiBg color="#fff" />
-          去背景
+          {language.val('ai_remove_bg')}
         </a>
         <a
           onClick={() => {
-            Toast.warning('请移步官网体验');
+            Toast.warning(language.val('toast_visit_official'));
           }}
         >
           <aiIco.AiKouTu color="#fff" />
-          抠图
+          {language.val('ai_matting')}
         </a>
       </div>
       <div className={styles.btns}>
         <a
           onClick={() => {
-            Toast.warning('作者还没时间搞，等你贡献代码');
+            Toast.warning(language.val('toast_wait_contribution'));
           }}
         >
           <aiIco.AiQingXi color="#fff" />
-          变清晰
+          {language.val('ai_enhance')}
         </a>
         <a
           onClick={() => {
-            Toast.warning('作者还没时间搞，等你贡献代码');
+            Toast.warning(language.val('toast_wait_contribution'));
           }}
         >
           <aiIco.AiTuMo color="#fff" />
-          涂抹
+          {language.val('ai_inpaint')}
         </a>
       </div>
     </Item>

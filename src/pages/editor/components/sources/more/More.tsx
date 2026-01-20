@@ -6,6 +6,7 @@ import { addItem } from '../addItem';
 import { editor } from '@stores/editor';
 import { Toast } from '@douyinfe/semi-ui';
 import exLayers from '@plugins/index';
+import { language } from '@language';
 
 export interface IProps {
   show: boolean;
@@ -31,7 +32,7 @@ export default function More(props: IProps) {
       editor.updateCanvas();
       editor.store.emitControl([ndata.id]);
     } else {
-      Toast.warning('作者还没时间搞，等你贡献代码');
+      Toast.warning(language.val('toast_wait_contribution'));
     }
     // switch (d.id) {
     //   case 'chart':
@@ -46,7 +47,7 @@ export default function More(props: IProps) {
   return (
     <div style={{ height: '100%', display: props.show ? 'block' : 'none' }}>
       <div className={styles.moreList + ' scroll'}>
-        <h1 className={styles.title}>更多插件</h1>
+        <h1 className={styles.title}>{language.val('more_plugins')}</h1>
         <WaterFull
           itemWidth={60}
           itemClassName={styles.waterfull}
@@ -71,23 +72,23 @@ export default function More(props: IProps) {
           list={[
             {
               id: 'qrcode',
-              name: '二维码',
+              name: language.val('plugin_qrcode'),
               icon: <PayCodeOne theme="filled" size="25" fill="var(--theme-icon)" />,
             },
             {
               id: 'barcode',
-              name: '条形码',
+              name: language.val('plugin_barcode'),
               icon: <BarCode theme="filled" size="25" fill="var(--theme-icon)" />,
             },
             {
               id: 'chart',
-              name: '图表',
+              name: language.val('plugin_chart'),
               vip: false,
               icon: <ChartHistogramOne theme="filled" size="25" fill="var(--theme-icon)" />,
             },
             {
               id: 'watermark',
-              name: '水印',
+              name: language.val('plugin_watermark'),
               vip: false,
               icon: <Audit theme="filled" size="25" fill="var(--theme-icon)" />,
             },

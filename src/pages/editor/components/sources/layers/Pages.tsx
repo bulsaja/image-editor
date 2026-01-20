@@ -10,6 +10,7 @@ import { Button, Popover, Toast } from '@douyinfe/semi-ui';
 import { More } from '@icon-park/react';
 import remove from 'lodash/remove';
 import { config } from '@config/index';
+import { language } from '@language';
 
 export interface IProps {}
 
@@ -31,7 +32,7 @@ function Pages(props: IProps) {
               const pid = util.createID();
               editor.data.pages.push({
                 id: pid,
-                name: '新建页面',
+                name: language.val('page_new'),
                 desc: '',
                 width: util.randomNum(720, 1920),
                 height: util.randomNum(720, 1920),
@@ -48,7 +49,7 @@ function Pages(props: IProps) {
             });
           }}
         >
-          新建页面
+          {language.val('page_new')}
         </Button>
       </div>
       <WaterFull
@@ -87,7 +88,7 @@ function Pages(props: IProps) {
                           editor.selectPageId = nPage.id;
                         }}
                       >
-                        复制
+                        {language.val('page_copy')}
                       </li>
                       <li
                         onClick={e => {
@@ -98,12 +99,12 @@ function Pages(props: IProps) {
                               editor.selectPageId = editor.data.pages[0].id;
                               editor.updateCanvasKey = util.createID();
                             } else {
-                              Toast.error('至少保留一个页面');
+                              Toast.error(language.val('toast_keep_one_page'));
                             }
                           });
                         }}
                       >
-                        删除
+                        {language.val('page_delete')}
                       </li>
                     </ul>
                   }

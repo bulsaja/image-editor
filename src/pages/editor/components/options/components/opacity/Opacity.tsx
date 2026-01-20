@@ -6,6 +6,7 @@ import { observer } from 'mobx-react';
 import { editor } from '@stores/editor';
 import { util } from '@utils/index';
 import { pubsub } from '@utils/pubsub';
+import { language } from '@language';
 
 export interface IProps {}
 
@@ -19,7 +20,7 @@ function Opacity(props: IProps) {
     opacity = 1;
   }
   return (
-    <Item title="透明度">
+    <Item title={language.val('prop_opacity')}>
       <div className={styles.opacity}>
         <SliderInput
           step={1}

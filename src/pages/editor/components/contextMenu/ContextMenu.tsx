@@ -8,6 +8,7 @@ import styles from './styles.module.less';
 import { util } from '@utils/index';
 import { Toast } from '@douyinfe/semi-ui';
 import { GroupLayer } from '@pages/editor/core/types/data';
+import { language } from '@language';
 
 export interface IProps {}
 
@@ -87,7 +88,7 @@ function ContextMenu(props: IProps) {
         {
           editor.copyTempData = null;
           (window as any).clipboardData = null;
-          Toast.info('清理成功');
+          Toast.info(language.val('toast_cleanup_success'));
         }
         break;
       //etc...
@@ -99,7 +100,7 @@ function ContextMenu(props: IProps) {
   if (editor.selectedElementIds.length > 1) {
     group = {
       id: 'group',
-      name: '组合',
+      name: language.val('context_group'),
       extra: 'Ctrl + G',
     };
   } else {
@@ -107,7 +108,7 @@ function ContextMenu(props: IProps) {
     if (layer && layer.type === 'group') {
       ungroup = {
         id: 'ungroup',
-        name: '解除组合',
+        name: language.val('context_ungroup'),
         extra: 'Ctrl + Shift + G',
       };
     }
@@ -116,22 +117,22 @@ function ContextMenu(props: IProps) {
   const menus = [
     {
       id: 'up1',
-      name: '上移一层',
+      name: language.val('shortcut_move_up'),
       extra: 'Ctrl + ]',
     },
     {
       id: 'down1',
-      name: '下移一层',
+      name: language.val('shortcut_move_down'),
       extra: 'Ctrl + [',
     },
     {
       id: 'moveTop',
-      name: '移到顶层',
+      name: language.val('shortcut_move_top'),
       extra: 'Ctrl + Shift + ]',
     },
     {
       id: 'moveBottom',
-      name: '移到底层',
+      name: language.val('shortcut_move_bottom'),
       extra: 'Ctrl + Shift + [',
     },
     {
@@ -142,12 +143,12 @@ function ContextMenu(props: IProps) {
     ungroup,
     {
       id: 'cut',
-      name: '剪切',
+      name: language.val('shortcut_cut'),
       extra: 'Ctrl + X',
     },
     {
       id: 'copy',
-      name: '复制',
+      name: language.val('shortcut_copy'),
       extra: 'Ctrl + C',
     },
     // {
@@ -157,17 +158,17 @@ function ContextMenu(props: IProps) {
     // },
     {
       id: 'lock',
-      name: '锁定/解锁',
+      name: language.val('context_lock_unlock'),
       extra: '',
     },
     {
       id: 'hide',
-      name: '可见/隐藏',
+      name: language.val('context_show_hide'),
       extra: '',
     },
     {
       id: 'clearCopyTempData',
-      name: '清理剪切板',
+      name: language.val('context_clear_clipboard'),
     },
   ].filter(d => d);
 

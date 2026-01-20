@@ -8,6 +8,7 @@ import { editor } from '@stores/editor';
 import { Empty } from '@douyinfe/semi-ui';
 import { IllustrationNoResult, IllustrationNoResultDark } from '@douyinfe/semi-illustrations';
 import exLayers from '@plugins/index';
+import { language } from '@language';
 
 // console.log('exLayers', exLayers);
 
@@ -35,7 +36,7 @@ function OptionsInner(props: IProps) {
         if (exLayer) {
           return <exLayer.Options key={elementData.id} element={elementData} />;
         }
-        return <div>未知类型</div>;
+        return <div>{language.val('options_unknown_type')}</div>;
     }
   } else if (elements.length > 1) {
     return <GroupOptions />;
@@ -46,7 +47,7 @@ function OptionsInner(props: IProps) {
       <Empty
         image={<IllustrationNoResult style={{ width: 150, height: 150 }} />}
         darkModeImage={<IllustrationNoResultDark style={{ width: 150, height: 150 }} />}
-        description={'类型错误'}
+        description={language.val('options_type_error')}
       />
     </div>
   );

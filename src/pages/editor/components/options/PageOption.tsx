@@ -10,6 +10,7 @@ import { pageSize } from '@pages/editor/core/config/config';
 import remove from 'lodash/remove';
 import { util } from '@utils/index';
 import { transaction } from 'mobx';
+import { language } from '@language';
 
 export interface IProps {}
 
@@ -18,7 +19,7 @@ function PageOption(props: IProps) {
   const [, forceUpdate] = useReducer(x => x + 1, 0);
   return (
     <div className={styles.page + ' scroll'}>
-      <Item title="页面名称">
+      <Item title={language.val('page_name')}>
         <Input
           value={pageData.name}
           onChange={e => {
@@ -27,22 +28,22 @@ function PageOption(props: IProps) {
           }}
         />
       </Item>
-      <Item title="快捷操作">
+      <Item title={language.val('page_quick_actions')}>
         <div className={styles.space}>
-          <Tooltip content="复制画布">
+          <Tooltip content={language.val('page_copy_canvas')}>
             <a
               onClick={() => {
                 const nPage = util.toJS(editor.pageData);
                 nPage.id = util.createID();
                 editor.data.pages.push(nPage);
                 editor.selectPageId = nPage.id;
-                Toast.success('已复制');
+                Toast.success(language.val('toast_copied'));
               }}
             >
               <Copy size={20} color="var(--theme-icon)" />
             </a>
           </Tooltip>
-          <Tooltip content="删除画布">
+          <Tooltip content={language.val('page_delete_canvas')}>
             <a
               onClick={() => {
                 transaction(() => {
@@ -52,7 +53,7 @@ function PageOption(props: IProps) {
                     editor.data.selectPageId = editor.data.pages[0].id;
                     editor.updateCanvasKey = util.createID();
                   } else {
-                    Toast.error('至少保留一个页面');
+                    Toast.error(language.val('toast_keep_one_page'));
                   }
                 });
                 // editor.updateCanvas();
@@ -63,7 +64,7 @@ function PageOption(props: IProps) {
           </Tooltip>
         </div>
       </Item>
-      <Item title="背景色">
+      <Item title={language.val('page_background_color')}>
         <SetColor
           gradual={true}
           list={true}
@@ -76,7 +77,7 @@ function PageOption(props: IProps) {
         />
       </Item>
       <Item
-        title="修改尺寸"
+        title={language.val('page_resize')}
         // extra={
         //   <span style={{ opacity: 0.5 }}>
         //     {pageData.width}px * {pageData.height}px
@@ -114,8 +115,8 @@ function PageOption(props: IProps) {
                 key={d.name}
                 onClick={() => {
                   Modal.confirm({
-                    title: '是否要修改画布尺寸？',
-                    content: '修改后元素会重新计算坐标',
+                    title: language.val('page_resize_confirm_title'),
+                    content: language.val('page_resize_confirm_content'),
                     onOk: () => {
                       pageData.height = d.height;
                       pageData.width = d.width;

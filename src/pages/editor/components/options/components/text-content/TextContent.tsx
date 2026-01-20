@@ -5,6 +5,7 @@ import { observer } from 'mobx-react';
 import { useReducer } from 'react';
 import { editor } from '@stores/editor';
 import { TextLayer } from '@pages/editor/core/types/data';
+import { language } from '@language';
 // import { util } from '@utils/index';
 
 export interface IProps {}
@@ -19,7 +20,7 @@ function TextContent(props: IProps) {
             console.log(JSON.stringify(elementData.textStyle));
           }}
         >
-          文本
+          {language.val('text_content')}
         </span>
       }
       style={{ margin: '6px 20px' }}

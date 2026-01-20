@@ -5,6 +5,7 @@ import { useEffect, useState, useRef } from 'react';
 import { Form, Button, Modal, Progress, Spin, Toast } from '@douyinfe/semi-ui';
 import { editor } from '@stores/editor';
 import { util } from '@utils/index';
+import { language } from '@language';
 // import classNames from 'classnames';
 
 export interface IProps {}
@@ -25,7 +26,7 @@ function Export(props: IProps) {
         className={styles.exportBtn}
         icon={<SendOne theme="filled" size="20" fill="#fff" />}
       >
-        导出
+        {language.val('header_export')}
       </Button>
     </>
   );

@@ -17,6 +17,7 @@ import {
   ZoomOut,
   LinkCloudSucess,
 } from '@icon-park/react';
+import { language } from '@language';
 
 export interface IProps {}
 
@@ -51,139 +52,139 @@ export default function KeyboardModal(props: IProps) {
 
   const items = [
     {
-      name: '复制',
+      name: language.val('shortcut_copy'),
       win: 'Ctrl + C',
       mac: '⌘ + C',
       icon: <Copy theme="outline" size="20" fill="var(--theme-icon)" />,
     },
     {
-      name: '剪切',
+      name: language.val('shortcut_cut'),
       win: 'Ctrl + X',
       mac: '⌘ + X',
       icon: <Clipboard theme="outline" size="20" fill="var(--theme-icon)" />,
     },
     {
-      name: '粘贴',
+      name: language.val('shortcut_paste'),
       win: 'Ctrl + V',
       mac: '⌘ + V',
       icon: <Intersection theme="outline" size="20" fill="var(--theme-icon)" />,
     },
     {
-      name: '全选',
+      name: language.val('shortcut_select_all'),
       win: 'Ctrl + A',
       mac: '⌘ + A',
       icon: <Intersection theme="outline" size="20" fill="var(--theme-icon)" />,
     },
     {
-      name: '取消选择',
+      name: language.val('shortcut_deselect'),
       win: 'Ctrl + D',
       mac: '⌘ + D',
       icon: <Intersection theme="outline" size="20" fill="var(--theme-icon)" />,
     },
     {
-      name: '上移一层',
+      name: language.val('shortcut_move_up'),
       win: 'Ctrl + ]',
       mac: '⌘ + ]',
       icon: <Intersection theme="outline" size="20" fill="var(--theme-icon)" />,
     },
     {
-      name: '下移一层',
+      name: language.val('shortcut_move_down'),
       win: 'Ctrl + [',
       mac: '⌘ + [',
       icon: <Intersection theme="outline" size="20" fill="var(--theme-icon)" />,
     },
     {
-      name: '移到顶层',
+      name: language.val('shortcut_move_top'),
       win: 'Ctrl + Shift + ]',
       mac: '⌘ + Shift + ]',
       icon: <Intersection theme="outline" size="20" fill="var(--theme-icon)" />,
     },
     {
-      name: '移到底层',
+      name: language.val('shortcut_move_bottom'),
       win: 'Ctrl + Shift + [',
       mac: '⌘ + Shift + [',
       icon: <Intersection theme="outline" size="20" fill="var(--theme-icon)" />,
     },
     {
-      name: '删除',
+      name: language.val('shortcut_delete'),
       win: 'Delete/Backspace',
       mac: 'Delete/Backspace',
       icon: <Delete theme="outline" size="20" fill="var(--theme-icon)" />,
     },
     {
-      name: '撤销',
+      name: language.val('shortcut_undo'),
       win: 'Ctrl + Z',
       mac: '⌘ + Z',
       icon: <Return theme="outline" size="20" fill="var(--theme-icon)" />,
     },
     {
-      name: '重做',
+      name: language.val('shortcut_redo'),
       win: 'Ctrl + Shift + Z',
       mac: '⌘ + Shift + Z',
       icon: <Return style={{ transform: `scaleX(-1)` }} theme="outline" size="20" fill="var(--theme-icon)" />,
     },
     {
-      name: '右移1px',
+      name: language.val('shortcut_move_right_1px'),
       win: '→',
       mac: '→',
       icon: <ArrowCircleRight theme="outline" size="20" fill="var(--theme-icon)" />,
     },
     {
-      name: '左移1px',
+      name: language.val('shortcut_move_left_1px'),
       win: '←',
       mac: '←',
       icon: <ArrowCircleLeft theme="outline" size="20" fill="var(--theme-icon)" />,
     },
     {
-      name: '上移1px',
+      name: language.val('shortcut_move_up_1px'),
       win: '↑',
       mac: '↑',
       icon: <ArrowCircleLeft theme="outline" size="20" fill="var(--theme-icon)" />,
     },
     {
-      name: '下移1px',
+      name: language.val('shortcut_move_down_1px'),
       win: '↓',
       mac: '↓',
       icon: <ArrowCircleLeft theme="outline" size="20" fill="var(--theme-icon)" />,
     },
     {
-      name: '左移10px',
+      name: language.val('shortcut_move_left_10px'),
       win: 'Shift + ←',
       mac: 'Shift + ←',
       icon: <ArrowCircleLeft theme="outline" size="20" fill="var(--theme-icon)" />,
     },
     {
-      name: '上移10px',
+      name: language.val('shortcut_move_up_10px'),
       win: 'Shift + ↑',
       mac: 'Shift + ↑',
       icon: <ArrowCircleLeft theme="outline" size="20" fill="var(--theme-icon)" />,
     },
     {
-      name: '下移10px',
+      name: language.val('shortcut_move_down_10px'),
       win: 'Shift + ↓',
       mac: 'Shift + ↓',
       icon: <ArrowCircleLeft theme="outline" size="20" fill="var(--theme-icon)" />,
     },
     {
-      name: '画布放大',
+      name: language.val('shortcut_canvas_zoom_in'),
       win: 'Ctrl + +',
       mac: '⌘ + +',
       icon: <ZoomIn theme="outline" size="20" fill="var(--theme-icon)" />,
     },
     {
-      name: '画布缩小',
+      name: language.val('shortcut_canvas_zoom_out'),
       win: 'Ctrl + -',
       mac: '⌘ + -',
       icon: <ZoomOut theme="outline" size="20" fill="var(--theme-icon)" />,
     },
     {
-      name: '画布调至最佳尺寸',
+      name: language.val('shortcut_canvas_fit'),
       win: 'Ctrl + 0',
       mac: '⌘ + 0',
       icon: <ZoomOut theme="outline" size="20" fill="var(--theme-icon)" />,
     },
     {
-      name: '保存',
+      name: language.val('shortcut_save'),
       win: 'Ctrl + S',
       mac: '⌘ + S',
       icon: <LinkCloudSucess theme="outline" size="20" fill="var(--theme-icon)" />,
@@ -200,7 +201,7 @@ export default function KeyboardModal(props: IProps) {
     <>
       <Modal
         width={1000}
-        title="快捷键"
+        title={language.val('shortcut_title')}
         visible={visible}
         onCancel={() => setVisible(false)}
         closeOnEsc={true}

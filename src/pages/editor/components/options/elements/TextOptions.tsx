@@ -14,6 +14,7 @@ import {
   Radius,
 } from '../components';
 import { Tabs, TabPane } from '@douyinfe/semi-ui';
+import { language } from '@language';
 
 export interface IProps {
   element: any;
@@ -28,7 +29,7 @@ function TextOptions(props: IProps) {
         editor.elementOptionType = e as any;
       }}
     >
-      <TabPane tab="基础" itemKey="basic">
+      <TabPane tab={language.val('options_basic')} itemKey="basic">
         <div className="scroll scrollBox">
           {/* <Align /> */}
           <FlipXY />
@@ -42,7 +43,7 @@ function TextOptions(props: IProps) {
           <Rotation />
         </div>
       </TabPane>
-      <TabPane tab="混合模式" itemKey="colour">
+      <TabPane tab={language.val('options_blend_mode')} itemKey="colour">
         <Filter />
       </TabPane>
     </Tabs>

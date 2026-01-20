@@ -7,7 +7,7 @@ export const themeDark: Record<string, string> = {
   '--theme-text-default': 'rgba(255, 255, 255, 0.5)',
   '--theme-text-hover': 'rgba(255, 255, 255, 1)',
   '--theme-text-active': 'rgba(255, 255, 255, 1)',
-  '--theme-main': '#0066ff',
+  '--theme-main': '#F97316',
   '--theme-input': 'rgba(255, 255, 255, 0.2)',
   '--theme-icon': 'rgba(255, 255, 255, 1)',
   '--theme-timeline-bg': 'rgba(0, 0, 0, 0.3)',

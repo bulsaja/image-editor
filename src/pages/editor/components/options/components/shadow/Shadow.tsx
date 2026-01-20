@@ -7,6 +7,7 @@ import { useReducer } from 'react';
 import { ImageLayer } from '@pages/editor/core/types/data';
 import SetColor from '../set-color';
 import { InputNumber, Switch } from '@douyinfe/semi-ui';
+import { language } from '@language';
 
 export interface IProps {}
 
@@ -28,7 +29,7 @@ function Shadow(props: IProps) {
 
   return (
     <Item
-      title="阴影"
+      title={language.val('prop_shadow')}
       extra={
         <Switch
           size="small"
@@ -66,7 +67,7 @@ function Shadow(props: IProps) {
           <div className={styles.inputs}>
             <InputNumber
               innerButtons
-              prefix="模糊"
+              prefix={language.val('prop_blur')}
               value={util.toNum(elementData.shadow.blur)}
               onChange={(v: number) => {
                 elementData.shadow.blur = util.toNum(v);
@@ -83,7 +84,7 @@ function Shadow(props: IProps) {
             />
             <InputNumber
               innerButtons
-              prefix="扩散"
+              prefix={language.val('prop_spread')}
               value={util.toNum(elementData.shadow.spread)}
               onChange={(v: number) => {
                 elementData.shadow.spread = util.toNum(v);
@@ -102,7 +103,7 @@ function Shadow(props: IProps) {
           <div className={styles.inputs}>
             <InputNumber
               innerButtons
-              prefix="X轴"
+              prefix={language.val('prop_x_axis')}
               value={util.toNum(elementData.shadow.x)}
               onChange={(v: number) => {
                 elementData.shadow.x = util.toNum(v);
@@ -119,7 +120,7 @@ function Shadow(props: IProps) {
             />
             <InputNumber
               innerButtons
-              prefix="Y轴"
+              prefix={language.val('prop_y_axis')}
               value={util.toNum(elementData.shadow.y)}
               onChange={(v: number) => {
                 elementData.shadow.y = util.toNum(v);

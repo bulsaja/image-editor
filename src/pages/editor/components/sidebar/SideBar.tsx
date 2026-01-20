@@ -9,6 +9,7 @@ import { editor } from '@stores/editor';
 import KeyboardModal from './KeyboardModal';
 // import { Button } from '@douyinfe/semi-ui';
 import { theme } from '@theme';
+import { language } from '@language';
 
 export interface ISideBarProps {}
 
@@ -28,37 +29,37 @@ function SideBar(props: ISideBarProps) {
             {
               icon: <Page theme="outline" size="24" fill={fill} />,
               type: 'template',
-              name: '模版',
+              name: language.val('sidebar_template'),
             },
             {
               icon: <UploadOne theme="outline" size="24" fill={fill} />,
               type: 'my',
-              name: '我的',
+              name: language.val('sidebar_my'),
             },
             {
               icon: <PictureOne theme="outline" size="24" fill={fill} />,
               type: 'image',
-              name: '图片',
+              name: language.val('sidebar_image'),
             },
             {
               icon: <Text theme="outline" size="24" fill={fill} />,
               type: 'text',
-              name: '文本',
+              name: language.val('sidebar_text'),
             },
             {
               icon: <Mosaic theme="outline" size="24" fill={fill} />,
               type: 'background',
-              name: '背景',
+              name: language.val('sidebar_background'),
             },
             {
               icon: <Stickers theme="outline" size="24" fill={fill} />,
               type: 'svg',
-              name: '贴纸',
+              name: language.val('sidebar_sticker'),
             },
             {
               icon: <MoreTwo theme="outline" size="24" fill={fill} />,
               type: 'more',
-              name: '更多',
+              name: language.val('sidebar_more'),
             },
           ].map((d, i) => {
             return (

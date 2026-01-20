@@ -27,6 +27,7 @@ import { TextLayer } from '@pages/editor/core/types/data';
 import { IPaint, ITextAlign } from '@leafer-ui/interface';
 import { loadFont } from '@pages/editor/core/tools/utils';
 import SetColor from '../set-color';
+import { language } from '@language';
 
 export interface IProps {}
 function TextStyle(props: IProps) {
@@ -77,7 +78,7 @@ function TextStyle(props: IProps) {
               elementData.fontFamilyURL = fontFamily.url;
 
               Toast.info({
-                content: '字体加载中...',
+                content: language.val('toast_font_loading'),
                 duration: 99999,
               });
               loadFont(fontFamily.name, fontFamily.url).then(() => {
@@ -90,7 +91,7 @@ function TextStyle(props: IProps) {
                 });
               });
             }}
-            value={elementData.textStyle.fontFamily || '默认'}
+            value={elementData.textStyle.fontFamily || language.val('text_default_font')}
           >
             {fontFamilys.map(item => {
               return (
@@ -243,7 +244,7 @@ function TextStyle(props: IProps) {
           />
         </div>
       </div>
-      <Item title="文字颜色">
+      <Item title={language.val('text_color')}>
         <SetColor
           gradual={true}
           list={true}
@@ -257,7 +258,7 @@ function TextStyle(props: IProps) {
         />
       </Item>
       {/* <Item title="文字背景"></Item> */}
-      <Item title="文字描边">
+      <Item title={language.val('text_stroke')}>
         <div className={styles.textSpace}>
           <InputNumber
             min={0}

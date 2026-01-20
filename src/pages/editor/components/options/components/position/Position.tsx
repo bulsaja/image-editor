@@ -6,6 +6,7 @@ import { editor } from '@stores/editor';
 import { useReducer } from 'react';
 import { util } from '@utils/index';
 import { pubsub } from '@utils/pubsub';
+import { language } from '@language';
 
 export interface IProps {}
 
@@ -15,7 +16,7 @@ function Position(props: IProps) {
   editor.updateKey;
 
   return (
-    <Item title="位置">
+    <Item title={language.val('prop_position')}>
       <div className={styles.position}>
         <InputNumber
           innerButtons

@@ -8,6 +8,7 @@ import { ImageLayer } from '@pages/editor/core/types/data';
 import SetColor from '../set-color';
 import { InputNumber, Switch, Select } from '@douyinfe/semi-ui';
 import { DividingLineOne } from '@icon-park/react';
+import { language } from '@language';
 
 export interface IProps {}
 
@@ -20,7 +21,7 @@ function Border(props: IProps) {
 
   return (
     <Item
-      title="边框"
+      title={language.val('prop_border')}
       extra={
         <Switch
           size="small"
@@ -54,7 +55,7 @@ function Border(props: IProps) {
           <div className={styles.inputs}>
             <InputNumber
               innerButtons
-              prefix="宽度"
+              prefix={language.val('prop_width')}
               value={util.toNum(elementData.border.strokeWidth)}
               onChange={(v: number) => {
                 elementData.border.strokeWidth = util.toNum(v);
@@ -90,12 +91,12 @@ function Border(props: IProps) {
                 />
               }
             >
-              <Select.Option value="-">直线</Select.Option>
-              <Select.Option value="3-3">虚线1</Select.Option>
-              <Select.Option value="6-6">虚线2</Select.Option>
-              <Select.Option value="9-9">虚线3</Select.Option>
-              <Select.Option value="12-12">虚线4</Select.Option>
-              <Select.Option value="15-15">虚线5</Select.Option>
+              <Select.Option value="-">{language.val('border_solid')}</Select.Option>
+              <Select.Option value="3-3">{language.val('border_dashed_1')}</Select.Option>
+              <Select.Option value="6-6">{language.val('border_dashed_2')}</Select.Option>
+              <Select.Option value="9-9">{language.val('border_dashed_3')}</Select.Option>
+              <Select.Option value="12-12">{language.val('border_dashed_4')}</Select.Option>
+              <Select.Option value="15-15">{language.val('border_dashed_5')}</Select.Option>
             </Select>
           </div>
         </div>

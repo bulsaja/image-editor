@@ -18,6 +18,7 @@ import { config } from '@config/index';
 import { ViewData } from '@pages/editor/core/types/data';
 import AboutUs from './AboutUs';
 import { theme, ThemeName } from '@theme';
+import { language } from '@language';
 
 export interface IProps {}
 
@@ -33,7 +34,7 @@ function Header(props: IProps) {
       editor.recordUpdateTestKey = +new Date();
       editor.updateComponent('options');
     } else {
-      Toast.error('已经撤销到最初状态');
+      Toast.error(language.val('toast_undo_limit'));
     }
   };
 
@@ -44,7 +45,7 @@ function Header(props: IProps) {
       editor.recordUpdateTestKey = +new Date();
       editor.updateComponent('options');
     } else {
-      Toast.error('已经恢复到最终状态');
+      Toast.error(language.val('toast_redo_limit'));
     }
   };
 
@@ -53,7 +54,7 @@ function Header(props: IProps) {
 
     if (!user.info && !noToast) {
       // pubsub.publish('showLoginModal');
-      Toast.error('请先登录');
+      Toast.error(language.val('toast_login_required'));
       return;
     }
     const ndataStr = JSON.stringify(editor.data);
@@ -88,8 +89,8 @@ function Header(props: IProps) {
       const [res, err] = await server.createApp({
         source_id: '', //来源Id
         category_id: 0, //分类Id
-        name: ndata.name || '未命名', //名称
-        description: ndata.desc || '未命名', //描述
+        name: ndata.name || language.val('unnamed'), //名称
+        description: ndata.desc || language.val('unnamed'), //描述
         width: ndata.pages[0].width, //宽度
         height: ndata.pages[0].height, //高度
         thumb: ires.storage_path, //封面图url
@@ -145,22 +146,22 @@ function Header(props: IProps) {
     <>
       <div className={styles.header}>
         <section className={styles.left}>
-          <Tooltip content="工程列表">
+          <Tooltip content={language.val('header_project_list')}>
             <a onClick={() => editor.setSourceType('projects')}>
               <FolderCodeOne theme="outline" size="20" fill="var(--theme-icon)" />
             </a>
           </Tooltip>
-          <Tooltip content="多页面">
+          <Tooltip content={language.val('header_multi_page')}>
             <a onClick={() => editor.setSourceType('pages')}>
               <ViewList theme="outline" size="20" fill="var(--theme-icon)" />
             </a>
           </Tooltip>
-          <Tooltip content="图层列表">
+          <Tooltip content={language.val('header_layer_list')}>
             <a onClick={() => editor.setSourceType('layers')}>
               <Layers theme="outline" size="20" fill="var(--theme-icon)" />
             </a>
           </Tooltip>
-          <Tooltip content="保存">
+          <Tooltip content={language.val('header_save')}>
             <a style={{ pointerEvents: saveLoading ? 'none' : 'initial' }} onClick={() => saveApp()}>
               {saveLoading ? (
                 <LoadingFour className={styles.loadingAnimate} theme="outline" size="20" fill="var(--theme-icon)" />
@@ -169,18 +170,18 @@ function Header(props: IProps) {
               )}
             </a>
           </Tooltip>
-          <Tooltip content="撤销">
+          <Tooltip content={language.val('header_undo')}>
             <a onClick={undo}>
               <Return theme="outline" size="20" fill="var(--theme-icon)" />
             </a>
           </Tooltip>
-          <Tooltip content="重做">
+          <Tooltip content={language.val('header_redo')}>
             <a onClick={redo}>
               <Return style={{ transform: `scaleX(-1)` }} theme="outline" size="20" fill="var(--theme-icon)" />
             </a>
           </Tooltip>
           <input
-            placeholder="项目未命名"
+            placeholder={language.val('header_project_untitled')}
             className={styles.title}
             type="text"
             value={editor.data.name}
@@ -250,7 +251,7 @@ function Header(props: IProps) {
           ) : (
             <Login>
               <Button theme="solid" className={styles.login}>
-                登录/注册
+                {language.val('header_login_register')}
               </Button>
             </Login>
           )}

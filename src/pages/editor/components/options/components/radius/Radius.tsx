@@ -8,6 +8,7 @@ import { ImageLayer } from '@pages/editor/core/types/data';
 import { InputNumber, Switch } from '@douyinfe/semi-ui';
 import { Square, Extend } from '@icon-park/react';
 import classNames from 'classnames';
+import { language } from '@language';
 
 export interface IProps {}
 
@@ -23,7 +24,7 @@ function Radius(props: IProps) {
 
   return (
     <Item
-      title="圆角"
+      title={language.val('prop_corner_radius')}
       extra={
         <div className={styles.radiuType}>
           <a

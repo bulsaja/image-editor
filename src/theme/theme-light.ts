@@ -7,7 +7,7 @@ export const themeLight: Record<string, string> = {
   '--theme-text-default': 'rgba(0, 0, 0, 0.5)',
   '--theme-text-hover': 'rgba(255, 255, 255, 1)',
   '--theme-text-active': 'rgba(0, 0, 0, 1)',
-  '--theme-main': '#0066ff',
+  '--theme-main': '#F97316',
   '--theme-input': 'rgba(0, 0, 0, 0.1)',
   '--theme-icon': 'rgba(0, 0, 0, 1)',
   '--theme-timeline-bg': 'rgba(255, 255, 255, 0.3)',

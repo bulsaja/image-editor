@@ -1,86 +1,88 @@
+import { language } from '@language';
+
 export const list = [
   {
-    name: '正常',
+    name: language.val('blend_normal'),
     val: 'normal',
     url: '',
   },
   {
-    name: '穿透',
+    name: language.val('blend_pass_through'),
     val: 'pass-through',
     url: '',
   },
   {
-    name: '正片叠底',
+    name: language.val('blend_multiply'),
     val: 'multiply',
     url: '',
   },
   {
-    name: '变暗',
+    name: language.val('blend_darken'),
     val: 'darken',
     url: '',
   },
   {
-    name: '颜色加深',
+    name: language.val('blend_color_burn'),
     val: 'color-burn',
     url: '',
   },
   {
-    name: '变亮',
+    name: language.val('blend_lighten'),
     val: 'lighten',
     url: '',
   },
   {
-    name: '颜色减淡',
+    name: language.val('blend_color_dodge'),
     val: 'color-dodge',
     url: '',
   },
   {
-    name: '滤色',
+    name: language.val('blend_screen'),
     val: 'screen',
     url: '',
   },
   {
-    name: '叠加',
+    name: language.val('blend_overlay'),
     val: 'overlay',
     url: '',
   },
   {
-    name: '强光',
+    name: language.val('blend_hard_light'),
     val: 'hard-light',
     url: '',
   },
   {
-    name: '柔光',
+    name: language.val('blend_soft_light'),
     val: 'soft-light',
     url: '',
   },
   {
-    name: '差集',
+    name: language.val('blend_difference'),
     val: 'difference',
     url: '',
   },
   {
-    name: '排除',
+    name: language.val('blend_exclusion'),
     val: 'exclusion',
     url: '',
   },
   {
-    name: '色相',
+    name: language.val('blend_hue'),
     val: 'hue',
     url: '',
   },
   {
-    name: '饱和度',
+    name: language.val('blend_saturation'),
     val: 'saturation',
     url: '',
   },
   {
-    name: '颜色',
+    name: language.val('blend_color'),
     val: 'color',
     url: '',
   },
   {
-    name: '明度',
+    name: language.val('blend_luminosity'),
     val: 'luminosity',
     url: '',
   },

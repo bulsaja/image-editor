@@ -6,6 +6,7 @@ import { editor } from '@stores/editor';
 import { util } from '@utils/index';
 import { pubsub } from '@utils/pubsub';
 import { observer } from 'mobx-react';
+import { language } from '@language';
 
 export interface IProps {}
 
@@ -15,7 +16,7 @@ function Rotation(props: IProps) {
   const elementData = editor.getElementData();
 
   return (
-    <Item title="旋转">
+    <Item title={language.val('prop_rotation')}>
       <div className={styles.opacity}>
         <SliderInput
           suffix="°"

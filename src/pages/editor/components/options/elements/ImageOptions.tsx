@@ -16,6 +16,7 @@ import {
 } from '../components';
 import { Tabs, TabPane } from '@douyinfe/semi-ui';
 import { useState } from 'react';
+import { language } from '@language';
 
 export interface IProps {
   element: any;
@@ -30,7 +31,7 @@ function ImageOptions(props: IProps) {
         editor.elementOptionType = e as any;
       }}
     >
-      <TabPane tab="元素设置" itemKey="basic">
+      <TabPane tab={language.val('options_element_settings')} itemKey="basic">
         <div className={'scroll scrollBox'}>
           <AiImg />
           <FlipXY />
@@ -46,7 +47,7 @@ function ImageOptions(props: IProps) {
           <Rotation />
         </div>
       </TabPane>
-      <TabPane tab="混合模式" itemKey="colour">
+      <TabPane tab={language.val('options_blend_mode')} itemKey="colour">
         <Filter />
       </TabPane>
     </Tabs>
