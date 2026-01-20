@@ -30,7 +30,7 @@ function Position(props: IProps) {
           onBlur={() => {
             editor.record({
               type: 'update',
-              desc: '修改X',
+              desc: 'X 수정',
             });
           }}
         />
@@ -46,7 +46,7 @@ function Position(props: IProps) {
           onBlur={() => {
             editor.record({
               type: 'update',
-              desc: '修改Y',
+              desc: 'Y 수정',
             });
           }}
         />

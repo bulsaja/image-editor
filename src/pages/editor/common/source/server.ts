@@ -4,7 +4,7 @@ import type { MaterialTypes } from '@stores/editor';
 import { config } from '@config/index';
 
 class Server extends BasicService {
-  // 获取分类列表
+  // Get category list
   getTypeItems = async (type: MaterialTypes) => {
     const typeMap = {
       text: 211,
@@ -24,7 +24,7 @@ class Server extends BasicService {
     return this.get(`/api/v1/template/categories/tree`, { params: { page_size: 99 } });
   };
 
-  // 获取素材
+  // Get materials
   getMaterialItems = async (params: {
     type: MaterialTypes;
     category_id?: string | number;
@@ -35,7 +35,7 @@ class Server extends BasicService {
     return this.get('/api/v1/materials/page', { params });
   };
 
-  // 搜索模版
+  // 검색 모판
   searchTemplateItems = async (params: {
     category_id?: string | number;
     keyword?: string;
@@ -67,7 +67,7 @@ class Server extends BasicService {
     });
   };
 
-  // 获取素材关键字匹配
+  // Get materials by keyword match
   searchMaterialItems = async (params: {
     type: MaterialTypes;
     category_id?: string | number;
@@ -78,17 +78,17 @@ class Server extends BasicService {
     return this.get('/api/v1/materials/page', { params });
   };
 
-  // 搜藏元素
+  // Add to favorites
   collect = async (source_id: string, type: string) => {
     return this.post(`/api/v1/user/collects/create`, { type, source_id });
   };
 
-  // 取消收藏
+  // Remove from favorites
   collectCancle = async (source_id: Array<string>) => {
     return this.post(`/api/v1/user/collects/cancel`, { source_id });
   };
 
-  // 获取收藏列表
+  // Get favorites list
   getCollects = async (params: {
     type: MaterialTypes;
     category_id?: string | number;
@@ -103,7 +103,7 @@ class Server extends BasicService {
 export const server = new Server();
 
 /**
- * 获取素材的列表Items数据
+ * Get material list items data
  * @param type
  * @param params
  * @param items
@@ -143,11 +143,11 @@ export async function getItems(
     const list = [
       ...(items || []),
       ...res.data.map((d: any) => {
-        // 收藏列表数据结构特殊
+        // Favorites list has special data structure
         if (d.material) {
           d = d.material;
         }
-        // 兼容H5DS图片模版
+        // Compatible with H5DS image template
         if (!d.attrs) {
           d.attrs = { width: 1280, height: 720 };
           d.thumb = d.coverImageUrl + '?x-oss-process=image/resize,m_lfit,w_320/quality,q_80';

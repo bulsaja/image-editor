@@ -2,14 +2,14 @@ import { action, observable, transaction } from 'mobx';
 import { storage, crypto } from '@utils/index';
 
 /**
- * @desc 存放外部传入的props数据
+ * @desc Store external props data
  */
 class User {
-  @observable token: string = crypto.encrypt(storage.local.get('token')) || ''; // 外部传入的参数
-  @observable info: any = null; // 外部传入的参数
+  @observable token: string = crypto.encrypt(storage.local.get('token')) || ''; // External parameter
+  @observable info: any = null; // External parameter
 
   /**
-   * 设置用户信息
+   * Set user info
    * @param {*} info
    * @param {*} token
    */

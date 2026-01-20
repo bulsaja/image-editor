@@ -21,18 +21,18 @@ export default class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBo
       hasError: false,
       errorMsg: '',
       errorMsgMap: {
-        timeout: '抱歉，加载超时！', // 错误信息对应提示文字
+        timeout: 'Sorry, loading timed out!', // Error message corresponding text
       },
     };
   }
 
   static getDerivedStateFromError(error: any) {
-    // 更新 state 使下一次渲染能够显示降级后的 UI
+    // Update state so next render shows fallback UI
     return { hasError: true, errorMsg: error.message };
   }
 
   // componentDidCatch (error, errorInfo) {
-  //     // 你同样可以将错误日志上报给服务器
+  //     // You can also report error log to server
   //     logErrorToMyService(error, errorInfo);
   // }
 
@@ -40,12 +40,12 @@ export default class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBo
     const { errorMsgMap, hasError, errorMsg } = this.state;
 
     if (hasError !== false) {
-      // 你可以自定义降级后的 UI 并渲染
+      // You can customize and render fallback UI
       return (
         <div className={styles.errorBoundary}>
-          <h1>{errorMsgMap[errorMsg] || '抱歉，加载失败！'}</h1>
+          <h1>{errorMsgMap[errorMsg] || 'Sorry, loading failed!'}</h1>
           <Button type="primary" key="console" onClick={() => window.location.reload()}>
-            重新加载
+            Reload
           </Button>
         </div>
       );

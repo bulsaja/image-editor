@@ -41,9 +41,9 @@ export default function GradualColor(props: IProps) {
                   className={styles.colorPicker}
                 />
                 {/* <div className={styles.colorModalFooter}>
-                  <a>前面插入</a>
-                  <a>后面插入</a>
-                  <a>删除颜色</a>
+                  <a>Insert before</a>
+                  <a>Insert after</a>
+                  <a>Delete color</a>
                 </div> */}
               </div>
             }

@@ -3,27 +3,27 @@ import type { IImagePaintMode, IText, IPointData, IShadowEffect, IBlendMode, IPa
 export type ENV = 'editor' | 'preview';
 
 /**
- * 数据说明：
- * x，y是相对元素中心点来定位的
+ * Data description:
+ * x, y are positioned relative to the element center point
  */
 
 /**
- * 整体数据
+ * Overall data
  */
 export interface ViewData {
-  name: string; // 名称
-  desc: string; // 描述
-  version: string; // 版本号
-  thumb: string; // 封面图
-  selectPageId: string; // 选中的页面ID
-  createTime: number; // 创建时间（时间戳）
-  updateTime: number; // 更新时间（时间戳）
-  pages: BasePage[]; // 支持多页面
+  name: string; // Name
+  desc: string; // Description
+  version: string; // Version number
+  thumb: string; // Cover image
+  selectPageId: string; // Selected page ID
+  createTime: number; // Creation time (timestamp)
+  updateTime: number; // Update time (timestamp)
+  pages: BasePage[]; // Support multiple pages
 }
 
 export interface ExLayerConfig {
-  pid: string; // 插件ID
-  version: string; // 版本号
+  pid: string; // Plugin ID
+  version: string; // Version number
 }
 
 // export { Layer, LayerData, Options, config };
@@ -36,23 +36,23 @@ export interface ExLayer {
 }
 
 /**
- * 单张图数据
+ * Single image data
  */
 export interface BasePage {
-  id: string; // 标识
-  name: string; // 页面名称
-  desc: string; // 页面描述
+  id: string; // Identifier
+  name: string; // Page name
+  desc: string; // Page description
   width: number;
   height: number;
-  thumb?: string; // 封面图
+  thumb?: string; // Cover image
   background: IPaint;
-  layers: BaseLayer[]; // 元素
+  layers: BaseLayer[]; // Elements
 }
 
-export type LayerType = 'image' | 'text' | 'shape' | 'group' | string; // 其他
+export type LayerType = 'image' | 'text' | 'shape' | 'group' | string; // Other
 
 /**
- * 图层
+ * Layer
  */
 export interface BaseLayer {
   id: string;
@@ -61,75 +61,75 @@ export interface BaseLayer {
   x: number;
   y: number;
   type: LayerType;
-  blur: number; // 模糊
+  blur: number; // Blur
   border: {
-    stroke: string; // 边框色
+    stroke: string; // Border color
     dashPattern?: number[];
     dashOffset?: number;
     strokeWidth: number;
     visible: boolean;
   };
-  blendMode: IBlendMode; // 混合模式
+  blendMode: IBlendMode; // Blend mode
   opacity: number;
-  rotation: number; // 旋转 0~360
-  shadow: IShadowEffect; // 阴影
-  _unKeepRatio?: boolean; // 控制器不保持等比缩放
+  rotation: number; // Rotation 0~360
+  shadow: IShadowEffect; // Shadow
+  _unKeepRatio?: boolean; // Controller does not keep aspect ratio
   _ratio?: number;
-  _dirty: string; // 用于视图更新
-  _lock: boolean; // 是否锁定
-  _hide: boolean; // 是否隐藏
-  extend?: any; // 扩展字段
+  _dirty: string; // For view update
+  _lock: boolean; // Is locked
+  _hide: boolean; // Is hidden
+  extend?: any; // Extended field
 }
 
 /**
- * 图层：图片、文本、形状&线条、组、二维码、图表、表格、代码、容器
+ * Layer: image, text, shape & line, group, QR code, chart, table, code, container
  */
 
-// 图片
+// Image
 export interface ImageLayer extends BaseLayer {
   type: 'image';
   width: number;
   height: number;
   naturalHeight: number;
   naturalWidth: number;
-  // 镜像翻转，上下，左右
+  // Mirror flip, vertical, horizontal
   flipx: boolean;
   flipy: boolean;
-  cropSize?: { x: number; y: number; width: number; height: number }; // 裁剪
-  svgColors?: string[]; // svg颜色值
-  svgColorType?: 'one' | 'more'; // 单色，多色
-  url: string; // 图片链接
-  cornerRadius: [number, number, number, number]; // 圆角
+  cropSize?: { x: number; y: number; width: number; height: number }; // Crop
+  svgColors?: string[]; // SVG color values
+  svgColorType?: 'one' | 'more'; // Single color, multiple colors
+  url: string; // Image URL
+  cornerRadius: [number, number, number, number]; // Corner radius
 }
 
-// 文本
+// Text
 export interface TextLayer extends BaseLayer {
   type: 'text';
   width: number;
   height: number;
-  // 文字样式
-  fontFamilyURL: string; // 字体路径
-  text: string; // 内容
-  fill: string; // 文字容器的颜色
-  textStyle: Partial<IText>; // 文字样式
+  // Text style
+  fontFamilyURL: string; // Font path
+  text: string; // Content
+  fill: string; // Text container color
+  textStyle: Partial<IText>; // Text style
 }
 
-// 形状：矩形、圆、线条、多边形、星形
+// Shape: rectangle, circle, line, polygon, star
 export interface ShapeRectLayer extends BaseLayer {
   type: 'shape';
   shape: 'rect';
   width: number;
   height: number;
-  cornerRadius: [number, number, number, number]; // 圆角
+  cornerRadius: [number, number, number, number]; // Corner radius
 }
 export interface ShapeEllipseLayer extends BaseLayer {
   type: 'shape';
   shape: 'ellipse';
   width: number;
   height: number;
-  startAngle: number; // 弧形的起始角度, 取值范围为 -180 ～ 180。
-  endAngle: number; // 弧形的结束角度, 取值范围为 -180 ～ 180。
-  innerRadius: number; // 内半径比例, 取值范围为 0.0 ～ 1.0。
+  startAngle: number; // Arc start angle, range -180 ~ 180
+  endAngle: number; // Arc end angle, range -180 ~ 180
+  innerRadius: number; // Inner radius ratio, range 0.0 ~ 1.0
 }
 export interface ShapeLineLayer extends BaseLayer {
   type: 'shape';
@@ -137,42 +137,42 @@ export interface ShapeLineLayer extends BaseLayer {
   width: number;
   rotation: number;
   toPoint: IPointData;
-  cornerRadius: number; //圆角大小，使折线拐角处变的圆滑。
-  points?: number[]; // 通过坐标组 [ x1,y1, x2,y2, ...] 绘制折线。
-  curve?: boolean | number; // 是否转换为平滑路径，默认为 false。  可设置 0 ～ 1 控制曲率，默认为 0.5。
+  cornerRadius: number; // Corner radius size, makes polyline corners smooth
+  points?: number[]; // Draw polyline through coordinate array [ x1,y1, x2,y2, ...]
+  curve?: boolean | number; // Convert to smooth path, default false. Can set 0 ~ 1 to control curvature, default 0.5
 }
 export interface ShapePolygonLayer extends BaseLayer {
   type: 'shape';
   shape: 'polygon';
   width: number;
   height: number;
-  sides: number; // 正多边形的边数，取值范围为 >=3。内部逻辑：在一个圆上每 (360 / sides) 度取一个点，再将点连成线，组成一个正多边形。
-  cornerRadius: number; //圆角大小，使折线拐角处变的圆滑。
-  points?: number[]; // 通过坐标组 [ x1,y1, x2,y2, ...] 绘制折线。
-  curve?: boolean | number; // 是否转换为平滑路径，默认为 false。  可设置 0 ～ 1 控制曲率，默认为 0.5。
+  sides: number; // Number of polygon sides, range >= 3. Internal logic: take a point every (360 / sides) degrees on a circle, connect points to form a regular polygon
+  cornerRadius: number; // Corner radius size, makes polyline corners smooth
+  points?: number[]; // Draw polyline through coordinate array [ x1,y1, x2,y2, ...]
+  curve?: boolean | number; // Convert to smooth path, default false. Can set 0 ~ 1 to control curvature, default 0.5
 }
 export interface ShapeStarLayer extends BaseLayer {
   type: 'shape';
   shape: 'star';
   width: number;
   height: number;
-  corners: number; // 星形的角数，取值范围为 >=3。  内部逻辑：在内外圆上每 (360 / corners) 度取一个点，再将点连成线，组成一个多角星形。
-  innerRadius: number; // 内半径比例，默认 0.382，取值范围为 0.0 ～ 1.0。
-  cornerRadius: number; //圆角大小，使折线拐角处变的圆滑。
+  corners: number; // Number of star corners, range >= 3. Internal logic: take a point every (360 / corners) degrees on inner and outer circles, connect points to form a multi-pointed star
+  innerRadius: number; // Inner radius ratio, default 0.382, range 0.0 ~ 1.0
+  cornerRadius: number; // Corner radius size, makes polyline corners smooth
 }
 
 export type ShapeLayer = ShapeEllipseLayer | ShapeLineLayer | ShapePolygonLayer | ShapeRectLayer | ShapeStarLayer;
 
-// 组
+// Group
 export interface GroupLayer extends BaseLayer {
   type: 'group';
   childs: BaseLayer[];
 }
 
-// 图表
+// Chart
 export interface ChartLayer extends BaseLayer {
   width: number;
   height: number;
-  data: Record<string, any>; // 图表数据
-  options: Record<string, any>; // 图表配置
+  data: Record<string, any>; // Chart data
+  options: Record<string, any>; // Chart options
 }

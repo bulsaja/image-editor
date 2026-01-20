@@ -1,15 +1,15 @@
 import type { BaseLayer } from '@core/types/data';
 
-// 二维码
+// QR Code
 export interface QrcodeLayer extends BaseLayer {
   type: 'qrcode';
-  // 镜像翻转，上下，左右
+  // Mirror flip, vertical, horizontal
   flipx: boolean;
   flipy: boolean;
   width: number;
   height: number;
-  content: string; // qrcode的内容
-  lightcolor: string; // 背景色
-  darkcolor: string; // 黑色
-  cornerRadius: [number, number, number, number]; // 圆角
+  content: string; // QR code content
+  lightcolor: string; // Background color
+  darkcolor: string; // Dark color
+  cornerRadius: [number, number, number, number]; // Corner radius
 }

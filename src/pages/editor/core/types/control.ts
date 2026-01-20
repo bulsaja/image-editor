@@ -1,5 +1,5 @@
 export interface ControlChangeValues {
-  elementId: string; // 目标元素到ID
+  elementId: string; // Target element ID
   x: number;
   y: number;
   alpha?: number;

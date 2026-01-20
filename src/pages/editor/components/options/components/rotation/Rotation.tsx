@@ -32,7 +32,7 @@ function Rotation(props: IProps) {
           onAfterChange={() => {
             editor.record({
               type: 'update',
-              desc: '修改旋转角度',
+              desc: '회전 각도 수정',
             });
           }}
         />

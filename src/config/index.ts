@@ -1,16 +1,16 @@
-// 配置
+// Configuration
 const config = {
   secretKey: 'x&S#acLCx', //
   apiHost: '',
-  prefix: 'img', // 项目前缀，用于设置localStroage的名称
-  resourcesHost: 'https://cdn.h5ds.com', // CDN资源路径
-  host: 'https://video.h5ds.com', // 二维码扫描有用到
-  basename: 'editor', // history路由前缀
+  prefix: 'img', // Project prefix, used for localStorage name
+  resourcesHost: 'https://cdn.h5ds.com', // CDN resource path
+  host: 'https://video.h5ds.com', // Used for QR code scanning
+  basename: 'editor', // History router prefix
   env: 'dev',
   templateHost: 'https://www.h5ds.cn',
 };
 
-// 生产环境参数
+// Production environment parameters
 if (import.meta.env.PROD) {
   config.env = 'prod';
   config.apiHost = (window as any).apiHost || '';

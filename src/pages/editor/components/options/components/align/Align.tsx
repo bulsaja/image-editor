@@ -22,9 +22,9 @@ function Align(props: IProps) {
   const { width, height } = editor.pageData;
 
   return (
-    <Item title="对齐方式">
+    <Item title="Alignment">
       <div className={styles.align}>
-        <Tooltip content={'左对齐'}>
+        <Tooltip content={'Align Left'}>
           <a
             onClick={() => {
               elementData.x = 0;
@@ -32,14 +32,14 @@ function Align(props: IProps) {
               editor.updateCanvas();
               editor.record({
                 type: 'update',
-                desc: '左对齐',
+                desc: '왼쪽 정렬',
               });
             }}
           >
             <AlignLeft theme="filled" size="20" fill="var(--theme-icon)" />
           </a>
         </Tooltip>
-        <Tooltip content={'水平对齐'}>
+        <Tooltip content={'Align Horizontal'}>
           <a
             onClick={() => {
               elementData.x = width / 2 - elementData.width / 2;
@@ -47,14 +47,14 @@ function Align(props: IProps) {
               editor.updateOption();
               editor.record({
                 type: 'update',
-                desc: '水平对齐',
+                desc: '수평 정렬',
               });
             }}
           >
             <AlignHorizontally theme="filled" size="20" fill="var(--theme-icon)" />
           </a>
         </Tooltip>
-        <Tooltip content={'右对齐'}>
+        <Tooltip content={'Align Right'}>
           <a
             onClick={() => {
               elementData.x = width - elementData.width;
@@ -62,14 +62,14 @@ function Align(props: IProps) {
               editor.updateOption();
               editor.record({
                 type: 'update',
-                desc: '右对齐',
+                desc: '오른쪽 정렬',
               });
             }}
           >
             <AlignRight theme="filled" size="20" fill="var(--theme-icon)" />
           </a>
         </Tooltip>
-        <Tooltip content={'顶对齐'}>
+        <Tooltip content={'Align Top'}>
           <a
             onClick={() => {
               elementData.y = 0;
@@ -77,14 +77,14 @@ function Align(props: IProps) {
               editor.updateCanvas();
               editor.record({
                 type: 'update',
-                desc: '顶对齐',
+                desc: '상단 정렬',
               });
             }}
           >
             <AlignTop theme="filled" size="20" fill="var(--theme-icon)" />
           </a>
         </Tooltip>
-        <Tooltip content={'垂直对齐'}>
+        <Tooltip content={'Align Vertical'}>
           <a
             onClick={() => {
               elementData.y = height / 2 - elementData.height / 2;
@@ -92,14 +92,14 @@ function Align(props: IProps) {
               editor.updateCanvas();
               editor.record({
                 type: 'update',
-                desc: '垂直对齐',
+                desc: '수직 정렬',
               });
             }}
           >
             <AlignVertically theme="filled" size="20" fill="var(--theme-icon)" />
           </a>
         </Tooltip>
-        <Tooltip content={'底对齐'}>
+        <Tooltip content={'Align Bottom'}>
           <a
             onClick={() => {
               elementData.y = height - elementData.height;
@@ -107,19 +107,19 @@ function Align(props: IProps) {
               editor.updateCanvas();
               editor.record({
                 type: 'update',
-                desc: '底对齐',
+                desc: '하단 정렬',
               });
             }}
           >
             <AlignBottom theme="filled" size="20" fill="var(--theme-icon)" />
           </a>
         </Tooltip>
-        {/* <Tooltip content={'水平间距分布'}>
+        {/* <Tooltip content={'Distribute Horizontal Spacing'}>
           <a href="#">
             <DistributeHorizontalSpacing theme="filled" size="20" fill="var(--theme-icon)" />
           </a>
         </Tooltip>
-        <Tooltip content={'垂直间距分布'}>
+        <Tooltip content={'Distribute Vertical Spacing'}>
           <a href="#">
             <DistributeVerticalSpacing theme="filled" size="20" fill="var(--theme-icon)" />
           </a>

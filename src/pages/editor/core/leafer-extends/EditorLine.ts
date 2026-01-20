@@ -3,11 +3,11 @@ import { App, DragEvent, MoveEvent } from 'leafer-ui';
 import { EditorEvent, EditorMoveEvent, EditorScaleEvent, EditorRotateEvent } from '@leafer-in/editor';
 
 export interface IOptions {
-  lineColor: string; // 线条的颜色
-  gap: number; // 吸附距离
+  lineColor: string; // Line color
+  gap: number; // Snap distance
 }
 /**
- * leafer编辑器的扩展，吸附对齐
+ * Leafer editor extension, snap alignment
  */
 export default class EditorLine {
   private _app: App;

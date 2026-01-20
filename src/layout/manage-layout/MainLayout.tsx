@@ -23,7 +23,7 @@ function MainLayout({ route }: any) {
   }
 
   if (!user.info) {
-    return <div>没有访问权限</div>;
+    return <div>No access permission</div>;
   }
 
   return (

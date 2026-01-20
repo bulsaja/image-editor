@@ -10,8 +10,8 @@ export default class QrcodeData implements BarcodeLayer {
   flipx: boolean = false;
   flipy: boolean = false;
   id: string = util.createID();
-  name: string = '图片元素';
-  desc: string = '描述信息';
+  name: string = 'Image Element';
+  desc: string = 'Description';
   x: number = 0;
   y: number = 0;
   blur: number = 0;

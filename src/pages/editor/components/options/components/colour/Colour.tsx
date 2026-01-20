@@ -56,24 +56,24 @@ function Colour(props: IProps) {
     [elementData.filters],
   );
 
-  // saturation: true, // 饱和度
-  // tint: true, // 色调
-  // hue: true, // 色相
-  // brightness: true, // 亮度
-  // exposure: true, // 曝光
-  // contrast: true, // 对比度
-  // highlights: true, // 高光
-  // sharpen: true, // 锐化
-  // clarity: true, // 清晰
-  // smooth: true, // 光滑
-  // blur: true, // 模糊
-  // grain: true, // 噪点
-  // vignetteWhite: true, // 白色光晕
-  // vignetteBlack: true, // 黑色光晕
-  // fill: true, // 调色
+  // saturation: true, // Saturation
+  // tint: true, // Tint
+  // hue: true, // Hue
+  // brightness: true, // Brightness
+  // exposure: true, // Exposure
+  // contrast: true, // Contrast
+  // highlights: true, // Highlights
+  // sharpen: true, // Sharpen
+  // clarity: true, // Clarity
+  // smooth: true, // Smooth
+  // blur: true, // Blur
+  // grain: true, // Grain
+  // vignetteWhite: true, // White vignette
+  // vignetteBlack: true, // Black vignette
+  // fill: true, // Fill
   return (
     <div className={styles.colour + ' scroll'}>
-      {/* <Item title="饱和度">
+      {/* <Item title="Saturation">
         <SliderInput
           min={-1}
           max={1}
@@ -82,13 +82,13 @@ function Colour(props: IProps) {
           step={0.01}
         />
       </Item> */}
-      <Item title="色调">
+      <Item title="Tint">
         <SliderInput value={getValue('Tint')} onChange={v => changeValue(v, 'Tint')} min={-1} max={1} step={0.01} />
       </Item>
-      {/* <Item title="色相">
+      {/* <Item title="Hue">
         <SliderInput value={getValue('Hue')} onChange={v => changeValue(v, 'Hue')} min={-1} max={1} step={0.01} />
       </Item> */}
-      {/* <Item title="亮度">
+      {/* <Item title="Brightness">
         <SliderInput
           value={getValue('Brightness')}
           onChange={v => changeValue(v, 'Brightness')}
@@ -97,7 +97,7 @@ function Colour(props: IProps) {
           step={0.01}
         />
       </Item> */}
-      <Item title="曝光">
+      <Item title="Exposure">
         <SliderInput
           value={getValue('Exposure')}
           onChange={v => changeValue(v, 'Exposure')}
@@ -106,7 +106,7 @@ function Colour(props: IProps) {
           step={0.01}
         />
       </Item>
-      {/* <Item title="对比度">
+      {/* <Item title="Contrast">
         <SliderInput
           value={getValue('Contrast')}
           onChange={v => changeValue(v, 'Contrast')}
@@ -115,7 +115,7 @@ function Colour(props: IProps) {
           step={0.01}
         />
       </Item> */}
-      <Item title="高光">
+      <Item title="Highlights">
         <SliderInput
           value={getValue('Highlights')}
           onChange={v => changeValue(v, 'Highlights')}
@@ -124,7 +124,7 @@ function Colour(props: IProps) {
           step={0.01}
         />
       </Item>
-      <Item title="锐化">
+      <Item title="Sharpen">
         <SliderInput
           value={getValue('Sharpen')}
           onChange={v => changeValue(v, 'Sharpen')}
@@ -133,7 +133,7 @@ function Colour(props: IProps) {
           step={0.01}
         />
       </Item>
-      <Item title="清晰">
+      <Item title="Clarity">
         <SliderInput
           value={getValue('Clarity')}
           onChange={v => changeValue(v, 'Clarity')}
@@ -142,13 +142,13 @@ function Colour(props: IProps) {
           step={0.01}
         />
       </Item>
-      <Item title="光滑">
+      <Item title="Smooth">
         <SliderInput min={0} max={1} value={getValue('Smooth')} onChange={v => changeValue(v, 'Smooth')} step={0.01} />
       </Item>
-      <Item title="噪点">
+      <Item title="Grain">
         <SliderInput min={0} max={1} value={getValue('Grain')} onChange={v => changeValue(v, 'Grain')} step={0.01} />
       </Item>
-      {/* <Item title="光晕">
+      {/* <Item title="Vignette">
         <SliderInput
           min={0}
           max={1}
@@ -158,20 +158,20 @@ function Colour(props: IProps) {
         />
         <div className={styles.fillOption}>
           <Select defaultValue="VignetteWhite" style={{ width: '100%' }}>
-            <Select.Option value="vignetteBlack">黑色</Select.Option>
-            <Select.Option value="VignetteWhite">白色</Select.Option>
+            <Select.Option value="vignetteBlack">Black</Select.Option>
+            <Select.Option value="VignetteWhite">White</Select.Option>
           </Select>
         </div>
       </Item> */}
-      {/* <Item title="调色">
+      {/* <Item title="Color Fill">
         <SliderInput min={0} max={1} value={getValue('Fill')} onChange={v => changeValue(v, 'Fill')} step={0.01} />
         <div className={styles.fillOption}>
           <Color value="#ff0" onChange={() => {}} />
           <Select defaultValue="default" style={{ width: 'calc(50% - 3px)' }}>
-            <Select.Option value="default">默认</Select.Option>
-            <Select.Option value="ulikecam">正片叠底</Select.Option>
-            <Select.Option value="jianying">增强</Select.Option>
-            <Select.Option value="xigua">减弱</Select.Option>
+            <Select.Option value="default">Default</Select.Option>
+            <Select.Option value="ulikecam">Multiply</Select.Option>
+            <Select.Option value="jianying">Enhance</Select.Option>
+            <Select.Option value="xigua">Reduce</Select.Option>
           </Select>
         </div>
       </Item> */}

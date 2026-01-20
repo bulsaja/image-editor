@@ -13,7 +13,7 @@ async function setDesc(id) {
 
   const style = JSON.parse(res.data.data.appData).style;
 
-  // 更新
+  // Update
   await $.ajax({
     type: 'put',
     url: `https://www.h5ds.cn/api/v1/admin/templates/${id}`,
@@ -28,7 +28,7 @@ async function setDesc(id) {
 }
 
 async function main() {
-  // 一共是16页
+  // Total 16 pages
   let index = 0;
   for (let page = 2; page < 17; page++) {
     const res = await $.ajax({
@@ -43,7 +43,7 @@ async function main() {
       index++;
       const tpl = res.data.data[i];
       await setDesc(tpl.templateId);
-      console.log('进度：' + ~~((index / res.data.total) * 100) + '%');
+      console.log('Progress: ' + ~~((index / res.data.total) * 100) + '%');
     }
   }
 }

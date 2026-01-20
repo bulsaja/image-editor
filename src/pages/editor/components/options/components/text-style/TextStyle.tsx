@@ -45,7 +45,7 @@ function TextStyle(props: IProps) {
     forceUpdate();
     editor.record({
       type: 'update',
-      desc: '文本对齐' + key,
+      desc: '텍스트 정렬' + key,
     });
   };
 
@@ -87,7 +87,7 @@ function TextStyle(props: IProps) {
                 Toast.destroyAll();
                 editor.record({
                   type: 'update',
-                  desc: '修改字体',
+                  desc: '폰트 수정',
                 });
               });
             }}
@@ -109,7 +109,7 @@ function TextStyle(props: IProps) {
             onBlur={() => {
               editor.record({
                 type: 'update',
-                desc: '修改文字大小',
+                desc: '텍스트 크기 수정',
               });
             }}
           />
@@ -131,7 +131,7 @@ function TextStyle(props: IProps) {
               forceUpdate();
               editor.record({
                 type: 'update',
-                desc: '加粗&取消',
+                desc: '굵게',
               });
             }}
           >
@@ -153,7 +153,7 @@ function TextStyle(props: IProps) {
               forceUpdate();
               editor.record({
                 type: 'update',
-                desc: '倾斜',
+                desc: '기울임',
               });
             }}
           >
@@ -176,7 +176,7 @@ function TextStyle(props: IProps) {
               forceUpdate();
               editor.record({
                 type: 'update',
-                desc: '下划线',
+                desc: '밑줄',
               });
             }}
           >
@@ -221,7 +221,7 @@ function TextStyle(props: IProps) {
             onBlur={() => {
               editor.record({
                 type: 'update',
-                desc: '修改文字行高',
+                desc: '행 높이 수정',
               });
             }}
           />
@@ -238,7 +238,7 @@ function TextStyle(props: IProps) {
             onBlur={() => {
               editor.record({
                 type: 'update',
-                desc: '修改文字间距',
+                desc: '자간 수정',
               });
             }}
           />
@@ -257,7 +257,7 @@ function TextStyle(props: IProps) {
           }}
         />
       </Item>
-      {/* <Item title="文字背景"></Item> */}
+      {/* <Item title="Text Background"></Item> */}
       <Item title={language.val('text_stroke')}>
         <div className={styles.textSpace}>
           <InputNumber
@@ -274,7 +274,7 @@ function TextStyle(props: IProps) {
             onBlur={() => {
               editor.record({
                 type: 'update',
-                desc: '修改文字描边',
+                desc: '텍스트 테두리 수정',
               });
             }}
           />
@@ -289,13 +289,13 @@ function TextStyle(props: IProps) {
               editor.updateCanvas();
               editor.record({
                 type: 'update',
-                desc: '修改文字描边颜色',
+                desc: '텍스트 테두리 색상 수정',
               });
             }}
           />
         </div>
       </Item>
-      {/* <Item title="背景">
+      {/* <Item title="Background">
         <div className={styles.backgrounds}>
           <Color />
           <a className={styles.clearColor}>

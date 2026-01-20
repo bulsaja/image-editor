@@ -4,8 +4,8 @@ import { util } from '@utils/index';
 export function getInitData(): ViewData {
   const pid = util.createID();
   return {
-    name: '未命名',
-    desc: '暂无描述',
+    name: 'Untitled',
+    desc: 'No description',
     version: '1.0.0',
     thumb: '',
     createTime: 0,
@@ -14,8 +14,8 @@ export function getInitData(): ViewData {
     pages: [
       {
         id: pid,
-        name: '第一页',
-        desc: '暂无描述',
+        name: 'Page 1',
+        desc: 'No description',
         width: 1242,
         height: 2208,
         background: {

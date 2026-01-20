@@ -1,7 +1,7 @@
 import styles from './home.module.less';
 
 interface IProps {
-  ssrRes?: any; // 服务器渲染加载的数据
+  ssrRes?: any; // Server-side rendered data
   history: History;
   location: { pathname: string; search: string; hash: string; state: any };
   match: { path: string; url: string; isExact: boolean; params: any };

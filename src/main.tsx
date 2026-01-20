@@ -4,11 +4,11 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import { Provider } from 'mobx-react';
 import { stores } from './stores';
-import { BrowserRouter } from 'react-router-dom'; // 路由
+import { BrowserRouter } from 'react-router-dom'; // Router
 import { routes } from './routes.config';
 import { isChromeVersionGreaterThan } from '@utils/checkWeb';
 
-// 如果不是新版本谷歌浏览器，直接让其下载
+// If not using new version Chrome, redirect to download
 // if (!isChromeVersionGreaterThan(98)) {
 //   ReactDOM.createRoot(document.getElementById('root')!).render(
 //     <div className="downChrome">
@@ -40,9 +40,9 @@ import { isChromeVersionGreaterThan } from '@utils/checkWeb';
 //           ></path>
 //         </svg>
 //       </span>
-//       <h1>各位义父</h1>
-//       <p>为了更好的体验，请使用最新版的谷歌浏览器</p>
-//       <a href="https://www.google.cn/intl/zh-CN/chrome/">下载 Chrome</a>
+//       <h1>Dear Users</h1>
+//       <p>For a better experience, please use the latest version of Chrome</p>
+//       <a href="https://www.google.cn/intl/zh-CN/chrome/">Download Chrome</a>
 //     </div>,
 //   );
 // } else {

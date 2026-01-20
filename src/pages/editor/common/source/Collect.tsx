@@ -25,7 +25,7 @@ export default function Collect(props: IProps) {
   });
   const { type } = props;
 
-  // 获取素材
+  // Get materials
   const getList = useCallback(async () => {
     const { list, hasMore } = await getItems(type, params.current, items, server.getCollects);
     console.log('list', list);
@@ -33,7 +33,7 @@ export default function Collect(props: IProps) {
     setHasMore(hasMore);
   }, [items]);
 
-  // 点击取消收藏后需要过滤掉取消的元素
+  // Filter out unfavorited items after clicking unfavorite
   const handleItems = (id: string) => {
     const list = items.filter((item)=>{
       return item.id !== id;
@@ -56,7 +56,7 @@ export default function Collect(props: IProps) {
           <a className={styles.back} onClick={() => props.onBack()}>
             <Left theme="outline" size="24" fill="var(--theme-icon)" />
           </a>
-          <h1 className={styles.title}>我的收藏</h1>
+          <h1 className={styles.title}>My Favorites</h1>
         </section>
       </div>
       <div className={styles.list + ' scroll'}>

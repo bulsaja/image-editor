@@ -13,7 +13,7 @@ import remove from 'lodash/remove';
 import debounce from 'lodash/debounce';
 import { Toast } from '@douyinfe/semi-ui';
 
-// 素材类型
+// Material types
 export type MaterialTypes =
   | 'text'
   | 'image'
@@ -31,64 +31,64 @@ class Editor {
 
   public data!: ViewData;
 
-  // 缓存复制的数据
+  // Cache copied data
   public copyTempData: any;
 
-  // 图片裁剪开关
+  // Image cropper switch
   @observable cropper: boolean = false;
 
-  // 最后一次更新的数据
+  // Last updated data
   public lastUpdateAppData: any = '';
 
   @observable updateViewKey: string = '';
 
-  // 鼠标右键菜单触发显示的函数
+  // Function to trigger display of right-click context menu
   public showContextMenu: (event: any, props: Record<string, any>) => void;
 
-  // 资源切换后，缓存list数据
+  // Cache list data after resource switch
   public activeItems: Record<ctypes.SourceType, SourceItem[]> = {};
-  // 设置缓存数据
+  // Set cache data
   setActiveItems = (items: SourceItem[], type: ctypes.SourceType) => {
     this.activeItems[type] = items;
 
-    // 测试用
+    // For testing
     if (!(window as any).activeItems) {
       (window as any).activeItems = {};
     }
     (window as any).activeItems[type] = items;
   };
-  // 从缓存数据中读取数据
+  // Read data from cache
   getFromActiveItems = (id: string, type: ctypes.SourceType) => {
     const items = this.activeItems[type] || [];
     return items.find(d => d.id === id);
   };
 
-  // 当前选中的page
+  // Currently selected page
   @observable selectPageId: string;
 
   get pageData(): BasePage {
     return this.data.pages.find(d => d.id === this.selectPageId);
   }
 
-  // option面板自定义
+  // Custom option panel
   @observable optionPanelCustom: 'background' | '' = '';
 
-  // 记录APPID
+  // Record APPID
   @observable appid: string = '';
 
-  // 主题更新
+  // Theme update
   @observable themeUpdateKey: 'dark' | 'light' = theme.getTheme();
 
-  // 多语言
+  // Multi-language
   @observable languageUpdateKey: 'zh-CN' | 'en-US' = language.getLanguage();
 
-  // 历史记录测试用
+  // For history record testing
   @observable recordUpdateTestKey: number = 1;
 
-  // movie创建成功
+  // Movie created successfully
   @observable movieCreateSuccess: boolean = false;
 
-  // 触发设置区域变化
+  // Trigger settings area change
   @observable updateKey: string = '1';
 
   @observable updateCanvasKey: string = '1';
@@ -106,24 +106,24 @@ class Editor {
     if (!params) {
       params = {
         type: 'global',
-        desc: '添加操作记录',
+        desc: 'Add operation record',
         selecteds: [...editor.selectedElementIds],
       };
     }
     if (!params.selecteds) {
       params.selecteds = [...editor.selectedElementIds];
     }
-    // 历史记录
+    // History record
     this.store.record.add(params);
     this.recordUpdateTestKey = +new Date();
   };
 
-  // 标尺线
+  // Ruler line
   ruler: Ruler = null;
 
   @action
   updateCanvas = () => {
-    console.log('更新画面');
+    console.log('Update canvas');
     this.updateCanvasKey = util.randomID();
     if (this.store) {
       this.store.update();
@@ -134,7 +134,7 @@ class Editor {
   updateCanvasSync = debounce(this.updateCanvas, 100);
 
   /**
-   * 上移一层
+   * Move up one layer
    * @param selectedIds
    */
   @action
@@ -142,13 +142,13 @@ class Editor {
     if (!selectedIds) {
       selectedIds = [...this.selectedElementIds];
     }
-    // 找到选中对象的索引
+    // Find index of selected object
     let selectedIndexes = selectedIds.map(id => this.pageData.layers.findIndex(obj => obj.id === id));
-    // 向下移动选中对象
+    // Move selected object down
     const array = this.pageData.layers;
     selectedIndexes.forEach(index => {
       if (index > 0) {
-        // 交换位置
+        // Swap position
         [array[index], array[index - 1]] = [array[index - 1], array[index]];
       }
     });
@@ -157,22 +157,22 @@ class Editor {
   }
 
   /**
-   * 下移一层
+   * Move down one layer
    * @param selectedIds
    */
   @action
   downOneElement(selectedIds?: string[]) {
-    console.log('将选中图层向下移动一层');
+    console.log('Move selected layer down one layer');
     if (!selectedIds) {
       selectedIds = [...this.selectedElementIds];
     }
-    // 找到选中对象的索引
+    // Find index of selected object
     let selectedIndexes = selectedIds.map(id => this.pageData.layers.findIndex(obj => obj.id === id));
-    // 向下移动选中对象
+    // Move selected object down
     const array = this.pageData.layers;
     selectedIndexes.forEach(index => {
       if (index < array.length - 1) {
-        // 交换位置
+        // Swap position
         [array[index], array[index + 1]] = [array[index + 1], array[index]];
       }
     });
@@ -181,7 +181,7 @@ class Editor {
   }
 
   /**
-   * 置顶
+   * Move to top
    * @param ids
    */
   @action
@@ -196,7 +196,7 @@ class Editor {
   }
 
   /**
-   * 置底
+   * Move to bottom
    * @param ids
    */
   @action
@@ -211,7 +211,7 @@ class Editor {
   }
 
   /**
-   * 复制元素
+   * Copy element
    * @param ids
    */
   @action
@@ -221,14 +221,14 @@ class Editor {
     }
     const elements = this.getElementDataByIds(ids) || [];
     this.copyTempData = util.toJS(elements);
-    Toast.success('复制成功，点击 Ctrl + V 进行粘贴');
+    Toast.success('Copied successfully, press Ctrl + V to paste');
   }
 
   /**
-   * 剪切元素
+   * Cut element
    */
   cutElement(ids?: string[]) {
-    console.log('剪切元素');
+    console.log('Cut element');
     if (!ids) {
       ids = [...this.selectedElementIds];
     }
@@ -237,11 +237,11 @@ class Editor {
     this.store.deleteLayers(ids);
     this.updateCanvas();
     this.store.emitControl([]);
-    Toast.success('剪切成功，点击 Ctrl + V 进行粘贴');
+    Toast.success('Cut successfully, press Ctrl + V to paste');
   }
 
   /**
-   * 选中的元素
+   * Selected elements
    */
   @observable selectedElementIds: string[] = [];
   @action
@@ -259,27 +259,27 @@ class Editor {
   }
 
   /**
-   * 设置控制器
+   * Set controller
    * @param element
    */
   setContorlAndSelectedElemenent = (ids: string[]) => {
-    // updateControl 会触发Movie的 onSelectElements 事件
+    // updateControl will trigger Movie's onSelectElements event
     transaction(() => {
       this.setSelectedElementIds([...ids]);
       this.optionPanelCustom = '';
     });
-    // 设置控制器
-    console.log('设置控制器');
+    // Set controller
+    console.log('Set controller');
     this.store.emitControl([...ids]);
   };
 
   /**
-   * 更新布局的标识
+   * Update layout identifier
    */
   @observable layoutKeys: Record<ctypes.LayoutName, string> = {
-    sources: '1', // 资源面板
-    timeline: '1', // 时间轴
-    options: '1', // 设置面板
+    sources: '1', // Source panel
+    timeline: '1', // Timeline
+    options: '1', // Settings panel
     canvas: '1', //
     header: '1',
   };
@@ -294,7 +294,7 @@ class Editor {
   };
 
   /**
-   * 资源面板切换
+   * Source panel switch
    */
   @observable sourceType: ctypes.SourceType = 'template';
   @action
@@ -304,7 +304,7 @@ class Editor {
   };
 
   /**
-   * 设置面板切换
+   * Settings panel switch
    */
   @observable elementOptionType: ctypes.ElementOptionType = 'basic';
   @action
@@ -322,7 +322,7 @@ class Editor {
   };
 
   /**
-   * 获取单个选中的元素数据
+   * Get single selected element data
    * @returns
    */
   @action
@@ -333,7 +333,7 @@ class Editor {
   };
 
   /**
-   * 获取选中的组的元素数据
+   * Get selected group element data
    * @returns
    */
   @action
@@ -366,7 +366,7 @@ class Editor {
   };
 
   /**
-   * 复制元素
+   * Copy element
    */
   @action
   copyElementData = () => {

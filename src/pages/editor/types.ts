@@ -1,10 +1,10 @@
 export interface SourceItem {
   application_id: number;
   attrs: {
-    size?: number; // 文件大小
-    type?: string; // 文件类型
-    wave?: string; // 音波json
-    frames?: string; // 帧图
+    size?: number; // File size
+    type?: string; // File type
+    wave?: string; // Audio wave json
+    frames?: string; // Frame image
     width?: number;
     height?: number;
     naturalWidth?: number;
@@ -12,24 +12,24 @@ export interface SourceItem {
     videoHeight?: number;
     videoWidth?: number;
     duration?: number;
-    rotate?: boolean; // 视频是否旋转了
-    hasAduioTrack?: boolean; // 视频是否有音轨
+    rotate?: boolean; // Whether video is rotated
+    hasAduioTrack?: boolean; // Whether video has audio track
   };
-  category_id: string; // 分类id
-  convert_status: number; // 编码状态，服务器转码
-  createdAt: string; // 创建时间
-  deletedAt: string; // 删除时间
+  category_id: string; // Category id
+  convert_status: number; // Encoding status, server transcoding
+  createdAt: string; // Created time
+  deletedAt: string; // Deleted time
   id: string; // id
-  name: string; // 素材名称
-  size: number; // 素材大小kb
-  sort: number; // 排序
-  sub_type: string; // 类型video, image, audio
-  tag: string; // 标签
-  type?: string; // 文件类型
-  updatedAt: string; // 更新时间
+  name: string; // Material name
+  size: number; // Material size in kb
+  sort: number; // Sort order
+  sub_type: string; // Type: video, image, audio
+  tag: string; // Tag
+  type?: string; // File type
+  updatedAt: string; // Updated time
   urls: {
-    url: string; // 原始地址
-    thumb: string; // 封面图
+    url: string; // Original URL
+    thumb: string; // Thumbnail image
   };
-  user_id: string; // 用户id
+  user_id: string; // User id
 }

@@ -10,23 +10,23 @@ import { useReducer } from 'react';
 
 /**
  type BlendMode =
-  | 'pass-through' // 穿透
-  | 'normal' // 正常
-  | 'multiply' // 正片叠底---
-  | 'darken' // 变暗
-  | 'color-burn' // 颜色加深
-  | 'lighten' // 变亮---
-  | 'color-dodge' // 颜色减淡
-  | 'screen' // 滤色
-  | 'overlay' // 叠加---
-  | 'hard-light' // 强光
-  | 'soft-light' // 柔光
-  | 'difference' // 差集---
-  | 'exclusion' // 排除
-  | 'hue' // 色相 ---
-  | 'saturation' // 饱和度
-  | 'color' // 颜色
-  | 'luminosity' // 明度
+  | 'pass-through' // Pass through
+  | 'normal' // Normal
+  | 'multiply' // Multiply---
+  | 'darken' // Darken
+  | 'color-burn' // Color burn
+  | 'lighten' // Lighten---
+  | 'color-dodge' // Color dodge
+  | 'screen' // Screen
+  | 'overlay' // Overlay---
+  | 'hard-light' // Hard light
+  | 'soft-light' // Soft light
+  | 'difference' // Difference---
+  | 'exclusion' // Exclusion
+  | 'hue' // Hue ---
+  | 'saturation' // Saturation
+  | 'color' // Color
+  | 'luminosity' // Luminosity
  */
 
 export interface IProps {}

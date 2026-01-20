@@ -30,10 +30,10 @@ export default function SvgColors(props: IProps) {
   return (
     <div className={styles.items}>
       <Item
-        title="设置颜色"
+        title="색상 설정"
         extra={
           <div className={styles.svgColorType}>
-            <Tooltip content="单色">
+            <Tooltip content="단색">
               <a
                 onClick={() => {
                   elementData.svgColorType = 'one';
@@ -47,7 +47,7 @@ export default function SvgColors(props: IProps) {
                 <RadioTwo theme="outline" size="16" fill="var(--theme-icon)" />
               </a>
             </Tooltip>
-            <Tooltip content="多色">
+            <Tooltip content="다색">
               <a
                 className={classNames({
                   [styles.active]: elementData.svgColorType === 'more',
@@ -79,7 +79,7 @@ export default function SvgColors(props: IProps) {
                 editor.updateCanvas();
                 editor.record({
                   type: 'update',
-                  desc: '修改svg颜色',
+                  desc: 'SVG 색상 수정',
                 });
               }}
             />

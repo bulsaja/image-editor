@@ -29,7 +29,7 @@ export default defineConfig({
       '@less': resolve('./src/less'),
       '@images': resolve('./src/assets/images'),
     },
-    extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json'], // 省略扩展名
+    extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json'], // Omit file extensions
   },
   plugins: [
     react({
@@ -61,15 +61,15 @@ export default defineConfig({
   define: {
     'process.env': process.env,
   },
-  // 入口
+  // Entry point
   publicDir: '/sdk',
   build: {
     emptyOutDir: false,
-    outDir: 'dist-sdk', // 指定输出目录
+    outDir: 'dist-sdk', // Specify output directory
     lib: {
       //@ts-ignore
       entry: path.resolve(__dirname, 'src/pages/editor/core/coresdk.tsx'),
-      name: 'CoreSDK', // 暴露的全局变量
+      name: 'CoreSDK', // Exposed global variable
       fileName: format => `coresdk.${format}.js`,
     },
     rollupOptions: {
@@ -78,5 +78,5 @@ export default defineConfig({
       },
     },
   },
-  base: '/', // 公共基础路径
+  base: '/', // Public base path
 });

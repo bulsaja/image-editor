@@ -12,7 +12,7 @@ export interface IProps {
   item?: any;
   columns?: number;
   itemClassName?: string;
-  itemHeight?: boolean; // 固定高度
+  itemHeight?: boolean; // Fixed height
 }
 
 // const defaultList = new Array(40).fill(1).map((d, i) => {
@@ -31,7 +31,7 @@ export default function WaterFall(props: IProps) {
       {!list && <IconSpin spin />}
       {list &&
         (() => {
-          // 每个item的宽度，间隙默认是10px，反向计算出宽度
+          // Width of each item, gap defaults to 10px, calculate width accordingly
           let itemWidth = props.itemWidth || 120;
           const gap = 5;
           let columns = props.columns ? props.columns : ~~(width / (itemWidth + gap));
@@ -40,7 +40,7 @@ export default function WaterFall(props: IProps) {
           }
           itemWidth = ~~((width - (columns - 1) * gap) / columns);
 
-          // 瀑布流算法，自动计算高度和坐标
+          // Waterfall algorithm, auto calculate height and coordinates
           const columItems: any[][] = [];
           const totalHeight = new Array(columns).fill(0);
           if (columns === 1) {
@@ -49,7 +49,7 @@ export default function WaterFall(props: IProps) {
             list.forEach(elem => {
               const min = Math.min(...totalHeight);
               const index = totalHeight.findIndex(a => a === min);
-              // 最大高度不能超过宽度的2倍
+              // Max height cannot exceed 2x width
               const itemHeight = Math.min(itemWidth * (elem.height / elem.width), itemWidth * 2);
 
               totalHeight[index] += itemHeight + gap;

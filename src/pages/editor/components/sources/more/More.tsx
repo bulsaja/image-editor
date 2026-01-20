@@ -23,7 +23,7 @@ export default function More(props: IProps) {
   }
 
   const addPlus = a => {
-    console.log('添加插件', a);
+    console.log('Add plugin', a);
     const exLayer = exLayers.find(d => d.config.pid === a.id);
     if (exLayer) {
       const ndata = new exLayer.LayerData();

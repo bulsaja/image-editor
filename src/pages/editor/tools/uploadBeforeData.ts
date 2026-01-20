@@ -1,7 +1,7 @@
 import { util } from '@utils/index';
 
 /**
- * 上传之前预处理数据
+ * Preprocess data before upload
  */
 export async function getUploadBeforeData(
   url: string,
@@ -10,13 +10,13 @@ export async function getUploadBeforeData(
     content: string;
     name: string;
     file_type?: 'image' | 'json' | 'txt' | 'font';
-  }) => Promise<any>, // 上传base64的接口
+  }) => Promise<any>, // Interface for uploading base64
 ) {
   switch (type) {
     case 'image':
     case 'image/svg': {
-      // 获取封面图
-      // 获取文件大小，真实尺寸
+      // Get cover image
+      // Get file size, actual dimensions
       const info = (await imageThumb(url, 200)) as any;
       if (uploadBase64) {
         const [res] = await uploadBase64({
@@ -30,9 +30,9 @@ export async function getUploadBeforeData(
       }
     }
     case 'image/gif': {
-      // 获取封面图
-      // 获取gif帧图
-      // 获取文件大小，真实尺寸
+      // Get cover image
+      // Get gif frame images
+      // Get file size, actual dimensions
       const info = (await imageThumb(url, 200)) as any;
       let thumb = '';
       if (uploadBase64) {
@@ -47,12 +47,12 @@ export async function getUploadBeforeData(
       return { ...info, thumb };
     }
     default:
-      throw new Error('未知文件类型' + url);
+      throw new Error('Unknown file type: ' + url);
   }
 }
 
 /**
- * 获取图片缩图
+ * Get image thumbnail
  * @param url
  */
 export function imageThumb(
@@ -73,7 +73,7 @@ export function imageThumb(
       canvas.width = width;
       canvas.height = height;
       const ctx = canvas.getContext('2d');
-      // 在画布上绘制缩略图
+      // Draw thumbnail on canvas
       ctx.drawImage(img, 0, 0, width, height);
       resolve({
         _base64: canvas.toDataURL(),
@@ -85,9 +85,9 @@ export function imageThumb(
 }
 
 /**
- * base64 的gif分解图绘制成帧图
+ * Draw base64 gif decomposed images into frame images
  * @param params { gifArr: string[]; delayFrame: number; totalFrame: number }
- * @param aspectRatio 宽高比
+ * @param aspectRatio Aspect ratio
  * @param frameHeight
  * @returns
  */
@@ -103,9 +103,9 @@ export async function gifArr2FrameImage(
   const totalTime = Math.ceil(totalFrame * delayFrame);
   canvas.height = frameHeight;
   canvas.width = frameWidth * totalTime;
-  // gif 一秒截取一帧
+  // Extract one frame per second from gif
   for (let i = 0; i < totalTime; i++) {
-    // 计算是第几帧
+    // Calculate which frame
     const index = Math.round(i / delayFrame);
     const _img = (await lazyBase64(gifArr[index])) as HTMLImageElement;
     ctx.drawImage(_img, i * frameWidth, 0, frameWidth, frameHeight);

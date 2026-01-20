@@ -1,6 +1,6 @@
 import '@theme/theme.less';
 import React, { Component, createRef } from 'react';
-// import { Redirect, Switch } from 'react-router-dom'; // 路由
+// import { Redirect, Switch } from 'react-router-dom'; // Router
 import { userService } from '@server/index';
 import { pubsub, util } from '@utils/index';
 import { config } from '@config/index';
@@ -25,22 +25,22 @@ class App extends Component<AppProps> {
   }
 
   /**
-   * 如果url中存在token，会自动获取token，然后自动登录，之后再去掉token
+   * If token exists in URL, auto get token, then auto login, then remove token
    */
   urlTokenLogin = () => {
-    // 如果url存在token，先设置token参数，再获取用户数据
+    // If token exists in URL, set token parameter first, then get user data
     let token: any = util.getUrlQuery('token');
     if (token) {
-      // 去掉url对应的token参数
+      // Remove token parameter from URL
       window.history.pushState(null, '', util.delUrlParam('token'));
       token = decodeURI(token);
       user.setToken(token);
     }
 
-    // 需要登录
+    // Need login
     if (token) {
       userService.getUserDetail();
-      console.log('需要登录，更新用户信息');
+      console.log('Need login, update user info');
     }
   };
 
@@ -48,7 +48,7 @@ class App extends Component<AppProps> {
     (window as any).RouterHistory = this.routerRef.current.history;
     this.urlTokenLogin();
 
-    // 多语言处理
+    // Multi-language handling
     pubsub.subscribe('setLanguage', () => {
       this.forceUpdate();
     });

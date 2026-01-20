@@ -12,7 +12,7 @@ import SetCanvasSize from './SetCanvasSize';
 import ContextMenu from '../contextMenu';
 import { config } from '@config/index';
 
-// 外部插件扩展
+// External plugin extensions
 import exLayers from '@plugins/index';
 
 export interface IProps {}
@@ -30,7 +30,7 @@ function Canvas(props: IProps) {
     };
   }, []);
 
-  console.log('重新获取page');
+  console.log('Re-fetching page');
   editor.updateViewKey;
 
   return (
@@ -40,7 +40,7 @@ function Canvas(props: IProps) {
           <View
             resourceHost={config.resourcesHost}
             callback={store => {
-              // 修改ruler主题
+              // Update ruler theme
               editor.ruler = store.ruler;
               if (editor.themeUpdateKey === 'dark') {
                 editor.ruler.changeTheme('dark2');

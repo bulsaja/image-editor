@@ -23,7 +23,7 @@ export default function Projects(props: IProps) {
     category_id: '0',
   });
 
-  // 获取素材
+  // Get materials
   const getList = async () => {
     const [res, err] = await server.getDraftList({ ...params.current }); //('draft', params.current, items, server.getDraftList);
     setTotal(res.total);
@@ -41,18 +41,18 @@ export default function Projects(props: IProps) {
           <Button
             onClick={async () => {
               Modal.confirm({
-                title: '是否要新建项目？',
-                content: '新建项目前请先保存当前项目',
+                title: 'Create new project?',
+                content: 'Please save current project before creating a new one',
                 onOk: async () => {
                   const ndata = getInitData();
                   const [res, err] = await server.createVideo({
-                    source_id: '', //来源Id
-                    category_id: 0, //分类Id
-                    name: ndata.name || '未命名', //名称
-                    description: ndata.desc || '暂无描述', //描述
-                    width: ndata.pages[0].width, //宽度
-                    height: ndata.pages[0].height, //高度
-                    thumb: '', //封面图url
+                    source_id: '', // Source ID
+                    category_id: 0, // Category ID
+                    name: ndata.name || 'Untitled', // Name
+                    description: ndata.desc || 'No description', // Description
+                    width: ndata.pages[0].width, // Width
+                    height: ndata.pages[0].height, // Height
+                    thumb: '', // Thumbnail URL
                     data: ndata,
                   });
                   if (err) {
@@ -67,7 +67,7 @@ export default function Projects(props: IProps) {
             type="primary"
             style={{ width: 'calc(100% - 34px)' }}
           >
-            新建项目
+            New Project
           </Button>
           <Dropdown
             contentClassName={styles.dropdown}
@@ -88,20 +88,20 @@ export default function Projects(props: IProps) {
                 ),
                 onClick: async () => {
                   Modal.confirm({
-                    title: '是否要新建项目？',
-                    content: '新建项目前请先保存当前项目',
+                    title: 'Create new project?',
+                    content: 'Please save current project before creating a new one',
                     onOk: async () => {
                       const ndata = getInitData();
                       ndata.pages[0].width = d.width;
                       ndata.pages[0].height = d.height;
                       const [res, err] = await server.createVideo({
-                        source_id: '', //来源Id
-                        category_id: 0, //分类Id
-                        name: ndata.name || '未命名', //名称
-                        description: ndata.desc || '暂无描述', //描述
-                        width: ndata.pages[0].width, //宽度
-                        height: ndata.pages[0].height, //高度
-                        thumb: '', //封面图url
+                        source_id: '', // Source ID
+                        category_id: 0, // Category ID
+                        name: ndata.name || 'Untitled', // Name
+                        description: ndata.desc || 'No description', // Description
+                        width: ndata.pages[0].width, // Width
+                        height: ndata.pages[0].height, // Height
+                        thumb: '', // Thumbnail URL
                         data: ndata,
                       });
                       if (err) {
@@ -130,31 +130,31 @@ export default function Projects(props: IProps) {
                   <li
                     onClick={() => {
                       Modal.confirm({
-                        title: '确定删除？',
-                        content: '删除后无法恢复，请谨慎操作',
+                        title: 'Confirm delete?',
+                        content: 'This action cannot be undone. Please proceed with caution.',
                         onOk: async () => {
                           await server.deleteDraft({ id: item.id });
                           params.current.page = 1;
-                          // 更新当前列表
+                          // Update current list
                           getList();
                         },
                       });
                     }}
                   >
-                    删除
+                    Delete
                   </li>
                   <li
                     onClick={async () => {
                       const [res, err] = await server.copyDraft({ id: item.id });
                       if (err) {
-                        Toast.error('复制失败');
+                        Toast.error('Copy failed');
                       }
                       params.current.page = 1;
                       getList();
-                      Toast.success('复制成功');
+                      Toast.success('Copy successful');
                     }}
                   >
-                    复制
+                    Copy
                   </li>
                 </ul>
               }
@@ -166,8 +166,8 @@ export default function Projects(props: IProps) {
             <a
               onClick={() => {
                 Modal.confirm({
-                  title: '是否要切换项目？',
-                  content: '切换项目前请先保存当前项目',
+                  title: 'Switch project?',
+                  content: 'Please save current project before switching',
                   onOk: () => {
                     location.href = `/editor/${item.id}`;
                   },
@@ -186,7 +186,7 @@ export default function Projects(props: IProps) {
               </div>
             </a>
             <input
-              title="点击修改名称"
+              title="Click to edit name"
               onFocus={e => {
                 currentName.current = e.target.value;
               }}
@@ -197,11 +197,11 @@ export default function Projects(props: IProps) {
                 if (err) {
                   Toast.error(err);
                 } else {
-                  Toast.success('修改成功！');
+                  Toast.success('Update successful!');
                 }
               }}
               className={styles.name}
-              defaultValue={item.name || '未命名'}
+              defaultValue={item.name || 'Untitled'}
             />
           </div>
         );

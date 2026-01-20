@@ -11,7 +11,7 @@ export interface IProps {
 }
 
 /**
- * 操作记录，redo，undo
+ * Operation history, redo, undo
  * @param props
  * @returns
  */
@@ -21,11 +21,11 @@ function RecordManager(props: IProps) {
 
   useEffect(() => {
     manager.current = new UndoRedoManager({
-      limit: 50, // 设置最大记录30次，默认是50次
+      limit: 50, // Set max records to 50
     });
 
     const add = (item: RecordItem<RecordType>) => {
-      // console.log('Record数据--------------->', item, utils.toJS(store.data));
+      // console.log('Record data--------------->', item, utils.toJS(store.data));
       manager.current.add({
         id: utils.createID(),
         type: 'global',
@@ -33,36 +33,36 @@ function RecordManager(props: IProps) {
         selecteds: [...item.selecteds],
         mdata: utils.cloneData(store.data),
       });
-      // 更新test
+      // Update test
       if (store.addRecordCallback) {
         store.addRecordCallback();
       }
     };
 
-    // 恢复数据
+    // Restore data
     const restore = (item: RecordItem<RecordType>, type: 'undo' | 'redo'): boolean => {
       if (!item) {
-        console.warn('已经恢复到初始位置');
+        console.warn('Already restored to initial position');
         return false;
       }
-      // 找到对应的数据，然后设置参数
+      // Find corresponding data and set parameters
       if (item.mdata) {
         utils.objectCopyValue(item.mdata, store.data);
       }
-      // 更新视图
+      // Update view
       store.update();
       store.editor.update();
       pubsub.publish('emitSelectElements', [...(item.selecteds || [])]);
       return true;
     };
 
-    // 重做
+    // Redo
     const redo = () => {
       const item = manager.current.redo() as RecordItem<RecordType>;
       return restore(item, 'redo');
     };
 
-    // 撤销
+    // Undo
     const undo = () => {
       const item = manager.current.undo() as RecordItem<RecordType>;
       return restore(item, 'undo');
@@ -70,7 +70,7 @@ function RecordManager(props: IProps) {
 
     store.record = { add, redo, undo, debounceAdd: debounce(add, 500), manager: manager.current };
 
-    add({ type: 'global', desc: '初始化数据', selecteds: [] });
+    add({ type: 'global', desc: 'Initialize data', selecteds: [] });
 
     return () => {
       manager.current.destroy();

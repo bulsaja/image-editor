@@ -37,71 +37,71 @@ export default function AboutUs(props: IProps) {
       >
         <div className={styles.info}>
           <p>
-            <a href="https://www.h5ds.com" target="_blank">
-              四川爱趣五科技
+            <a href="https://www.bulsaja.com" target="_blank">
+              불사자
             </a>
-            （简称：H5科技）
-            是一家专注可视化内容生产工具研发的纯技术型科技公司，主要为客户提供自研产品的私有化部署、源码商用授权、技术咨询、订制开发等服务；帮助客户降低研发成本，提升开发效率。
+            는 한국 이커머스 셀러를 위한 AI 기반 통합 솔루션입니다.
+            상품 관리, 주문 처리, 마켓 연동 등 다양한 기능을 제공하여 셀러의 업무 효율을 높입니다.
           </p>
-          <h2>产品矩阵</h2>
+          <h2>제품 라인업</h2>
           <ul className={styles.items}>
             <li>
-              <a href="https://video.h5ds.com" target="_blank">
+              <a href="https://www.bulsaja.com" target="_blank">
                 <i>
                   <icons.ClipIcon />
                   <em className={styles.clip}></em>
                 </i>
-                <h3>视频剪辑工具</h3>
-                {limitTxt('功能强大的在线视频剪辑工具，支持各种AI工具的集成，可快速落地短视频内容生成工具')}
-                <span className={styles.more}>了解更多 →</span>
+                <h3>불사자 앱</h3>
+                {limitTxt('이커머스 셀러를 위한 통합 관리 솔루션, 상품 관리, 주문 처리, 마켓 연동 등 다양한 기능 제공')}
+                <span className={styles.more}>자세히 보기 →</span>
               </a>
             </li>
             <li>
-              <a href="https://image.h5ds.com" target="_blank">
+              <a href="https://www.bulsaja.com" target="_blank">
                 <i>
                   <icons.ImgIcon />
                   <em className={styles.img}></em>
                 </i>
-                <h3>图片编辑工具</h3>
-                {limitTxt('免费开源的在线图片编辑工具，用户体验好，交互流畅，界面美观，目前正在做AI功能的集成')}
-                <span className={styles.more}>了解更多 →</span>
+                <h3>이미지 편집 도구</h3>
+                {limitTxt('무료 오픈소스 온라인 이미지 편집 도구, 우수한 사용자 경험과 유려한 인터페이스 제공')}
+                <span className={styles.more}>자세히 보기 →</span>
               </a>
             </li>
             <li>
-              <a href="https://h5.h5ds.com" target="_blank">
+              <a href="https://www.bulsaja.com" target="_blank">
                 <i>
                   <icons.H5Icon />
                   <em className={styles.h5}></em>
                 </i>
-                <h3>H5编辑工具</h3>
-                {limitTxt('一款功能强大的在线H5落地页制作工具，主要用于制作H5滑动页面，活动落地页，邀请函等')}
-                <span className={styles.more}>了解更多 →</span>
+                <h3>상품 상세 페이지 제작</h3>
+                {limitTxt('온라인 랜딩 페이지 제작 도구, 프로모션 페이지, 이벤트 페이지 등 제작 가능')}
+                <span className={styles.more}>자세히 보기 →</span>
               </a>
             </li>
             <li>
-              <a href="https://720.h5ds.com" target="_blank">
+              <a href="https://www.bulsaja.com" target="_blank">
                 <i>
                   <icons.VRIcon />
                   <em className={styles.vr}></em>
                 </i>
-                <h3>720全景工具</h3>
+                <h3>AI 상품 분석</h3>
                 {limitTxt(
-                  '全景图广泛应用于旅游景点导览，在线看房，文旅宣传等领域，该工具可以快速将全景照片做成全景应用',
+                  'AI 기반 상품 트렌드 분석 및 키워드 추천, 데이터 기반 판매 전략 수립 지원',
                 )}
-                <span className={styles.more}>了解更多 →</span>
+                <span className={styles.more}>자세히 보기 →</span>
               </a>
             </li>
             <li>
-              <a href="https://sharezm.com" target="_blank">
+              <a href="https://www.bulsaja.com" target="_blank">
                 <i>
                   <icons.CloudIcon />
                   <em className={styles.cloud}></em>
                 </i>
-                <h3>希尔桌面-云盘</h3>
+                <h3>클라우드 스토리지</h3>
                 {limitTxt(
-                  '希尔桌面是一款界面非常漂亮的在线网盘，用户可以创建多个网盘空间，支持多人协同，支持各种文件格式',
+                  '상품 이미지 및 파일 관리를 위한 클라우드 스토리지, 다중 사용자 협업 지원',
                 )}
-                <span className={styles.more}>了解更多 →</span>
+                <span className={styles.more}>자세히 보기 →</span>
               </a>
             </li>
           </ul>
@@ -111,7 +111,7 @@ export default function AboutUs(props: IProps) {
               <i>
                 <Wechat theme="filled" size="40" fill="#67b114" />
               </i>
-              <h5>官方微信公众号</h5>
+              <h5>공식 고객센터</h5>
               <img style={{ width: 148 }} src="https://cdn.h5ds.com/wechat.jpg" alt="" />
             </span>
           </div>

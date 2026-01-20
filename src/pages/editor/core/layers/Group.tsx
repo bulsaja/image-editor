@@ -26,17 +26,17 @@ export default function GroupComp(props: LayerProps) {
     return group;
   }, []);
 
-  // 公共use
+  // Common use
   useLayerBaseStyle(layer, groupBox as any, props.store, props.zIndex);
 
   // useEffect(() => {
-  //   // 设置宽高
+  //   // Set width and height
   //   groupBox.width = layer.width;
   //   groupBox.height = layer.height;
   // }, [layer.width, layer.height]);
 
   useEffect(() => {
-    // 调动子组件的更新方法
+    // Call child component update method
     props.store.controlSelectFuns[layer.id] = () => {
       layer.childs.forEach(d => {
         if (props.store.controlSelectFuns[d.id]) {
@@ -45,7 +45,7 @@ export default function GroupComp(props: LayerProps) {
       });
     };
 
-    // 调动子组件的更新方法
+    // Call child component update method
     props.store.controlScaleFuns[layer.id] = () => {
       layer.childs.forEach(d => {
         if (props.store.controlScaleFuns[d.id]) {
@@ -63,7 +63,7 @@ export default function GroupComp(props: LayerProps) {
 
   const { store, env } = props;
 
-  console.log('更新组---》');
+  console.log('Update group --->');
 
   return (
     <>

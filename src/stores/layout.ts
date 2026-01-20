@@ -13,11 +13,11 @@ class Layout {
   @observable themeUpdateKey: 'dark' | 'light' = theme.getTheme();
   @observable languageUpdateKey: number = 1;
 
-  // 多选
+  // Multi-select
   @observable selects: SelectItem[] = [];
-  // 批量操作的开关
+  // Batch operation switch
   @observable openSelectManage: boolean = false;
-  // 取消
+  // Cancel
   @action
   cancelSelected = () => {
     transaction(() => {
@@ -40,7 +40,7 @@ class Layout {
     });
   };
 
-  // 手动触发模块更新
+  // Manually trigger module update
   @action
   updateComponent = (...keyName: string[]) => {
     transaction(() => {

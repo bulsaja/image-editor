@@ -3,7 +3,7 @@ import React from 'react';
 
 export const pageSize: PageSizeType[] = [
   {
-    name: '手机海报',
+    name: 'Mobile Poster',
     width: 1242,
     height: 2208,
     icon: null,
@@ -11,7 +11,7 @@ export const pageSize: PageSizeType[] = [
     unit: 'px',
   },
   {
-    name: '横版海报',
+    name: 'Horizontal Poster',
     width: 900,
     height: 500,
     icon: null,
@@ -19,7 +19,7 @@ export const pageSize: PageSizeType[] = [
     unit: 'px',
   },
   {
-    name: '公众号首图',
+    name: 'WeChat Header',
     width: 900,
     height: 383,
     icon: null,
@@ -27,7 +27,7 @@ export const pageSize: PageSizeType[] = [
     unit: 'px',
   },
   {
-    name: '公众号次图',
+    name: 'WeChat Sub Image',
     width: 500,
     height: 500,
     icon: null,
@@ -35,7 +35,7 @@ export const pageSize: PageSizeType[] = [
     unit: 'px',
   },
   {
-    name: '小红书配图',
+    name: 'Social Media Image',
     width: 1242,
     height: 1660,
     icon: null,
@@ -43,7 +43,7 @@ export const pageSize: PageSizeType[] = [
     unit: 'px',
   },
   {
-    name: '文章长图',
+    name: 'Long Article',
     width: 1000,
     height: 1500,
     icon: null,
@@ -51,7 +51,7 @@ export const pageSize: PageSizeType[] = [
     unit: 'px',
   },
   {
-    name: 'PPT（16:9）',
+    name: 'PPT (16:9)',
     width: 1242,
     height: 2208,
     icon: null,
@@ -59,7 +59,7 @@ export const pageSize: PageSizeType[] = [
     unit: 'px',
   },
   {
-    name: '竖版直播背景',
+    name: 'Vertical Live Background',
     width: 1242,
     height: 2690,
     icon: null,
@@ -67,7 +67,7 @@ export const pageSize: PageSizeType[] = [
     unit: 'px',
   },
   {
-    name: '竖版视频封面',
+    name: 'Vertical Video Cover',
     width: 1242,
     height: 2208,
     icon: null,
@@ -75,7 +75,7 @@ export const pageSize: PageSizeType[] = [
     unit: 'px',
   },
   {
-    name: '横版视频封面',
+    name: 'Horizontal Video Cover',
     width: 1920,
     height: 1080,
     icon: null,
@@ -83,7 +83,7 @@ export const pageSize: PageSizeType[] = [
     unit: 'px',
   },
   {
-    name: '商品主图',
+    name: 'Product Main Image',
     width: 800,
     height: 800,
     icon: null,
@@ -91,7 +91,7 @@ export const pageSize: PageSizeType[] = [
     unit: 'px',
   },
   {
-    name: '电商详情页',
+    name: 'E-commerce Detail Page',
     width: 750,
     height: 1000,
     icon: null,
@@ -99,7 +99,7 @@ export const pageSize: PageSizeType[] = [
     unit: 'px',
   },
   {
-    name: 'PC端店铺首页',
+    name: 'PC Store Homepage',
     width: 1920,
     height: 1500,
     icon: null,
@@ -107,7 +107,7 @@ export const pageSize: PageSizeType[] = [
     unit: 'px',
   },
   {
-    name: '手机店铺首页',
+    name: 'Mobile Store Homepage',
     width: 750,
     height: 1000,
     icon: null,
@@ -115,7 +115,7 @@ export const pageSize: PageSizeType[] = [
     unit: 'px',
   },
   {
-    name: '店招',
+    name: 'Store Banner',
     width: 1920,
     height: 150,
     icon: null,
@@ -123,7 +123,7 @@ export const pageSize: PageSizeType[] = [
     unit: 'px',
   },
   {
-    name: '电商横版海报',
+    name: 'E-commerce Horizontal Poster',
     width: 750,
     height: 390,
     icon: null,
@@ -131,7 +131,7 @@ export const pageSize: PageSizeType[] = [
     unit: 'px',
   },
   {
-    name: '电商竖版海报',
+    name: 'E-commerce Vertical Poster',
     width: 750,
     height: 950,
     icon: null,
@@ -139,7 +139,7 @@ export const pageSize: PageSizeType[] = [
     unit: 'px',
   },
   {
-    name: '电商全屏海报',
+    name: 'E-commerce Full Screen Poster',
     width: 1920,
     height: 700,
     icon: null,
@@ -147,7 +147,7 @@ export const pageSize: PageSizeType[] = [
     unit: 'px',
   },
   {
-    name: '日签',
+    name: 'Daily Quote',
     width: 1242,
     height: 2208,
     icon: null,
@@ -155,7 +155,7 @@ export const pageSize: PageSizeType[] = [
     unit: 'px',
   },
   {
-    name: '小程序封面',
+    name: 'Mini Program Cover',
     width: 520,
     height: 416,
     icon: null,
@@ -163,7 +163,7 @@ export const pageSize: PageSizeType[] = [
     unit: 'px',
   },
   {
-    name: '名片',
+    name: 'Business Card',
     width: 96,
     height: 60,
     icon: null,
@@ -171,7 +171,7 @@ export const pageSize: PageSizeType[] = [
     unit: 'mm',
   },
   {
-    name: '张贴海报',
+    name: 'Wall Poster',
     width: 426,
     height: 576,
     icon: null,
@@ -179,7 +179,7 @@ export const pageSize: PageSizeType[] = [
     unit: 'mm',
   },
   {
-    name: '2m易拉宝',
+    name: '2m Roll-up Banner',
     width: 80,
     height: 200,
     icon: null,
@@ -187,7 +187,7 @@ export const pageSize: PageSizeType[] = [
     unit: 'cm',
   },
   {
-    name: '1.8m展架',
+    name: '1.8m Display Stand',
     width: 80,
     height: 180,
     icon: null,
@@ -195,7 +195,7 @@ export const pageSize: PageSizeType[] = [
     unit: 'cm',
   },
   {
-    name: '优惠券',
+    name: 'Coupon',
     width: 186,
     height: 66,
     icon: null,
@@ -203,7 +203,7 @@ export const pageSize: PageSizeType[] = [
     unit: 'mm',
   },
   {
-    name: '门票',
+    name: 'Ticket',
     width: 206,
     height: 86,
     icon: null,
@@ -211,7 +211,7 @@ export const pageSize: PageSizeType[] = [
     unit: 'mm',
   },
   {
-    name: '证件照',
+    name: 'ID Photo',
     width: 25,
     height: 35,
     icon: null,

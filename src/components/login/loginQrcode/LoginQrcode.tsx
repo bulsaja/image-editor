@@ -22,7 +22,7 @@ class LoginQrcode extends Component<IProps, IState> {
     };
   }
 
-  // 轮询监测登录状态
+  // 로그인 상태 폴링
   seekLogin = async (sn: string) => {
     this.timer = setTimeout(async () => {
       const [res] = await userService.seekWxLogin(sn);
@@ -30,9 +30,9 @@ class LoginQrcode extends Component<IProps, IState> {
         this.seekLogin(sn);
       } else {
         clearTimeout(this.timer);
-        // 获取到token了
+        // 토큰 획득
         userService._setRqHeaderToken(res.token);
-        // 2、获取用户详情，设置x-user-info
+        // 2. 사용자 정보 조회, x-user-info 설정
         const [ress] = await userService.getUserDetail();
         if (ress) {
           pubsub.publish('showLoginModal', false);
@@ -49,7 +49,7 @@ class LoginQrcode extends Component<IProps, IState> {
       sn: res.sn,
     });
 
-    // 轮询登录
+    // 로그인 폴링
     this.seekLogin(res.sn);
   };
 
@@ -69,7 +69,7 @@ class LoginQrcode extends Component<IProps, IState> {
       <div className={styles.loginQrcode}>
         <p className={styles.title}>
           <Wechat theme="filled" size="28" fill="#4ab70f" />
-          <span className={styles.text}>微信扫描立即登录</span>
+          <span className={styles.text}>QR코드 스캔으로 로그인</span>
         </p>
         <img
           crossOrigin="anonymous"

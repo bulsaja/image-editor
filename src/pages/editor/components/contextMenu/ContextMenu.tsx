@@ -75,7 +75,7 @@ function ContextMenu(props: IProps) {
         break;
       case 'group':
         {
-          // 数据合并
+          // Merge data
           const g = editor.store.groupData([...editor.selectedElementIds]);
           editor.setSelectedElementIds([g.id]);
           editor.store.emitControl([g.id]);
@@ -153,7 +153,7 @@ function ContextMenu(props: IProps) {
     },
     // {
     //   id: 'paste',
-    //   name: '粘贴',
+    //   name: 'Paste',
     //   extra: 'Ctrl + V',
     // },
     {

@@ -12,7 +12,7 @@ import { MusicRhythm, Plus, Like } from '@icon-park/react';
 import { editor } from '@stores/index';
 import { addImageItem } from '../addItem';
 import { IllustrationNoContent } from '@douyinfe/semi-illustrations';
-/* 以下为 1.13.0 版本后提供 */
+/* Available since version 1.13.0 */
 import { IllustrationNoContentDark } from '@douyinfe/semi-illustrations';
 import { config } from '@config/index';
 
@@ -24,20 +24,20 @@ export interface UploadItem {
   fileInfoSuccess?: boolean;
   id: string;
   status: 'ready' | 'uploadStart' | 'uploading' | 'decoding' | 'uploaded';
-  progress: number; // 当前进度
-  type?: string; // 文件类型
+  progress: number; // Current progress
+  type?: string; // File type
   name?: string;
-  size?: number; // 文件大小
-  thumb?: string; // 缩图
-  naturalHeight?: number; // 图片真实尺寸
+  size?: number; // File size
+  thumb?: string; // Thumbnail
+  naturalHeight?: number; // Image natural height
   naturalWidth?: number;
-  duration?: number; // 时长
-  rotate?: boolean; // 视频是否旋转了
-  hasAudioTrack?: boolean; // 视频是否有声音
-  videoWidth?: number; // 视频真实尺寸
+  duration?: number; // Duration
+  rotate?: boolean; // Whether video is rotated
+  hasAudioTrack?: boolean; // Whether video has audio track
+  videoWidth?: number; // Video natural width
   videoHeight?: number;
-  wave?: string; // 音波json数据
-  frames?: string; // 1s单位的帧图
+  wave?: string; // Audio wave JSON data
+  frames?: string; // Frame images per 1s
 }
 
 export default function List(props: IProps) {
@@ -51,7 +51,7 @@ export default function List(props: IProps) {
   const uploadRef = useRef();
 
   const menu: any = [
-    // { node: 'item', name: '手机上传', onClick: () => console.log('编辑项目点击') },
+    // { node: 'item', name: 'Mobile Upload', onClick: () => console.log('Edit project click') },
     {
       node: 'item',
       name: (
@@ -60,13 +60,13 @@ export default function List(props: IProps) {
             setRecordAudioVisible(true);
           }}
         >
-          在线录音
+          Record Audio
         </span>
       ),
     },
-    // { node: 'item', name: '文字转语音' },
+    // { node: 'item', name: 'Text to Speech' },
   ];
-  // 缓存info数据
+  // Cache info data
   const cacheInfoData = useRef<Record<string, UploadItem>>({});
   const params = useRef<any>({
     app_id: props.type === 'cloud' ? '' : editor.appid,
@@ -75,7 +75,7 @@ export default function List(props: IProps) {
     keyword: '',
     category_id: '',
   });
-  // 如果category_id变化了，需要重新设置items，而不是追加到瀑布流
+  // If category_id changed, need to reset items instead of appending to waterfall
   const categoryOldId = useRef('');
 
   const getList = useCallback(async () => {
@@ -104,7 +104,7 @@ export default function List(props: IProps) {
   }, []);
 
   useEffect(() => {
-    // 上传文件同步添加到云
+    // Sync uploaded files to cloud
     if (props.type === 'cloud') {
       pubsub.subscribe('addItemToCloudList', (_msg, item) => {
         setItems([item, ...(items || [])]);
@@ -118,7 +118,7 @@ export default function List(props: IProps) {
     };
   }, [items]);
 
-  // 显示上传中的信息
+  // Show uploading information
   const uploadList = Object.values(cacheInfoData.current)
     .map(d => {
       return {
@@ -145,19 +145,19 @@ export default function List(props: IProps) {
     <>
       {checkboxs.length !== 0 && (
         <div className={styles.checkboxBtns}>
-          <span>选中: {checkboxs.length}个</span>
+          <span>Selected: {checkboxs.length}</span>
           <Space>
             <Button
               icon={<DeleteFive theme="filled" size="14" fill="var(--semi-color-danger)" />}
               onClick={() => {
                 Modal.confirm({
-                  title: '确定要删除这些素材？',
-                  content: '删除后无法恢复，请谨慎操作',
+                  title: 'Delete these materials?',
+                  content: 'This action cannot be undone. Please proceed with caution.',
                   onOk: async () => {
-                    // 确认删除
+                    // Confirm delete
                     const [res, err] = await server.deleteMaterial([...checkboxs]);
                     if (!err) {
-                      Toast.success('删除成功！');
+                      Toast.success('Delete successful!');
                       setItems(
                         items.filter(d => {
                           return !checkboxs.includes(d.id);
@@ -170,7 +170,7 @@ export default function List(props: IProps) {
               }}
               type="danger"
             >
-              删除
+              Delete
             </Button>
             <Button
               icon={<Close theme="filled" size="14" fill="var(--semi-color-primary)" />}
@@ -178,7 +178,7 @@ export default function List(props: IProps) {
                 setCheckboxs([]);
               }}
             >
-              取消
+              Cancel
             </Button>
           </Space>
         </div>
@@ -205,7 +205,7 @@ export default function List(props: IProps) {
               }}
               beforeUpload={async v => {
                 if (!user.info) {
-                  Toast.warning('请先登录');
+                  Toast.warning('Please login first');
                   return {
                     shouldUpload: false,
                     status: 'error',
@@ -222,7 +222,7 @@ export default function List(props: IProps) {
                   size: v.file.fileInstance.size,
                   name: v.file.name,
                 };
-                // 获取blob url
+                // Get blob url
                 getUploadBeforeData(
                   v.file.url,
                   util.getFileTypeByURL('', v.file.name.split('.')[1]),
@@ -230,15 +230,15 @@ export default function List(props: IProps) {
                 )
                   .then(info => {
                     return Object.assign(cacheInfoData.current[v.file.name], {
-                      fileInfoSuccess: true, // 表示文件预处理数据获取成功
+                      fileInfoSuccess: true, // File preprocessing data retrieved successfully
                       ...info,
                     });
                   })
                   .catch(err => {
-                    console.error('截帧异常丢给后端处理', err);
-                    // 异常丢给后端处理
+                    console.error('Frame extraction error, delegating to backend', err);
+                    // Delegate error to backend
                     Object.assign(cacheInfoData.current[v.file.name], {
-                      fileInfoSuccess: true, // 表示文件预处理数据获取成功
+                      fileInfoSuccess: true, // File preprocessing data retrieved successfully
                     });
                   });
                 Object.assign(cacheInfoData.current[v.file.name], {
@@ -266,13 +266,13 @@ export default function List(props: IProps) {
                 cacheInfoData.current[file.name].status = 'decoding';
                 forceUpdate();
 
-                // 可能在转码中，需要等待
-                // 等待
+                // May be transcoding, need to wait
+                // Wait
                 while (!cacheInfoData.current[file.name].fileInfoSuccess) {
-                  console.log('等待截取帧');
+                  console.log('Waiting for frame extraction');
                   await util.sleep(1000);
                 }
-                console.log('截帧完成!');
+                console.log('Frame extraction complete!');
 
                 const { name, thumb, progress, id, status, ...other } = cacheInfoData.current[file.name];
                 const attrs = {};
@@ -282,7 +282,7 @@ export default function List(props: IProps) {
                   }
                 }
                 const url = res.data.storage_path;
-                // 保存到素材库
+                // Save to materials library
                 const [item, err] = await server.createUserMaterial({
                   app_id: editor.appid,
                   name: name,
@@ -307,12 +307,12 @@ export default function List(props: IProps) {
                 block
                 icon={<UploadIcon theme="outline" size="20" fill="#FFF" />}
               >
-                上传素材
+                Upload Materials
               </Button>
             </Upload>
           ) : (
             <Select
-              defaultValue="根目录"
+              defaultValue="Root"
               onChange={v => {
                 Object.assign(params.current, {
                   page: 1,
@@ -325,7 +325,7 @@ export default function List(props: IProps) {
               }}
               style={{ width: '100%' }}
             >
-              <Select.Option value={0}>根目录</Select.Option>
+              <Select.Option value={0}>Root</Select.Option>
               {cates.map(d => {
                 return (
                   <Select.Option key={d.id} value={d.id}>
@@ -343,7 +343,7 @@ export default function List(props: IProps) {
             <Empty
               image={<IllustrationNoContent style={{ width: 150, height: 150 }} />}
               darkModeImage={<IllustrationNoContentDark style={{ width: 150, height: 150 }} />}
-              description={<div className={styles.loginTip}>该项目暂无素材，请先上传</div>}
+              description={<div className={styles.loginTip}>No materials in this project. Please upload first.</div>}
               style={{ padding: 30 }}
             />
           </div>
@@ -378,12 +378,12 @@ export default function List(props: IProps) {
                 <>
                   {d.progress !== undefined && (
                     <span className={styles.progress}>
-                      {d.status === 'ready' && <span className={styles.tips}>上传准备</span>}
+                      {d.status === 'ready' && <span className={styles.tips}>Preparing</span>}
                       {['uploadStart', 'uploading', 'decoding'].includes(d.status) && (
                         <Progress percent={d.progress} strokeWidth={2} showInfo type="circle" width={50} />
                       )}
-                      {/* {d.status === 'decoding' && <span className={styles.tips}>编码中</span>} */}
-                      {d.status === 'uploaded' && <span className={styles.tips}>上传完成</span>}
+                      {/* {d.status === 'decoding' && <span className={styles.tips}>Encoding</span>} */}
+                      {d.status === 'uploaded' && <span className={styles.tips}>Uploaded</span>}
                     </span>
                   )}
                   {d.status !== 'ready' && d.type === 'audio' ? (

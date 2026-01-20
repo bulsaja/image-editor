@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 /**
- * 日志相关业务处理
+ * Log related business processing
  */
 class LogReport {
   constructor() {
@@ -10,7 +10,7 @@ class LogReport {
   }
 
   /**
-   * 获取当前错误数据
+   * Get current error data
    * @param {object} param {msg, apiUrl = '', codeLine = '', codeName = '', error}
    * @returns
    */
@@ -18,11 +18,11 @@ class LogReport {
     return {
       ua: window.navigator.userAgent,
       errUrl: window.location.href,
-      msg, // 错误的具体信息
-      apiUrl, // 错误所在的url
-      codeLine, // 错误所在的行
-      codeName, // 代码模块名称
-      error // 具体的error对象
+      msg, // Specific error message
+      apiUrl, // URL where error occurred
+      codeLine, // Line where error occurred
+      codeName, // Code module name
+      error // Specific error object
     };
   }
 

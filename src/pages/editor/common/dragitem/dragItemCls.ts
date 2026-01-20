@@ -10,10 +10,10 @@ export interface Point {
 }
 
 /**
- * 拖动元素到轨道上
+ * Drag element to canvas
  */
 export class DragItemCls {
-  // 事件
+  // Events
   public events: Record<EventsName, (item: SourceItem, pos: Point, event: any) => void> = {
     dragstart: function (item: SourceItem, pos: Point, event: any): void {
       throw new Error('dragstart Function not implemented.');
@@ -26,7 +26,7 @@ export class DragItemCls {
     },
   };
 
-  // 绑定事件
+  // Bindregistration event
   public on(name: EventsName, fn: (item: SourceItem, pos: Point, event: any) => void) {
     this.events[name] = fn;
   }
@@ -41,14 +41,14 @@ export class DragItemCls {
       .off('mousedown.ievent.dragitem')
       .on('mousedown.ievent.dragitem', '[data-dragitem]', function (e) {
         e.stopPropagation();
-        // 点击按钮
+        // Click button
         if ($(e.target).closest('a')[0]) {
           return;
         }
         const [id, type] = $(this).attr('data-dragitem').split('_');
         const item = editor.getFromActiveItems(id, type);
         if (!item) {
-          console.error('数据异常', id, type, this);
+          console.error('Data error', id, type, this);
           return;
         }
         self.events.dragstart(item, { x: e.pageX, y: e.pageY }, e);

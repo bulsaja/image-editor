@@ -3,7 +3,7 @@ import { routes as homeRoutes } from '@pages/home';
 // import { routes as manageRoutes } from "@pages/manage";
 import { routes as editorRoutes } from '@pages/editor';
 
-// 管理页面
+// Management pages
 import NotFound from '@components/not-found';
 import IndexLayout from '@layout/index-layout';
 

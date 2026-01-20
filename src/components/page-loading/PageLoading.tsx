@@ -4,14 +4,14 @@ import { pubsub } from '@utils/pubsub';
 import { Progress } from '@douyinfe/semi-ui';
 
 export interface ProgressData {
-  progress: number; // 手动传入进度：?: number | undefined
-  start: boolean; // 开始 ?: boolen
-  end: boolean; // 结束 ?:boolen
-  time: number; // 默认加载时间间隔
+  progress: number; // Manually pass in progress: ?: number | undefined
+  start: boolean; // Start ?: boolean
+  end: boolean; // End ?: boolean
+  time: number; // Default loading time interval
 }
 
 /**
- * 用法：
+ * Usage:
  * pubsub.publish('pageLoading', {
       start: true
    });
@@ -36,10 +36,10 @@ export default function PageLoading() {
   useEffect(() => {
     /**
      * data: {
-     * progress: undefined,  // 手动传入进度：?: number | undefined
-     * start,  // 开始 ?: boolen
-     * end,  // 结束 ?:boolen
-     * time: 1000 // 默认加载时间间隔
+     * progress: undefined,  // Manually pass in progress: ?: number | undefined
+     * start,  // Start ?: boolean
+     * end,  // End ?: boolean
+     * time: 1000 // Default loading time interval
      * }
      */
     pubsub.subscribe('pageLoading', (_eventName, data: ProgressData) => {

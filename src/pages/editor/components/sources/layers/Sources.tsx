@@ -21,13 +21,13 @@ function Sources(props: IProps) {
           editor.sourceType = activeKey;
         }}
       >
-        <TabPane tab="工程" itemKey="projects">
+        <TabPane tab="Projects" itemKey="projects">
           {editor.sourceType === 'projects' && <Projects />}
         </TabPane>
-        <TabPane tab="多页面" itemKey="pages">
+        <TabPane tab="Pages" itemKey="pages">
           <Pages />
         </TabPane>
-        <TabPane tab="图层列表" itemKey="layers">
+        <TabPane tab="Layers" itemKey="layers">
           <Layers />
         </TabPane>
       </Tabs>

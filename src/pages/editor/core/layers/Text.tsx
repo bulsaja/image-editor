@@ -13,7 +13,7 @@ export default function TextComp(props: LayerProps) {
   const layer = props.layer as TextLayer;
 
   const textBox = useMemo(() => {
-    if (layer.textStyle.fontFamily === '思源黑体' || layer.textStyle.fontFamily === 'Default') {
+    if (layer.textStyle.fontFamily === 'Noto Sans SC' || layer.textStyle.fontFamily === 'Default') {
       layer.textStyle.fontFamily = 'Arial, sans-serif';
     }
 
@@ -74,7 +74,7 @@ export default function TextComp(props: LayerProps) {
     Object.assign(
       textElem,
       {
-        // 默认值
+        // Default values
         fontWeight: 'normal',
         italic: false,
         textDecoration: 'none',
@@ -86,15 +86,15 @@ export default function TextComp(props: LayerProps) {
     resizeText();
   }, [layer.fill, layer.text, layer.textStyle, layer._dirty]);
 
-  // 修改字体
+  // Change font
   useEffect(() => {
-    // 加载字体
+    // Load font
     if (layer.fontFamilyURL) {
-      console.log('字体加载中');
+      console.log('Loading font');
       const textElem = textBox.children[0] as IText;
       textElem.fontFamily = 'Arial, sans-serif';
       loadFont(layer.textStyle.fontFamily, layer.fontFamilyURL).then(() => {
-        // console.log('加载成功');
+        // console.log('Load successful');
         textElem.fontFamily = layer.textStyle.fontFamily;
         resizeText();
       });
@@ -103,7 +103,7 @@ export default function TextComp(props: LayerProps) {
     // textElem.width = undefined;
   }, [layer.fontFamilyURL, layer.textStyle.fontFamily]);
 
-  // 公共use
+  // Common use
   useLayerBaseStyle(layer, textBox as any, props.store, props.zIndex);
 
   useEffect(() => {
@@ -131,7 +131,7 @@ export default function TextComp(props: LayerProps) {
     };
 
     props.store.elementDragUp[layer.id] = () => {
-      // 修改json数据
+      // Modify JSON data
       const textElem = textBox.children[0] as IText;
       layer.textStyle.fontSize = textElem.fontSize;
       layer.textStyle.strokeWidth = textElem.strokeWidth;
@@ -139,16 +139,16 @@ export default function TextComp(props: LayerProps) {
     };
     props.store.controlScaleFuns[layer.id] = () => {
       const textElem = textBox.children[0] as IText;
-      // 解决对齐后文字定位问题
+      // Fix text positioning after alignment
       textElem.x = 0;
       const fontScale = textElem.width / tempData.width;
       const fontSize = utils.toIntNum(Math.max(tempData.fontSize * fontScale, 1), 2);
       const strokeWidth = utils.toIntNum(Math.max(tempData.strokeWidth * fontScale, 1), 2);
-      // 修改样式
+      // Modify style
       textElem.fontSize = fontSize;
       textElem.strokeWidth = strokeWidth;
 
-      // 修改json数据
+      // Modify JSON data
       layer.textStyle.fontSize = fontSize;
       layer.textStyle.strokeWidth = strokeWidth;
     };

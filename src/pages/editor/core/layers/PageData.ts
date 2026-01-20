@@ -4,8 +4,8 @@ import type { BaseLayer, BasePage } from '../types/data';
 
 export class PageData implements BasePage {
   id: string = utils.createID();
-  name: string = '未命名';
-  desc: string = '页面描述';
+  name: string = 'Unnamed';
+  desc: string = 'Page description';
   width: number = 1242;
   height: number = 2208;
   thumb: string = '';

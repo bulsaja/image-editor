@@ -11,9 +11,9 @@ interface IProps {
 
 /**
  * <Intl name=""/>
- * @param {string} name 字段名称
- * @param {object} data 模板参数：默认是undefined
- * @param {string} type 语言类型，默认是undefined
+ * @param {string} name Field name
+ * @param {object} data Template parameters: default is undefined
+ * @param {string} type Language type, default is undefined
  */
 function Intl(props: IProps): JSX.Element {
   const { name, data, type } = props;

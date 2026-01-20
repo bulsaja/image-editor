@@ -30,7 +30,7 @@ function QrOption(props: IProps) {
           onBlur={() => {
             editor.record({
               type: 'update',
-              desc: '修改二维码文本内容',
+              desc: 'Update QR code text content',
             });
           }}
         />
@@ -48,7 +48,7 @@ function QrOption(props: IProps) {
             forceUpdate();
             editor.record({
               type: 'update',
-              desc: '修改二维码颜色',
+              desc: 'Update QR code color',
             });
           }}
         />
@@ -67,7 +67,7 @@ function QrOption(props: IProps) {
             forceUpdate();
             editor.record({
               type: 'update',
-              desc: '修改二维码颜色',
+              desc: 'Update QR code color',
             });
           }}
         />

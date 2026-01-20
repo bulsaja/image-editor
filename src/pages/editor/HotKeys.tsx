@@ -25,9 +25,9 @@ function HotKeys(props: IProps) {
     const pasteFuntion = async event => {
       event.stopPropagation();
       if (editor.copyTempData) {
-        console.log('粘贴元素');
+        console.log('Paste element');
         // if (!editor.copyTempData) {
-        //   Toast.error('请先使用 Ctrl + C 进行复制');
+        //   Toast.error('Please use Ctrl + C to copy first');
         //   return;
         // }
         const elems = editor.cloneElements(editor.copyTempData);
@@ -36,10 +36,10 @@ function HotKeys(props: IProps) {
         editor.setSelectedElementIds(elems.map(d => d.id));
         editor.store.emitControl(elems.map(d => d.id));
       } else {
-        // 如果没有登录，需要先登录
+        // If not logged in, need to login first
         if (!user.info) {
           // pubsub.publish('showLoginModal');
-          Toast.error('请先登录');
+          Toast.error('Please login first');
           return;
         }
 
@@ -53,19 +53,19 @@ function HotKeys(props: IProps) {
           svgFile = new File([svgBlob], 'image.svg', { type: 'image/svg+xml' });
         }
 
-        // 只取剪切板中最新的
+        // Only take the latest from clipboard
         if ((item && item.kind == 'file' && item.type.match(/^image\//i)) || svgFile) {
-          const tid = Toast.info('文件上传中...');
-          // 文件上传
+          const tid = Toast.info('File uploading...');
+          // File upload
           const [res, err] = await server.formUpdate({
             files: svgFile ? [svgFile] : [item.getAsFile()],
             filename: `${util.createID()}.${svgFile ? 'svg' : 'png'}`,
-            file_type: 'image', // file-普通文件 image-图片文件 audio-音频文件 video-视频文件
+            file_type: 'image', // file-regular file, image-image file, audio-audio file, video-video file
             app_id: editor.appid,
           });
           Toast.close(tid);
 
-          // // 保存到素材库
+          // // Save to material library
           // const [item, err] = await server.createUserMaterial({
           //   app_id: editor.appid,
           //   name: name,
@@ -85,8 +85,8 @@ function HotKeys(props: IProps) {
           editor.store.emitControl([imgLayer.id]);
 
           Notification.open({
-            title: '文件上传成功！',
-            content: '支持SVG,JPEG,PNG,GIF的图片格式',
+            title: 'File upload successful!',
+            content: 'Supports SVG, JPEG, PNG, GIF image formats',
             duration: 3,
             position: 'bottomRight',
           });
@@ -105,34 +105,34 @@ function HotKeys(props: IProps) {
 
   useHotkeys(
     [
-      'ctrl+c', // 复制
-      'ctrl+v', // 粘贴
-      'ctrl+s', // 保存项目
-      'ctrl+x', // 剪切选中元素
-      'ctrl+-', // 居中缩小画布
-      'ctrl+=', // 居中放大画布
-      'ctrl+0', // 将画布缩放至适合屏幕大小
-      'ctrl+a', // 全选
-      'ctrl+d', // 取消选择
-      'ctrl+z', // 撤销
-      'ctrl+shift+z', // 重做
-      'ctrl+]', // 将选中图层向上移动一层
-      'ctrl+shift+}', // 将选中图层移到最上面
-      'ctrl+[', // 将选中图层向下移动一层
-      'ctrl+shift+{', // 将选中图层移到最下面
-      'shift+up', // 上移10px
-      'shift+down', // 下移10px
-      'shift+left', // 左移10px
-      'shift+right', // 右移10px
-      'up', // 上移1px
-      'down', // 下移1px
-      'left', // 左移1px
-      'right', // 右移1px
-      'delete', // 删除选中元素
-      'backspace', // 删除选中元素
+      'ctrl+c', // Copy
+      'ctrl+v', // Paste
+      'ctrl+s', // Save project
+      'ctrl+x', // Cut selected element
+      'ctrl+-', // Zoom out canvas centered
+      'ctrl+=', // Zoom in canvas centered
+      'ctrl+0', // Fit canvas to screen size
+      'ctrl+a', // Select all
+      'ctrl+d', // Deselect
+      'ctrl+z', // Undo
+      'ctrl+shift+z', // Redo
+      'ctrl+]', // Move selected layer up one level
+      'ctrl+shift+}', // Move selected layer to top
+      'ctrl+[', // Move selected layer down one level
+      'ctrl+shift+{', // Move selected layer to bottom
+      'shift+up', // Move up 10px
+      'shift+down', // Move down 10px
+      'shift+left', // Move left 10px
+      'shift+right', // Move right 10px
+      'up', // Move up 1px
+      'down', // Move down 1px
+      'left', // Move left 1px
+      'right', // Move right 1px
+      'delete', // Delete selected element
+      'backspace', // Delete selected element
     ],
     (event: KeyboardEvent, handler: HotkeysEvent) => {
-      console.log('快捷键处理--->', event, handler, handler.keys);
+      console.log('Hotkey handling--->', event, handler, handler.keys);
 
       if (handler.ctrl && handler.keys.join('') !== 'v') {
         event.preventDefault();
@@ -142,15 +142,15 @@ function HotKeys(props: IProps) {
         // ctrl + shift + *
         switch (handler.keys.join('')) {
           case 'z':
-            console.log('重做');
+            console.log('Redo');
             pubsub.publish('keyboardRedo');
             break;
           case '}':
-            console.log('将选中图层移到最上面');
+            console.log('Move selected layer to top');
             editor.moveTopElement();
             break;
           case '{':
-            console.log('将选中图层移动最下面');
+            console.log('Move selected layer to bottom');
             editor.moveBottomElement();
             break;
         }
@@ -164,27 +164,27 @@ function HotKeys(props: IProps) {
             editor.downOneElement();
             break;
           case 'z':
-            console.log('撤销');
+            console.log('Undo');
             pubsub.publish('keyboardUndo');
             break;
           case 'a':
-            console.log('全选中');
+            console.log('Select all');
             editor.setContorlAndSelectedElemenent(editor.pageData.layers.map(layer => layer.id));
             break;
           case 'd':
-            console.log('取消选择');
+            console.log('Deselect');
             editor.setContorlAndSelectedElemenent([]);
             break;
           case '0':
-            console.log('将画布缩放至适合屏幕大小');
+            console.log('Fit canvas to screen');
             pubsub.publish('keyboardSetViewSize', 'fit');
             break;
           case '-':
-            console.log('居中缩小画布');
+            console.log('Zoom out canvas');
             pubsub.publish('keyboardSetViewSize', 'zoomIn');
             break;
           case '=':
-            console.log('居中放大画布');
+            console.log('Zoom in canvas');
             pubsub.publish('keyboardSetViewSize', 'zoomOut');
             break;
           case 'c':
@@ -194,10 +194,10 @@ function HotKeys(props: IProps) {
             editor.cutElement();
             break;
           case 'v':
-            // 上面
+            // Handled above
             break;
           case 's':
-            console.log('手动保存项目');
+            console.log('Save project manually');
             pubsub.publish('keyboardSaveApp');
             break;
         }
@@ -206,7 +206,7 @@ function HotKeys(props: IProps) {
         switch (handler.keys.join('')) {
           case 'up':
             {
-              console.log('上移10px');
+              console.log('Move up 10px');
               const elems = editor.getElementDataByIds([...editor.selectedElementIds]);
               elems.forEach(el => {
                 el.y -= 10;
@@ -216,7 +216,7 @@ function HotKeys(props: IProps) {
             break;
           case 'down':
             {
-              console.log('下移10px');
+              console.log('Move down 10px');
               const elems = editor.getElementDataByIds([...editor.selectedElementIds]);
               elems.forEach(el => {
                 el.y += 10;
@@ -226,7 +226,7 @@ function HotKeys(props: IProps) {
             break;
           case 'left':
             {
-              console.log('左移10px');
+              console.log('Move left 10px');
               const elems = editor.getElementDataByIds([...editor.selectedElementIds]);
               elems.forEach(el => {
                 el.x -= 10;
@@ -236,7 +236,7 @@ function HotKeys(props: IProps) {
             break;
           case 'right':
             {
-              console.log('右移10px');
+              console.log('Move right 10px');
               const elems = editor.getElementDataByIds([...editor.selectedElementIds]);
               elems.forEach(el => {
                 el.x += 10;
@@ -246,11 +246,11 @@ function HotKeys(props: IProps) {
             break;
         }
       } else {
-        // 普通
+        // Normal
         switch (handler.keys.join('')) {
           case 'up':
             {
-              console.log('上移1px');
+              console.log('Move up 1px');
               const elems = editor.getElementDataByIds([...editor.selectedElementIds]);
               elems.forEach(el => {
                 el.y -= 1;
@@ -260,7 +260,7 @@ function HotKeys(props: IProps) {
             break;
           case 'down':
             {
-              console.log('下移1px');
+              console.log('Move down 1px');
               const elems = editor.getElementDataByIds([...editor.selectedElementIds]);
               elems.forEach(el => {
                 el.y += 1;
@@ -270,7 +270,7 @@ function HotKeys(props: IProps) {
             break;
           case 'left':
             {
-              console.log('左移1px');
+              console.log('Move left 1px');
               const elems = editor.getElementDataByIds([...editor.selectedElementIds]);
               elems.forEach(el => {
                 el.x -= 1;
@@ -280,7 +280,7 @@ function HotKeys(props: IProps) {
             break;
           case 'right':
             {
-              console.log('右移1px');
+              console.log('Move right 1px');
               const elems = editor.getElementDataByIds([...editor.selectedElementIds]);
               elems.forEach(el => {
                 el.x += 1;
@@ -291,7 +291,7 @@ function HotKeys(props: IProps) {
           case 'delete':
           case 'backspace':
             {
-              console.log('删除', [...editor.selectedElementIds]);
+              console.log('Delete', [...editor.selectedElementIds]);
               editor.store.deleteLayers([...editor.selectedElementIds]);
               editor.updateCanvas();
               editor.store.emitControl([]);

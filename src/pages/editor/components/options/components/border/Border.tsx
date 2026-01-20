@@ -66,7 +66,7 @@ function Border(props: IProps) {
               onBlur={() => {
                 editor.record({
                   type: 'update',
-                  desc: '修改阴影X',
+                  desc: '그림자 X 수정',
                 });
               }}
             />

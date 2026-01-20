@@ -68,7 +68,7 @@ function Radius(props: IProps) {
               onBlur={() => {
                 editor.record({
                   type: 'update',
-                  desc: '修改圆角',
+                  desc: '라운드 수정',
                 });
               }}
             />
@@ -89,7 +89,7 @@ function Radius(props: IProps) {
                 onBlur={() => {
                   editor.record({
                     type: 'update',
-                    desc: '修改圆角',
+                    desc: '라운드 수정',
                   });
                 }}
               />
@@ -105,7 +105,7 @@ function Radius(props: IProps) {
                 onBlur={() => {
                   editor.record({
                     type: 'update',
-                    desc: '修改圆角',
+                    desc: '라운드 수정',
                   });
                 }}
               />
@@ -125,7 +125,7 @@ function Radius(props: IProps) {
                   forceUpdate();
                   editor.record({
                     type: 'update',
-                    desc: '修改圆角',
+                    desc: '라운드 수정',
                   });
                 }}
               />
@@ -143,7 +143,7 @@ function Radius(props: IProps) {
                   forceUpdate();
                   editor.record({
                     type: 'update',
-                    desc: '修改圆角',
+                    desc: '라운드 수정',
                   });
                 }}
               />

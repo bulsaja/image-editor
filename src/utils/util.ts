@@ -3,20 +3,20 @@ import simpleQueryString from 'simple-query-string';
 import { nanoid } from 'nanoid';
 
 /**
- * 生成一个不重复的ID
+ * Generate a unique ID
  * @returns
  */
 export function createID(n?: number): string {
   return nanoid(n ? n : 16);
 }
 
-// 判断是否是svg格式
+// Check if string is SVG format
 export function isSVGString(str: string): boolean {
-  // 使用 DOMParser 尝试解析字符串
+  // Use DOMParser to try parsing the string
   var parser = new DOMParser();
   var doc = parser.parseFromString(str, 'image/svg+xml');
 
-  // 检查解析后的文档是否包含有效的 SVG 元素
+  // Check if the parsed document contains a valid SVG element
   return doc.documentElement.tagName.toLowerCase() === 'svg';
 }
 
@@ -25,9 +25,9 @@ export function base642URL(base64: string) {
 }
 
 export function getRandomInt(min: number, max: number) {
-  min = Math.ceil(min); // 确保min是整数
-  max = Math.floor(max); // 确保max是整数
-  return Math.floor(Math.random() * (max - min + 1)) + min; // 返回介于min和max之间的整数
+  min = Math.ceil(min); // Ensure min is an integer
+  max = Math.floor(max); // Ensure max is an integer
+  return Math.floor(Math.random() * (max - min + 1)) + min; // Return an integer between min and max
 }
 
 // Base64 to Blob
@@ -46,38 +46,38 @@ export function dataURLtoBlob(dataurl: string): Blob {
 
 export function scaleBase64(base64: string, scale: number): Promise<string> {
   return new Promise(resolve => {
-    // 创建一个 Image 对象
+    // Create an Image object
     let img = new Image();
     img.src = base64;
 
-    // 等待图片加载完成
+    // Wait for image to load
     img.onload = function () {
-      // 计算缩小后的宽度和高度
+      // Calculate scaled width and height
       let newWidth = img.width * 0.5;
       let newHeight = img.height * 0.5;
 
-      // 创建一个 Canvas 元素
+      // Create a Canvas element
       let canvas = document.createElement('canvas');
       let ctx = canvas.getContext('2d');
 
-      // 设置 Canvas 尺寸
+      // Set Canvas size
       canvas.width = newWidth;
       canvas.height = newHeight;
 
-      // 在 Canvas 上绘制缩小后的图片
+      // Draw scaled image on Canvas
       ctx.drawImage(img, 0, 0, newWidth, newHeight);
 
-      // 将 Canvas 转换为 base64 图片
+      // Convert Canvas to base64 image
       const resizedBase64 = canvas.toDataURL('image/png');
 
-      // 输出缩小后的 base64 图片
+      // Output scaled base64 image
       resolve(resizedBase64);
     };
   });
 }
 
 /**
- * 异步加载媒体资源
+ * Async load media resource
  * @param src
  * @param type
  * @returns
@@ -99,18 +99,18 @@ export function mediaLazy(
       media.currentTime = time;
     }
     media.onerror = err => {
-      console.error('media资源失败', src, err);
+      console.error('Media resource failed', src, err);
       reject();
     };
     media.oncanplaythrough = () => {
-      console.log('加载成功');
+      console.log('Load success');
       resolve(media);
     };
   });
 }
 
 /**
- * 取整数
+ * Round to integer
  */
 export function toNum(n: number, m?: number) {
   if (m === undefined) {
@@ -138,7 +138,7 @@ const dateFormatPreset: Record<string, string> = {
 };
 
 /**
- * 碰撞检测，box1 和 box2 是否碰撞
+ * Collision detection, check if box1 and box2 collide
  */
 export interface Box {
   x: number;
@@ -156,7 +156,7 @@ export function crashRects(box1: Box, box2: Box): boolean {
   return isCrash;
 }
 
-// 普通时间格式转成秒
+// Convert normal time format to seconds
 export const timeToSec = (time: string): number => {
   const timeArr = time.split(':');
   const hour = Number(timeArr[0]);
@@ -174,7 +174,7 @@ export function reJSON(data: any) {
 }
 
 /**
- * 获取文件后缀
+ * Get file extension
  */
 export function getFileExtension(url: string) {
   url = url.split('?')[0];
@@ -182,12 +182,12 @@ export function getFileExtension(url: string) {
   if (pathArray.length > 1) {
     return pathArray.pop().toLowerCase();
   } else {
-    return null; // 没有后缀名
+    return null; // No extension
   }
 }
 
 /**
- * 获取文件的类型 audio video image
+ * Get file type: audio, video, image
  */
 export function getFileTypeByURL(url: string, ext?: string) {
   if (!ext) {
@@ -218,7 +218,7 @@ export function getFileTypeByURL(url: string, ext?: string) {
 }
 
 /**
- * 绘制视频帧图，返回base64
+ * Draw video frame, return base64
  * @param video
  * @param limitWidth
  */
@@ -229,18 +229,18 @@ export async function drawVideoFrame(video: HTMLVideoElement, limitWidth: number
   await video.play();
   video.pause();
   const canvas = document.createElement('canvas'),
-    width = video.videoWidth, //canvas的尺寸和图片一样
+    width = video.videoWidth, // Canvas size same as image
     height = video.videoHeight;
   const scale = limitWidth / width;
   canvas.width = limitWidth;
   canvas.height = Math.floor(height * scale);
-  canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height); //绘制canvas
+  canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height); // Draw canvas
   const thumb = canvas.toDataURL('image/jpeg');
   return thumb;
 }
 
 /**
- * 数组每chunkSize个元素进行分组 [1,2,3,4,5] = 3 => [[1,2,3], [4,5]]
+ * Group array into chunks of chunkSize elements [1,2,3,4,5] = 3 => [[1,2,3], [4,5]]
  * @param arr
  * @param chunkSize
  * @returns
@@ -253,7 +253,7 @@ export function splitArray(arr: any[], chunkSize: number) {
   return result;
 }
 
-// 秒转为普通时间
+// Convert seconds to normal time
 export const secToTime = (totalSeconds: number, format = 'hh:mm:ss:ms', min?: 'min1'): string => {
   const hours = Math.floor(totalSeconds / 3600);
   const minutes = Math.floor((totalSeconds % 3600) / 60);
@@ -332,7 +332,7 @@ export const getPlatform = (): string => {
 };
 
 /**
- * 秒转换成 mm:ss 时间
+ * Convert seconds to mm:ss time
  */
 export const secondToTime = (t: number): string => {
   let m: number | string = Math.floor(t / 60);
@@ -356,19 +356,19 @@ export const formatTime = (time: number): string => {
 };
 
 /**
- * 图层排序。从[0,1,2,3,4,5] 从3拖到0
+ * Layer sorting. From [0,1,2,3,4,5] drag from 3 to 0
  */
 export const sortArray = (elements: any[], from: number, to: number): void => {
-  // 把from插入到to的位置
+  // Insert from to the position of to
   const fromData = elements[from];
-  elements.splice(from, 1); // 删除
+  elements.splice(from, 1); // Delete
   elements.splice(to, 0, fromData);
 };
 
 /**
- * 将对象转换为querystring，如 {a: 1, b: 2} 转换为 a=1&b=2
- * @param {object} data Query对象
- * @returns 字符串querystring
+ * Convert object to querystring, e.g., {a: 1, b: 2} to a=1&b=2
+ * @param {object} data Query object
+ * @returns querystring string
  */
 export const data2QueryString = (data: any[]): string => {
   const str: any[] = [];
@@ -381,8 +381,8 @@ export const data2QueryString = (data: any[]): string => {
 };
 
 /**
- * 获取QueryString的值，如果不传name，则返回整个query对象
- * @param {string} name 要查询的 querystring 名称
+ * Get QueryString value, if name is not provided, return entire query object
+ * @param {string} name querystring name to query
  */
 export const getUrlQuery = (name?: string): string | { [key: string]: any } => {
   const params: { [key: string]: any } = simpleQueryString.parse(location.href);
@@ -390,19 +390,19 @@ export const getUrlQuery = (name?: string): string | { [key: string]: any } => {
 };
 
 /**
- * 删除URL参数
+ * Delete URL parameter
  * @param {*} paramKey
  */
 export const delUrlParam = (paramKey: string): string => {
-  let url = window.location.href; //页面url
-  const urlParam: string = window.location.search.substr(1); //页面参数
+  let url = window.location.href; // Page URL
+  const urlParam: string = window.location.search.substr(1); // Page parameters
   let nextUrl = '';
   const arr = [];
   if (urlParam != '') {
-    const urlParamArr = urlParam.split('&'); //将参数按照&符分成数组
+    const urlParamArr = urlParam.split('&'); // Split parameters by &
     for (let i = 0; i < urlParamArr.length; i++) {
-      const paramArr = urlParamArr[i].split('='); //将参数键，值拆开
-      //如果键雨要删除的不一致，则加入到参数中
+      const paramArr = urlParamArr[i].split('='); // Split parameter key and value
+      // If key doesn't match the one to delete, add to parameters
       if (paramArr[0] != paramKey) {
         arr.push(urlParamArr[i]);
       }
@@ -417,7 +417,7 @@ export const delUrlParam = (paramKey: string): string => {
 
 /**
  *
- * @desc   判断是否为URL地址
+ * @desc   Check if string is URL
  * @param  {String} str
  * @return {Boolean}
  */
@@ -427,7 +427,7 @@ export const isUrl = (str: string): boolean => {
 
 /**
  *
- * @desc   判断是否为手机号
+ * @desc   Check if string is phone number
  * @param  {String|Number} str
  * @return {Boolean}
  */
@@ -436,15 +436,15 @@ export const isPhoneNum = (str: string): boolean => {
 };
 
 /**
- * @desc 数组去重
+ * @desc Array deduplication
  */
 export const uniq = (arr: any[], param: any): any[] => {
   return uniq(arr, param);
 };
 
 /**
- * 深拷贝对象
- * @param {*} value 要拷贝的对象
+ * Deep clone object
+ * @param {*} value Object to clone
  */
 export const cloneDeep = (value: any): any => {
   return cloneDeep(value);
@@ -509,14 +509,14 @@ export const imgLazy = (src: string): Promise<HTMLImageElement> => {
       resolve(img);
     };
     img.onerror = function () {
-      console.error('图片加载失败', src, img);
+      console.error('Image load failed', src, img);
       reject(img);
     };
   });
 };
 
 /**
- * 随机
+ * Random
  * @param randomLength
  * @returns
  */
@@ -529,8 +529,8 @@ export const formatDate = (date: string | number | Date = new Date(), format = '
 };
 
 export async function download(url: string, name: string) {
-  // let response = await fetch(url); // 内容转变成blob地址
-  // let blob = await response.blob();  // 创建隐藏的可下载链接
+  // let response = await fetch(url); // Convert content to blob URL
+  // let blob = await response.blob();  // Create hidden downloadable link
   // let objectUrl = window.URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
@@ -540,7 +540,7 @@ export async function download(url: string, name: string) {
 }
 
 // /**
-//  * 判断元素是否重叠
+//  * Check if elements overlap
 //  */
 // interface CheckElementCrashParams {
 //   startTime: number;

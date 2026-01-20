@@ -5,18 +5,18 @@ import { util } from '@utils/index';
 const _window = window as any;
 
 /**
- * @desc 测试用
+ * @desc For testing
  */
 class UserService extends BasicService {
   constructor() {
     super();
-    // 保存token
+    // Save token
     if (user.token) {
       super._setRqHeaderToken(user.token);
     }
   }
 
-  // 获取类型配置
+  // Get type configuration
   getTypeTree = async () => {
     // const res = [
     //   { id: 1, key: 'material' },
@@ -26,81 +26,81 @@ class UserService extends BasicService {
     return await this.get(`/api/v1/common/types/tree`);
   };
 
-  // 获取登录的二维码
+  // Get login QR code
   getWxQrcode = async () => {
     //
     return await this.get(`/api/v1/account/login/wqr`);
   };
 
-  // 查询用户是否通过二维码关注
+  // Check if user followed via QR code
   seekWxLogin = async (sn: string) => {
     return await this.get(`/api/v1/account/login/wset?sn=${sn}`);
   };
 
-  // 获取手机验证码
+  // Get phone verification code
   getRegisterSMS = async (data: any) => {
     return await this.post(`/api/v1/account/sms/register`, data);
   };
 
-  // 获取登录手机验证码
+  // Get login phone verification code
   getLoginSMS = async (data: any) => {
     return await this.post(`/account/sms/login`, data);
   };
 
-  // 验证码
+  // Captcha
   getCaptcha = async () => {
     return await this.get(`/api/v1/account/captcha`);
   };
 
-  // 绑定微信-获取二维码
+  // Bind WeChat - Get QR code
   getBindWeixinCode = async () => {
     return await this.get('/api/v1/account/bind-weixin/wqr');
   };
 
-  // 微信绑定-结果轮训
+  // WeChat binding - Result polling
   bindWeixinSeek = async (sn: string) => {
     return await this.get('/api/v1/account/bind-weixin/wset?sn=' + sn);
   };
 
-  // 发送邮箱验证码
+  // Send email verification code
   sendEmailCode = async (data: any) => {
     return await this.post(`/api/v1/account/mail/register`, data);
   };
 
-  // 绑定邮箱
+  // Bind email
   bindEmail = async (data: any) => {
     return await this.post(`/api/v1/account/mail/bind-email`, data);
   };
 
-  // 绑定手机号 phoneNumber, code
+  // Bind phone number - phoneNumber, code
   bindPhone = async (data: { phoneNumber: string; code: string }) => {
     return await this.post(`/api/v1/account/bind-mobile`, data);
   };
 
-  // 绑定手机号，发送验证码 mobile  captchaCode
+  // Bind phone number, send verification code - mobile, captchaCode
   getCodeBindMobile = async (data: { mobile: string; captchaCode: string }) => {
     return await this.post(`/api/v1/account/sms/bind-mobile`, data);
   };
 
-  // 找回密码发送手机验证码 mobile captchaCode
+  // Reset password - send phone verification code - mobile, captchaCode
   getCodeResetPassword = async (data: { mobile: string; captchaCode: string; captchaKey: string }) => {
     return await this.post(`/api/v1/account/sms/recover-password`, data);
   };
 
   /**
-   * 注册
+   * Register
    * @param {*} registerInfo
    */
   register = async (registerInfo: { username: string; password: string; captchaCode: string }) => {
     return await this.post(`/api/v1/account/register`, registerInfo);
   };
 
-  // 获取app统计数据
+  // Get app statistics
   getStatistics = async () => {
     return await this.get(`/api/v1/open/app-statistics`);
   };
 
-  // 登录
+  // Login
   login = async (params: any) => {
     const [res, err] = await this.post(`/api/v1/account/login`, params);
     if (res) {
@@ -111,7 +111,7 @@ class UserService extends BasicService {
     return [res, err];
   };
 
-  // 登录
+  // Login Fvideo
   loginFvideo = async (params: any) => {
     const [res, err] = await this.post(`https://fvideo.h5ds.com/api/v1/account/login`, params);
     if (res) {
@@ -122,13 +122,13 @@ class UserService extends BasicService {
     return [res, err];
   };
 
-  // 获取签到数据
+  // Get sign-in data
   userSign = async () => {
     let stDate = util.formatDate(+new Date(), 'YYYY-MM-DD');
     return await this.get('/api/v1/api/user-sign?stDate=' + stDate);
   };
 
-  // 签到
+  // Sign in
   doUserSign = async () => {
     return await this.post('/api/v1/api/user-sign');
   };
@@ -145,7 +145,7 @@ class UserService extends BasicService {
     }
   };
 
-  // 退出
+  // Logout
   logout = async () => {
     const res = await this.get(`/api/v1/account/logout`);
     user.clearUserInfo();
@@ -154,7 +154,7 @@ class UserService extends BasicService {
   };
 
   /**
-   * 更新用户信息，如果userInfo包含 avatarUrl,则修改头像，否则修改 nickName、email、telphone
+   * Update user info, if userInfo contains avatarUrl, change avatar, otherwise change nickName, email, telphone
    * @param {*} userInfo
    */
   updateUserInfo = async (userInfo: any) => {
@@ -162,14 +162,14 @@ class UserService extends BasicService {
   };
 
   /**
-   * 修改密码
+   * Change password
    */
   changePassword = async (data: { username: string; password: string; captchaCode: string }) => {
     return await this.post('/api/v1/account/change-password', data);
   };
 
   /**
-   * 找回密码
+   * Recover password
    * @param {*} data
    */
   findPassword = async (data: { mobile: string; password: string; code: string }) => {
@@ -177,13 +177,13 @@ class UserService extends BasicService {
   };
 
   /**
-   * 获取用户信息
+   * Get user info
    */
   getUserDetail = async () => {
     const [res, err] = await this.get('/api/v1/account/info');
     if (err) {
-      console.error('登录失效');
-      // 退出登录
+      console.error('Login expired');
+      // Logout
       user.logout();
       return [res, err];
     }

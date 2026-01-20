@@ -32,7 +32,7 @@ export default function BarcodeComp(props: LayerProps) {
     return img;
   }, []);
 
-  // 公共use
+  // Common hook
   useLayerBaseStyle(layer, imgUI as any, props.store, props.zIndex);
 
   useEffect(() => {
@@ -41,7 +41,7 @@ export default function BarcodeComp(props: LayerProps) {
     imgUI.x = layer.x;
     imgUI.y = layer.y;
 
-    // 翻转
+    // Flip
     if (layer.flipx) {
       imgUI.scaleX = -1;
     } else {
@@ -53,12 +53,12 @@ export default function BarcodeComp(props: LayerProps) {
       imgUI.scaleY = 1;
     }
 
-    //圆角
+    // Corner radius
     imgUI.cornerRadius = layer.cornerRadius ? [...layer.cornerRadius] : undefined;
   }, [layer.width, layer.height, layer.flipx, layer.flipy, layer.cornerRadius]);
 
   useEffect(() => {
-    console.log('颜色变化---', layer);
+    console.log('Color change---', layer);
     const canvas = document.createElement('canvas');
     canvas.width = layer.width;
     canvas.height = layer.height;

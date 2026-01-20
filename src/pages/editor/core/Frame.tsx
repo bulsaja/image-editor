@@ -32,6 +32,6 @@ export default function FrameComp(props: IFrameProps) {
     };
   }, []);
 
-  // 注入
+  // Inject
   return <>{helper.childrenInjectProps({ parent: frame as any }, props.children)}</>;
 }

@@ -17,13 +17,13 @@ function GroupFast(props: IProps) {
 
   return (
     <Item title={language.val('fast_operations')}>
-      {/* <div>边框，阴影，裁剪、图层、下移、上移、置顶、置底</div> */}
+      {/* <div>Border, Shadow, Crop, Layer, Move Down, Move Up, Bring to Front, Send to Back</div> */}
       <div className={styles.position}>
         <Tooltip content={language.val('tooltip_merge_layers')}>
           <a
             onClick={() => {
               console.log([...editor.selectedElementIds]);
-              // 数据合并
+              // Merge data
               const g = editor.store.groupData([...editor.selectedElementIds]);
               editor.setSelectedElementIds([g.id]);
               editor.store.emitControl([g.id]);
@@ -35,7 +35,7 @@ function GroupFast(props: IProps) {
         <Tooltip content={language.val('tooltip_lock_unlock')}>
           <a
             onClick={() => {
-              console.log('锁定');
+              console.log('잠금');
               elements.forEach(elementData => {
                 elementData._lock = !elementData._lock;
               });
@@ -57,7 +57,7 @@ function GroupFast(props: IProps) {
         <Tooltip content={language.val('tooltip_visible_hidden')}>
           <a
             onClick={() => {
-              console.log('可见');
+              console.log('표시');
               elements.forEach(elementData => {
                 elementData._hide = !elementData._hide;
               });
@@ -79,7 +79,7 @@ function GroupFast(props: IProps) {
         <Tooltip content={language.val('tooltip_copy')}>
           <a
             onClick={() => {
-              console.log('复制');
+              console.log('복사');
               editor.copyElementData();
               // editor.updateCanvas();
             }}
@@ -91,7 +91,7 @@ function GroupFast(props: IProps) {
           <a
             onClick={() => {
               console.log(
-                '删除',
+                '삭제',
                 elements.map(d => d.id),
               );
               editor.store.deleteLayers(elements.map(d => d.id));

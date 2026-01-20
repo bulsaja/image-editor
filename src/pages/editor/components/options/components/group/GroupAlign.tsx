@@ -23,9 +23,9 @@ function GroupAlign(props: IProps) {
   const elements = editor.getGroupElementData() as any[];
   const { width, height } = editor.pageData;
   return (
-    <Item title="对齐方式">
+    <Item title="정렬 방식">
       <div className={styles.align}>
-        <Tooltip content={'左对齐'}>
+        <Tooltip content={'왼쪽 정렬'}>
           <a
             onClick={() => {
               const minx = Math.min(...elements.map(d => d.x));
@@ -40,10 +40,10 @@ function GroupAlign(props: IProps) {
             <AlignLeft theme="filled" size="20" fill="var(--theme-icon)" />
           </a>
         </Tooltip>
-        <Tooltip content={'水平对齐'}>
+        <Tooltip content={'수평 정렬'}>
           <a
             onClick={() => {
-              // 计算居中
+              // 중앙 계산
               const miny = Math.min(...elements.map(d => d.y));
               const maxy = Math.max(...elements.map(d => d.y + d.height));
               const center = (maxy + miny) / 2;
@@ -58,7 +58,7 @@ function GroupAlign(props: IProps) {
             <AlignHorizontally theme="filled" size="20" fill="var(--theme-icon)" />
           </a>
         </Tooltip>
-        <Tooltip content={'右对齐'}>
+        <Tooltip content={'오른쪽 정렬'}>
           <a
             onClick={() => {
               const maxx = Math.max(...elements.map(d => d.x + d.width));
@@ -73,7 +73,7 @@ function GroupAlign(props: IProps) {
             <AlignRight theme="filled" size="20" fill="var(--theme-icon)" />
           </a>
         </Tooltip>
-        <Tooltip content={'顶对齐'}>
+        <Tooltip content={'상단 정렬'}>
           <a
             onClick={() => {
               const miny = Math.min(...elements.map(d => d.y));
@@ -88,7 +88,7 @@ function GroupAlign(props: IProps) {
             <AlignTop theme="filled" size="20" fill="var(--theme-icon)" />
           </a>
         </Tooltip>
-        <Tooltip content={'垂直对齐'}>
+        <Tooltip content={'수직 정렬'}>
           <a
             onClick={() => {
               const minx = Math.min(...elements.map(d => d.x));
@@ -105,7 +105,7 @@ function GroupAlign(props: IProps) {
             <AlignVertically theme="filled" size="20" fill="var(--theme-icon)" />
           </a>
         </Tooltip>
-        <Tooltip content={'底对齐'}>
+        <Tooltip content={'하단 정렬'}>
           <a
             onClick={() => {
               const maxy = Math.max(...elements.map(d => d.y + d.height));
@@ -120,10 +120,10 @@ function GroupAlign(props: IProps) {
             <AlignBottom theme="filled" size="20" fill="var(--theme-icon)" />
           </a>
         </Tooltip>
-        <Tooltip content={'水平间距分布'}>
+        <Tooltip content={'수평 간격 분배'}>
           <a
             onClick={() => {
-              // 计算出间距
+              // 간격 계산
               const minx = Math.min(...elements.map(d => d.x - d.width / 2));
               const maxx = Math.max(...elements.map(d => d.x + d.width / 2));
               const elementsSort = [...elements].sort((a, b) => {
@@ -148,10 +148,10 @@ function GroupAlign(props: IProps) {
             <DistributeHorizontalSpacing theme="filled" size="20" fill="var(--theme-icon)" />
           </a>
         </Tooltip>
-        <Tooltip content={'垂直间距分布'}>
+        <Tooltip content={'수직 간격 분배'}>
           <a
             onClick={() => {
-              // 计算出间距
+              // 간격 계산
               const miny = Math.min(...elements.map(d => d.y - d.height / 2));
               const maxy = Math.max(...elements.map(d => d.y + d.height / 2));
               const elementsSort = [...elements].sort((a, b) => {
@@ -182,7 +182,7 @@ function GroupAlign(props: IProps) {
         <a
           onClick={() => {
             console.log([...editor.selectedElementIds]);
-            // 数据合并
+            // 데이터 병합
             const g = editor.store.groupData([...editor.selectedElementIds]);
             editor.setSelectedElementIds([g.id]);
             editor.store.emitControl([g.id]);
@@ -190,10 +190,10 @@ function GroupAlign(props: IProps) {
         >
           <Group theme="filled" size="20" fill="var(--theme-icon)" />
         </a>
-        <a>删除</a>
-        <a>复制</a>
-        <a>垂直间距</a>
-        <a>水平间距</a>
+        <a>삭제</a>
+        <a>복사</a>
+        <a>수직 간격</a>
+        <a>수평 간격</a>
       </div> */}
     </Item>
   );

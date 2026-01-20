@@ -5,7 +5,7 @@ class Demo extends BasicService {
     return await this.get(
       `/api/v1/templates/page?type=0&page_size=${pageSize}&categoryId=&price_type=&order_column=is_top&industry_id=&color_id=&keyword=&page=${page}`,
       {
-        // 要调用组件
+        // Need to call component
         abortID: 'demoService.getTemplates',
         headers: { Authorization: '' },
       },

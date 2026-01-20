@@ -16,30 +16,30 @@ interface RecordParams {
 }
 
 /**
- * 封装的内核自带了一些方法，以及缓存了数据
+ * Encapsulated core with some methods and cached data
  */
 export default class Store {
-  // 页面数据
+  // Page data
   public data!: BasePage;
-  // 历史记录
+  // History record
   public record?: RecordParams;
   public ruler: Ruler;
-  // 实例
+  // Instance
   public app!: ILeafer;
-  // 控制器实例
+  // Controller instance
   public editor!: IEditorBase;
-  // 运行环境
+  // Runtime environment
   public env: ENV = 'editor';
-  // 更新View组件
+  // Update View component
   public updateView: () => void = null;
-  // 控制器缩放触发每个元素内部的函数
+  // Controller scale triggers each element's internal function
   public controlScaleFuns: Record<string, () => void> = {};
-  // 拖动鼠标弹起执行
+  // Execute on mouse up after drag
   public elementDragUp: Record<string, () => void> = {};
-  // 控制器选中元素触发每个元素内部的函数
+  // Controller selection triggers each element's internal function
   public controlSelectFuns: Record<string, () => void> = {};
 
-  // 资源host
+  // Resource host
   public resourceHost: string = '';
 
   @bindSelf
@@ -49,7 +49,7 @@ export default class Store {
 
   public helper = helper;
   public utils = utils;
-  // 历史记录添加的回调函数
+  // History record add callback function
   public addRecordCallback: () => void;
 
   @bindSelf
@@ -65,7 +65,7 @@ export default class Store {
   }
 
   /**
-   * 通过IDS获取图层数据
+   * Get layer data by IDs
    * @param ids
    * @returns
    */
@@ -87,7 +87,7 @@ export default class Store {
   }
 
   /**
-   * 删除多个元素
+   * Delete multiple elements
    * @param ids
    */
   @bindSelf
@@ -108,7 +108,7 @@ export default class Store {
   }
 
   /**
-   * 将多个元素合成组数据
+   * Combine multiple elements into group data
    */
   @bindSelf
   public groupData(ids: string[]): GroupLayer {
@@ -116,7 +116,7 @@ export default class Store {
     const g = helper.createLayer('group') as GroupLayer;
     g.childs = [...layers];
 
-    // 删除多余元素
+    // Remove extra elements
     const removeLayers = layers => {
       remove(layers, (e: any) => ids.includes(e.id));
       layers.forEach(layer => {
@@ -128,10 +128,10 @@ export default class Store {
     removeLayers(this.data.layers);
 
     // layer
-    // // 视图合并
+    // // View merge
     const group = this.editor.group();
 
-    // 合并后，layer的xy变化了，修改layerData的x,y
+    // After merge, layer xy changed, modify layerData x,y
     group.children.forEach(d => {
       const layerData = g.childs.find(a => a.id === d.id);
       if (layerData) {
@@ -140,19 +140,19 @@ export default class Store {
         layerData.rotation = d.rotation;
       }
     });
-    // 修改组数据
+    // Modify group data
     g.x = group.x;
     g.y = group.y;
     g.rotation = group.rotation;
     this.data.layers.unshift(g);
 
-    // 更新视图
+    // Update view
     this.updateView();
     return g;
   }
 
   /**
-   * 把组打散
+   * Ungroup elements
    */
   @bindSelf
   public unGroupData(id: string): string[] {
@@ -160,7 +160,7 @@ export default class Store {
     if (element.type === 'group') {
       const group2more = (layers: BaseLayer[]) => {
         const index = layers.findIndex(d => d.id === id);
-        // 解除编组后，需要单独修改子元素的坐标
+        // After ungrouping, need to modify child element coordinates separately
         const group = this.editor.ungroup();
         group.forEach(box => {
           const layer = (element as any).childs.find(d => d.id === box.id);
@@ -171,7 +171,7 @@ export default class Store {
         layers.splice(index, 0, ...(element as any).childs);
         remove(layers, d => d.id === id);
       };
-      // 获取元素的父元素
+      // Get parent element
       const parent = utils.findParentById(this.data.layers as any[], id);
       if (parent) {
         const runUn = layers => {
@@ -190,21 +190,21 @@ export default class Store {
       } else {
         group2more(this.data.layers);
       }
-      console.log('解码成功', this.data.layers);
+      console.log('Ungroup successful', this.data.layers);
       this.updateView();
       return (element as any).childs.map(d => d.id);
     } else {
-      console.error(`id为${id}的元素不是组元素`);
+      console.error(`Element with id ${id} is not a group element`);
       return null;
     }
   }
 
   /**
-   * 触发控制器选中
+   * Trigger controller selection
    */
   @bindSelf
   public emitControl(ids: string[]) {
-    // 因为updateView是一个非同步方法，可能导致渲染延迟
+    // Because updateView is an asynchronous method, may cause render delay
     if (ids.length === 0) {
       this.editor.target = null;
       return;
@@ -238,7 +238,7 @@ export default class Store {
   }
 
   /**
-   * 更新视图
+   * Update view
    */
   @bindSelf
   public update() {
@@ -249,9 +249,9 @@ export default class Store {
   }
 
   /**
-   * 手动设置元素的旋转
-   * 解决外部触发旋转不是围绕中心点旋转的问题
-   * 旋转元素会导致x,y同时发生变化
+   * Manually set element rotation
+   * Solve the problem of external triggered rotation not rotating around center point
+   * Rotating element will cause x,y to change simultaneously
    */
   @bindSelf
   public triggerRotation(elementData: BaseLayer, rotation: number) {
@@ -262,16 +262,16 @@ export default class Store {
   }
 
   /**
-   * 截图
+   * Screenshot
    */
   @bindSelf
   public async capture(params?: IExportOptions) {
-    console.log('截图', params);
+    console.log('Screenshot', params);
     return await this.app.export('png', params);
   }
 
   /**
-   * 销毁
+   * Destroy
    */
   @bindSelf
   public destroy() {

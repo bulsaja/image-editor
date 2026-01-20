@@ -1,7 +1,7 @@
 import { AnimationType, AnimationFrame } from '@video/core/src/react-pixi/types/data';
 
 // type: 'enter',
-// name: '从下渐入',
+// name: 'Fade In Down',
 // ename: 'fadeInDown',
 // id: 'fadeInDown',
 // frames: [

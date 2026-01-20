@@ -18,22 +18,22 @@ export interface PageSizeType {
 }
 
 /**
- * 传入每个Layer的参数
+ * Parameters passed to each Layer
  */
 export interface LayerProps {
-  hide: boolean; // 编辑器用到的，优先级会比 visible更高
+  hide: boolean; // Used by editor, priority higher than visible
   lock: boolean;
   zIndex: number;
-  isChild?: boolean; // 如果是true，表示元素已经分组
+  isChild?: boolean; // If true, element is already grouped
   layer: BaseLayer;
-  dirty: string; // 用于更新组件
+  dirty: string; // For component update
   parent?: Group;
   store: Store;
   env: ENV;
 }
 
 /**
- * 历史记录
+ * History record
  */
 export type RecordType = 'delete' | 'create' | 'update' | 'global';
 
@@ -45,10 +45,10 @@ export type RecordMap = {
 };
 
 export interface RecordItem<T> {
-  desc: string; // 描述信息
+  desc: string; // Description
   type: T;
-  selecteds?: string[]; // 当前选中的元素
-  data?: T extends keyof RecordMap ? RecordMap[T] : never; // 历史数据可以存放任何数据
+  selecteds?: string[]; // Currently selected elements
+  data?: T extends keyof RecordMap ? RecordMap[T] : never; // History data can store any data
   mdata?: BasePage;
 }
 

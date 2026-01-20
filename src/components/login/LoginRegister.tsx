@@ -14,7 +14,7 @@ function LoginRegister({ children }: any) {
       setVisible(true);
     } else {
       console.log(user.info);
-      console.warn('已经登录过了');
+      console.warn('이미 로그인되어 있습니다');
       // history.push(location.pathname);
     }
   };
@@ -38,7 +38,7 @@ function LoginRegister({ children }: any) {
         <span onClick={showVisible}>{children}</span>
       ) : (
         <a onClick={showVisible} className={styles.loginRegisterBtn}>
-          登录/注册
+          로그인/회원가입
         </a>
       )}
       <Modal

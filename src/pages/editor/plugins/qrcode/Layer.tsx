@@ -32,14 +32,14 @@ export default function QrcodeComp(props: LayerProps) {
     return img;
   }, []);
 
-  // 公共use
+  // Common hook
   useLayerBaseStyle(layer, imgUI as any, props.store, props.zIndex);
 
   useEffect(() => {
     imgUI.width = layer.width;
     imgUI.height = layer.height;
 
-    // 翻转
+    // Flip
     if (layer.flipx) {
       imgUI.scaleX = -1;
     } else {
@@ -51,7 +51,7 @@ export default function QrcodeComp(props: LayerProps) {
       imgUI.scaleY = 1;
     }
 
-    //圆角
+    // Corner radius
     imgUI.cornerRadius = layer.cornerRadius ? [...layer.cornerRadius] : undefined;
   }, [layer.width, layer.height, layer.flipx, layer.flipy, layer.cornerRadius]);
 
@@ -65,15 +65,15 @@ export default function QrcodeComp(props: LayerProps) {
       },
     };
 
-    // 创建二维码
+    // Create QR code
     QRCode.toDataURL(layer.content || 'null', { ...options }).then(url => (imgUI.url = url));
 
-    // 控制器变化的时候会触发此函数
+    // This function is triggered when the controller changes
     props.store.controlScaleFuns[layer.id] = debounce(() => {
       QRCode.toDataURL(layer.content || 'null', { ...options }).then(url => (imgUI.url = url));
     }, 500);
     return () => {
-      // 组件销毁的时候要删除函数的引用
+      // Delete function reference when component is destroyed
       delete props.store.elementDragUp[layer.id];
     };
   }, [layer.content, layer.lightcolor, layer.darkcolor]);

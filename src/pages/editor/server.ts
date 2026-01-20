@@ -1,20 +1,20 @@
 import BasicService from '@server/BasicService';
 class Server extends BasicService {
   /**
-   * @desc 创建视频
+   * @desc Create video
    */
   createApp = data => {
     return this.post('/api/v1/user/apps/create', data);
   };
   /**
-   * 获取用户作品详情
+   * Get user work detail
    * @param {string} workbench.schema
    * @param {string} id
    * @returns
    */
   getAppDetail = id => this.get('/api/v1/user/apps/info', { params: { id } });
   /**
-   * 删除作品
+   * Delete work
    * @param {} workbench.schema
    * @param {*} params
    * @param {*} id
@@ -22,14 +22,14 @@ class Server extends BasicService {
    */
   deleteApp = params => this.post('/api/v1/user/apps/delete', params);
   /**
-   * 更新草稿
+   * Update draft
    * @param {*} id
    * @param {*} params
    * @returns
    */
   updateApp = params => this.post('/api/v1/user/apps/update', params);
 
-  // 上传base64图片
+  // Upload base64 image
   uploadBase64 = (params: { content: string; name: string; file_type?: string }) => {
     return this.post(`/api/v1/common/upload/base64`, {
       ...params,

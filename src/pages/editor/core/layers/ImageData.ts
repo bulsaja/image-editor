@@ -12,8 +12,8 @@ export class ImageData implements ImageLayer {
   url: string = '';
   cornerRadius: [number, number, number, number] = [0, 0, 0, 0];
   id: string = util.createID();
-  name: string = '图片元素';
-  desc: string = '描述信息';
+  name: string = 'Image Element';
+  desc: string = 'Description';
   x: number = 0;
   y: number = 0;
   blur: number = 0;

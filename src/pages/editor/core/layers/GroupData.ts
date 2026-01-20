@@ -6,7 +6,7 @@ export class GroupData implements GroupLayer {
   type: 'group' = 'group';
   childs: BaseLayer[] = [];
   id: string = util.createID();
-  name: string = '组元素';
+  name: string = 'Group Element';
   desc: string = 'desc';
   x: number = 0;
   y: number = 0;

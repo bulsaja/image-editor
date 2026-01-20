@@ -4,12 +4,12 @@ import { editor } from '@stores/editor';
 import { ImageData, GroupData, TextData } from '../../core';
 import { ImageLayer } from '@pages/editor/core/types/data';
 
-// 添加元素 图片，视频，音频
+// Add element: image, video, audio
 export const addImageItem = async (item: any, dropPos?: { x: number; y: number }) => {
-  console.log('添加元素', item);
+  console.log('Add element', item);
   const img = editor.store.helper.createLayer('image') as ImageLayer;
   img.url = item.urls.url;
-  // 图片最大不能超过画布大小
+  // Image size should not exceed canvas size
   const autoSize = editor.store.utils.calcSizeAndPosition(
     {
       width: item.attrs.naturalWidth || item.attrs.width,
@@ -31,17 +31,17 @@ export const addImageItem = async (item: any, dropPos?: { x: number; y: number }
   }
   editor.pageData.layers.unshift(img);
   editor.updateCanvas();
-  // 保存历史记录
+  // Save history record
   editor.record({
     type: 'create',
-    desc: '添加元素' + img.id,
+    desc: 'Add element ' + img.id,
   });
 
   return img;
 };
 
 export const addTextItem = async (item: any, dropPos?: { x: number; y: number }) => {
-  console.log('添加元素', item);
+  console.log('Add element', item);
   const tstyle = item.attrs;
   if (tstyle.fontFamily === 'Default') {
     tstyle.fill = '#000';
@@ -66,10 +66,10 @@ export const addTextItem = async (item: any, dropPos?: { x: number; y: number })
   console.log('text', text);
   editor.pageData.layers.unshift(text);
   editor.updateCanvas();
-  // 保存历史记录
+  // Save history record
   editor.record({
     type: 'create',
-    desc: '添加元素' + text.id,
+    desc: 'Add element ' + text.id,
   });
 
   return text;

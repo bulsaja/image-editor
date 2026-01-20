@@ -15,7 +15,7 @@ function Blur(props: IProps) {
   const elementData = editor.getElementData() as BaseLayer;
   let blur = elementData.blur;
   return (
-    <Item title="模糊度">
+    <Item title="Blur">
       <div className={styles.opacity}>
         <SliderInput
           step={1}
@@ -31,7 +31,7 @@ function Blur(props: IProps) {
           onAfterChange={() => {
             editor.record({
               type: 'update',
-              desc: '设置模糊度',
+              desc: '블러 설정',
             });
           }}
         />

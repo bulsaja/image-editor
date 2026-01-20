@@ -27,7 +27,7 @@ export default defineConfig({
       '@less': resolve('./src/less'),
       '@images': resolve('./src/assets/images'),
     },
-    extensions: [".mjs", ".js", ".ts", ".jsx", ".tsx", ".json"], // 省略扩展名
+    extensions: [".mjs", ".js", ".ts", ".jsx", ".tsx", ".json"], // Omit file extensions
   },
   plugins: [
     react({
@@ -62,12 +62,12 @@ export default defineConfig({
     },
     preprocessorOptions: {
       less: {
-        // 支持内联 javascript
+        // Enable inline JavaScript
         javascriptEnabled: true,
       },
     },
   },
-  // 入口
+  // Entry point
   build: {
     rollupOptions: {
       output: {
@@ -82,13 +82,13 @@ export default defineConfig({
     minify: "terser",
     terserOptions: {
       compress: {
-        //生产环境时移除console
+        // Remove console in production environment
         drop_console: true,
         drop_debugger: true,
       },
     },
   },
-  base: "/", // 公共基础路径
+  base: "/", // Public base path
   server: {
     host: "0.0.0.0",
     port: 3004,

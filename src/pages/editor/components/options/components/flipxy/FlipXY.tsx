@@ -34,7 +34,7 @@ function FlipXY(props: IProps) {
   }
   return (
     <Item title={language.val('fast_operations')}>
-      {/* <div>边框，阴影，裁剪、图层、下移、上移、置顶、置底</div> */}
+      {/* <div>Border, Shadow, Crop, Layer, Move Down, Move Up, Bring to Front, Send to Back</div> */}
       <div className={styles.position}>
         {(elementData as any).type === 'image' && <CropperImage />}
         <Tooltip content={language.val('tooltip_flip_horizontal')}>
@@ -60,7 +60,7 @@ function FlipXY(props: IProps) {
         <Tooltip content={language.val('tooltip_lock_unlock')}>
           <a
             onClick={() => {
-              console.log('锁定');
+              console.log('Lock');
               elementData._lock = !elementData._lock;
               editor.updateCanvas();
               forceUpdate();
@@ -76,7 +76,7 @@ function FlipXY(props: IProps) {
         <Tooltip content={language.val('tooltip_visible_hidden')}>
           <a
             onClick={() => {
-              console.log('可见');
+              console.log('Visible');
               elementData._hide = !elementData._hide;
               editor.updateCanvas();
               forceUpdate();
@@ -92,7 +92,7 @@ function FlipXY(props: IProps) {
         <Tooltip content={language.val('tooltip_copy')}>
           <a
             onClick={() => {
-              console.log('复制');
+              console.log('Copy');
               editor.copyElementData();
               // editor.updateCanvas();
             }}
@@ -103,7 +103,7 @@ function FlipXY(props: IProps) {
         <Tooltip content={language.val('tooltip_delete')}>
           <a
             onClick={() => {
-              console.log('删除');
+              console.log('Delete');
               editor.store.deleteLayers([elementData.id]);
               editor.store.emitControl([]);
               editor.setSelectedElementIds([]);
@@ -117,7 +117,7 @@ function FlipXY(props: IProps) {
           <Tooltip content={language.val('tooltip_ungroup')}>
             <a
               onClick={() => {
-                console.log('打散到上一层');
+                console.log('Ungroup to parent layer');
                 const ids = editor.store.unGroupData(elementData.id);
                 editor.setSelectedElementIds([ids[0]]);
                 editor.store.emitControl([ids[0]]);

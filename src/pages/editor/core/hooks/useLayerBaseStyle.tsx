@@ -10,13 +10,13 @@ export default function useLayerBaseStyle(layer: BaseLayer, box: IUI, store: Sto
     box.y = layer.y;
     box.opacity = layer.opacity;
 
-    // 模糊
+    // Blur
     box.blur = layer.blur;
 
-    //混合模式
+    // Blend mode
     box.blendMode = layer.blendMode;
 
-    // 边框
+    // Border
     if (layer.type === 'image') {
       const imgUI = box.children[0];
       imgUI.stroke = layer.border.stroke;
@@ -28,7 +28,7 @@ export default function useLayerBaseStyle(layer: BaseLayer, box: IUI, store: Sto
       box.dashPattern = layer.border.dashPattern;
     }
 
-    // 旋转
+    // Rotation
     box.rotation = layer.rotation;
     // box.rotateOf({ x: box.width / 2, y: box.height / 2 }, layer.rotation - box.rotation);
   }, [layer.x, layer.y, layer.opacity, layer.blendMode, layer.blur, layer.border, layer.rotation]);
@@ -37,7 +37,7 @@ export default function useLayerBaseStyle(layer: BaseLayer, box: IUI, store: Sto
     box.zIndex = zIndex;
   }, [zIndex]);
 
-  // 阴影
+  // Shadow
   useEffect(() => {
     if (layer.shadow && layer.shadow.visible) {
       if (['image', 'text'].includes(layer.type)) {

@@ -5,12 +5,12 @@ import { TextLayer } from '../types/data';
 export class TextData implements TextLayer {
   type: 'text' = 'text';
   fontFamilyURL: string = '';
-  text: string = '默认文字';
+  text: string = 'Default Text';
   fill: string = '';
   textStyle: Partial<IText> = { fontSize: 24 };
   id: string = util.createID();
-  name: string = '文字元素';
-  desc: string = '描述';
+  name: string = 'Text Element';
+  desc: string = 'Description';
   x: number = 0;
   y: number = 0;
   blur: number = 0;

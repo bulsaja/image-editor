@@ -14,7 +14,7 @@ function Strength(props: IProps) {
   const { intensity } = elementData;
 
   return (
-    <Item title="强度">
+    <Item title="Strength">
       <div className={styles.strength}>
         <SliderInput
           value={util.toNum(intensity * 100)}
@@ -30,7 +30,7 @@ function Strength(props: IProps) {
           onAfterChange={() => {
             editor.record({
               type: 'update',
-              desc: '修改强度',
+              desc: '강도 수정',
             });
           }}
         />

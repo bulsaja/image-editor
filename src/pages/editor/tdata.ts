@@ -32,13 +32,13 @@ export const tdata: ViewData = {
           flipy: false,
           blur: 0,
           type: 'image',
-          _dirty: '1', // 用于视图更新
-          _lock: false, // 是否锁定
-          _hide: false, // 是否隐藏
+          _dirty: '1', // For view update
+          _lock: false, // Is locked
+          _hide: false, // Is hidden
           width: 200,
           height: 200,
           border: {
-            stroke: '#f00', // 边框色
+            stroke: '#f00', // Border color
             strokeWidth: 2,
             visible: false,
           },
@@ -54,8 +54,8 @@ export const tdata: ViewData = {
           },
           naturalWidth: 200,
           naturalHeight: 285,
-          url: 'https://cdn.h5ds.com/video/uploads/9715/20240207/679367666016878592.png', // 图片链接
-          cornerRadius: [200, 200, 200, 200], // 圆角
+          url: 'https://cdn.h5ds.com/video/uploads/9715/20240207/679367666016878592.png', // Image URL
+          cornerRadius: [200, 200, 200, 200], // Border radius
         } as ImageLayer,
         {
           id: 't2',
@@ -67,13 +67,13 @@ export const tdata: ViewData = {
           rotation: 0,
           blur: 0,
           type: 'image',
-          _dirty: '1', // 用于视图更新
-          _lock: false, // 是否锁定
-          _hide: false, // 是否隐藏
+          _dirty: '1', // For view update
+          _lock: false, // Is locked
+          _hide: false, // Is hidden
           width: 200,
           height: 260,
           border: {
-            stroke: '#f00', // 边框色
+            stroke: '#f00', // Border color
             strokeWidth: 2,
             visible: false,
           },
@@ -89,8 +89,8 @@ export const tdata: ViewData = {
           },
           naturalWidth: 200,
           naturalHeight: 292,
-          url: 'https://cdn.h5ds.com/video/uploads/9715/20231202/655268148271611904.png', // 图片链接
-          cornerRadius: [30, 30, 30, 30], // 圆角
+          url: 'https://cdn.h5ds.com/video/uploads/9715/20231202/655268148271611904.png', // Image URL
+          cornerRadius: [30, 30, 30, 30], // Border radius
         } as ImageLayer,
         {
           id: 't3',
@@ -102,7 +102,7 @@ export const tdata: ViewData = {
           rotation: 0,
           blur: 0,
           type: 'text',
-          text: '测试文字，无界云PS',
+          text: '샘플 텍스트',
           fill: null,
           blendMode: 'normal',
           fontFamilyURL: '',
@@ -118,11 +118,11 @@ export const tdata: ViewData = {
               ],
             },
           },
-          _dirty: '1', // 用于视图更新
-          _lock: false, // 是否锁定
-          _hide: false, // 是否隐藏
+          _dirty: '1', // For view update
+          _lock: false, // Is locked
+          _hide: false, // Is hidden
           border: {
-            stroke: '#f00', // 边框色
+            stroke: '#f00', // Border color
             strokeWidth: 2,
             visible: false,
           },

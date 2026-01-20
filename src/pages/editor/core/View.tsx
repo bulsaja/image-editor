@@ -21,20 +21,20 @@ import rotateIco from './rotate.png';
 
 export interface IViewProps {
   data: BasePage;
-  target: HTMLElement; // canvas放入的DOM容器
+  target: HTMLElement; // DOM container for canvas
   env: ENV;
-  resourceHost: string; // 资源文件前缀
-  exLayers?: ExLayer[]; // 扩展组件
-  // 渲染后执行
+  resourceHost: string; // Resource file prefix
+  exLayers?: ExLayer[]; // Extended components
+  // Execute after render
   callback?: (store: Store) => void;
-  // 编辑器事件
+  // Editor events
   onControlSelect?: (e: EditorEvent, ids: string[]) => void;
   onControlScale?: (e: EditorEvent) => void;
   onControlMove?: (e: EditorEvent) => void;
   onControlRotate?: (e: EditorEvent) => void;
   onDragUp?: (e: EditorEvent) => void;
   onContextMenu?: (e: EditorEvent, layers: BaseLayer[]) => void;
-  addRecordCallback?: () => void; // 添加记录的回调
+  addRecordCallback?: () => void; // Record add callback
 }
 
 export default function View(props: IViewProps) {
@@ -93,7 +93,7 @@ export default function View(props: IViewProps) {
         // console.log('rotate', e);
         const list = (e as any).current.leafList.list;
         const layers = store.getLayerByIds(list.map(d => d.id));
-        // 数据同步
+        // Data sync
         list.forEach(box => {
           const layer = layers.find(d => d.id === box.id) as BaseLayer;
           if (layer) {
@@ -113,7 +113,7 @@ export default function View(props: IViewProps) {
         const list = (e as any).current.leafList.list;
         const layers = store.getLayerByIds(list.map(d => d.id));
 
-        // 如果是组，还需要计算children的参数
+        // If it's a group, need to calculate children's parameters
         const setGroupChildrenSize = box => {
           const ids = box.children.map(d => d.id);
           const innerLayers = store.getLayerByIds(ids);
@@ -121,7 +121,7 @@ export default function View(props: IViewProps) {
             const inlayer = innerLayers.find(d => d.id === b.id) as any;
             inlayer.width = b.width;
             inlayer.height = b.height;
-            // 如果是文字，还要修改x,y
+            // If it's text, also need to modify x,y
             if (inlayer.type === 'text') {
               inlayer.x = b.x;
               inlayer.y = b.y;
@@ -132,7 +132,7 @@ export default function View(props: IViewProps) {
           });
         };
 
-        // 数据同步
+        // Data sync
         list.forEach(box => {
           const layer = layers.find(d => d.id === box.id) as any;
           if (layer.type === 'text') {
@@ -146,7 +146,7 @@ export default function View(props: IViewProps) {
           if (func) {
             func();
           }
-          // 设置组的子元素的尺寸
+          // Set group child element sizes
           if (layer.type === 'group') {
             setGroupChildrenSize(box);
           }
@@ -161,7 +161,7 @@ export default function View(props: IViewProps) {
         // console.log('move', e);
         const list = (e as any).current.leafList.list;
         const layers = store.getLayerByIds(list.map(d => d.id));
-        // 数据同步
+        // Data sync
         list.forEach(box => {
           const layer = layers.find(d => d.id === box.id);
           if (layer) {
@@ -182,7 +182,7 @@ export default function View(props: IViewProps) {
         }
       });
 
-      // 编辑器事件
+      // Editor events
       app.editor.on(EditorMoveEvent.SELECT, (e: EditorEvent) => {
         const ids: string[] = [];
         if (e.value) {
@@ -217,10 +217,10 @@ export default function View(props: IViewProps) {
         }
       });
 
-      // 鼠标弹起执行
+      // Execute on mouse up
       app.editor.on(DragEvent.UP, e => {
         const elementIds = utils.getIdsFromUI(store.editor.target);
-        console.log('鼠标弹起来????', elementIds);
+        console.log('Mouse up????', elementIds);
         if (elementIds.length) {
           elementIds.forEach(id => {
             const fun = store.elementDragUp[id];
@@ -229,7 +229,7 @@ export default function View(props: IViewProps) {
         }
         store.record?.add({
           type: 'update',
-          desc: '控制器鼠标弹起',
+          desc: 'Controller mouse up',
           selecteds: [...elementIds],
         });
         if (props.onDragUp) {
@@ -240,9 +240,9 @@ export default function View(props: IViewProps) {
       new ScrollBar(app as any);
       // new EditorLine(app);
 
-      // 标尺
+      // Ruler
       const ruler = new Ruler(app as any);
-      // 添加自定义主题
+      // Add custom theme
       ruler.addTheme('dark2', {
         backgroundColor: '#16161a',
         textColor: 'rgba(255, 255, 255, 0.5)',
@@ -252,7 +252,7 @@ export default function View(props: IViewProps) {
       store.ruler = ruler;
     }
 
-    // 监听容器变化
+    // Listen for container changes
     const onResize = debounce(() => {
       store.autoViewSize();
     }, 100);

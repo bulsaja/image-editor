@@ -1,7 +1,7 @@
 import BasicService from '@server/BasicService';
 
 class Server extends BasicService {
-  // 上传base64图片
+  // Upload base64 image
   uploadBase64 = async (params: { content: string; name: string; file_type?: string }) => {
     return this.post(`/api/v1/common/upload/base64`, {
       ...params,
@@ -13,14 +13,14 @@ class Server extends BasicService {
   };
 
   /**
-   * 获取分类列表
+   * Get category list
    * @param {string} workbench.schema
    * @param {object} params
    * @returns
    */
   getCategoryList = params => this.get('/api/v1/user/categories/page', { params });
 
-  // 获取用户素材
+  // Get user materials
   getUserMaterial = (params: {
     type?: string;
     keyword?: string;
@@ -31,19 +31,19 @@ class Server extends BasicService {
     return this.get(`/api/v1/user/materials/page`, { params });
   };
 
-  // 新增素材分类
+  // Create new material category
   createUserMaterialCategories = (appid: string) => {
     return this.post(`/api/v1/user/categories/create`, { name: appid, type: 'user_material', pid: 0 });
   };
 
-  // 查询是否存在素材分类
+  // Check if material category exists
   getUserMaterialInfo = (id: string) => {
     return this.get(`/api/v1/user/categories/info?id=${id}`);
   };
 
-  // 新增素材
+  // Create new material
   createUserMaterial = (params: {
-    category_id?: string; // 直接创建到该分类下面
+    category_id?: string; // Create directly under this category
     app_id?: string;
     name: string;
     urls: Record<string, any>;
@@ -53,13 +53,13 @@ class Server extends BasicService {
     return this.post(`/api/v1/user/materials/create`, { ...params });
   };
 
-  // 删除素材
+  // Delete material
   deleteMaterial = async (ids: string[]) => {
-    console.log('批量删除', ids);
+    console.log('Batch delete', ids);
     return this.post(`/api/v1/user/materials/delete`, { id: ids });
   };
 
-  // 表单上传
+  // Form upload
   formUpdate = formdata => {
     let forms = new FormData();
     formdata.files.forEach((d, i) => {

@@ -10,8 +10,8 @@ export default class QrcodeData implements QrcodeLayer {
   flipx: boolean = false;
   flipy: boolean = false;
   id: string = util.createID();
-  name: string = '图片元素';
-  desc: string = '描述信息';
+  name: string = 'Image Element';
+  desc: string = 'Description';
   x: number = 0;
   y: number = 0;
   blur: number = 0;
@@ -24,7 +24,7 @@ export default class QrcodeData implements QrcodeLayer {
   opacity: number = 1;
   rotation: number = 0;
   shadow: IShadowEffect = { x: 0, y: 0, blur: 0, color: 'rgba(0,0,0,0.0)' };
-  content: string = '请输入内容';
+  content: string = 'Enter content';
   lightcolor: string = '#ffffff';
   darkcolor: string = '#000000';
   _dirty: string = '1';

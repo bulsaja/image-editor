@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 /**
- * 发布/订阅模式
+ * Publish/Subscribe pattern
  * https://www.npmjs.com/package/PubSub
  *
  *

@@ -10,14 +10,14 @@ function safeGet(data: any) {
 }
 
 /**
- * 如果key = 'x-token' 或者 'x-user-info' 需要加密和解密。
+ * If key = 'x-token' or 'x-user-info', encryption and decryption are needed.
  */
 class WebStorage {
   SECRET_KEY: string;
   _storage: any;
 
   constructor(storage: any) {
-    // 用于加密字的符串
+    // String used for encryption
     this.SECRET_KEY = '7NlEQ@10';
     this._storage = storage;
   }

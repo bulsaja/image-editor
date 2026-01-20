@@ -13,7 +13,7 @@ export const locals: any = {
 
 const _window = window as any;
 /**
- * 国际化处理
+ * Internationalization handling
  */
 class Language {
   constructor() {
@@ -30,10 +30,10 @@ class Language {
   // }
 
   /**
-   * 国际化语言
-   * @param {string} name 字段名称
-   * @param {object} data 模板参数：默认是undefined
-   * @param {string} type 语言类型，默认是undefined
+   * Internationalization language
+   * @param {string} name Field name
+   * @param {object} data Template parameters: default is undefined
+   * @param {string} type Language type, default is undefined
    */
   val(name: string, data?: any, type?: ValueType) {
     if (!_window.language) {
@@ -49,9 +49,9 @@ class Language {
   }
 
   /**
-   * 反向查找语言
-   * @param {string} value 当前的值
-   * @param {string} type 当前的值属于那个语言类型
+   * Reverse lookup language
+   * @param {string} value Current value
+   * @param {string} type Language type of the current value
    */
   findVal(value: string, valueType = 'ko-KR') {
     if (!_window.language) {
@@ -73,7 +73,7 @@ class Language {
     storage.local.set('language', type);
     _window.language = type;
     if (pubsub) {
-      // 更新视图
+      // Update view
       pubsub.publish('setLanguage', type);
     }
   }

@@ -30,7 +30,7 @@ function GroupLayerOptions(props: IProps) {
         editor.elementOptionType = e as any;
       }}
     >
-      <TabPane tab="元素设置" itemKey="basic">
+      <TabPane tab="Element Settings" itemKey="basic">
         <div className={'scroll scrollBox'}>
           <FlipXY />
           <Opacity />
@@ -40,7 +40,7 @@ function GroupLayerOptions(props: IProps) {
           <Rotation />
         </div>
       </TabPane>
-      <TabPane tab="混合模式" itemKey="colour">
+      <TabPane tab="Blend Mode" itemKey="colour">
         <Filter />
       </TabPane>
     </Tabs>

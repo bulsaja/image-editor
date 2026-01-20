@@ -20,7 +20,7 @@ function Manage() {
 
   return (
     <div>
-      登录后的页面
+      Page after login
       <img style={{ width: 100 }} src={user.info?.avatarUrl} alt="" />
       <Button onClick={startPageLoading}>page loading start</Button>
       <Button onClick={endPageLoading}>page loading end</Button>

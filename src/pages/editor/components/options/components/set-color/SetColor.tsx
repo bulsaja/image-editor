@@ -13,7 +13,7 @@ import offset from 'offset';
 // import { util } from '@utils/index';
 
 export interface IProps {
-  gradual?: boolean; // 是否支持渐变？
+  gradual?: boolean; // Support gradient?
   list?: boolean;
   style?: Record<string, any>;
   color: IPaint;
@@ -22,7 +22,7 @@ export interface IProps {
 }
 
 /**
- * 颜色可以是单色，渐变色目前只做 Paint 的支持
+ * Color can be solid, gradient currently only supports Paint
  * @param props
  * @returns
  */
@@ -142,7 +142,7 @@ export default function SetColor(props: IProps) {
 }
 
 interface IPropsColorModal {
-  gradual: boolean; // 是否支持渐变色
+  gradual: boolean; // Support gradient color
   // type: 'solid' | 'linear' | 'radial' | 'angular' | 'image';
   color: IPaint;
   onChange: (c: IPaint) => void;
@@ -159,7 +159,7 @@ export function ColorModal(props: IPropsColorModal) {
   }
   const gradualDOMRef = useRef<HTMLDivElement>();
   const [val, setVal] = useState(tinycolor(initColor).toRgb());
-  // 选中设置的渐变色
+  // Selected gradient color setting
   const [activeGradualIndex, setActiveGradualIndex] = useState(0);
   const stops = propsColor.stops || [];
   const [, forceUpdate] = useReducer(x => x + 1, 0);
@@ -173,7 +173,7 @@ export function ColorModal(props: IPropsColorModal) {
     const onMouseMove = em => {
       em.preventDefault();
       const p = Number(((em.pageX - left) / width).toFixed(2));
-      // 范围
+      // Range
       const prevStop = stops[activeGradualIndex - 1];
       const nextStop = stops[activeGradualIndex + 1];
       if (p > prevStop.offset + 0.01 && p < nextStop.offset - 0.01) {
@@ -189,7 +189,7 @@ export function ColorModal(props: IPropsColorModal) {
     document.addEventListener('mouseup', onMouseUp);
   };
 
-  // 从val中重新设置颜色
+  // Reset color from val
   const resetColorByVal = (v, i?: number) => {
     const color = propsColor as any;
     if (isgradual) {
@@ -203,7 +203,7 @@ export function ColorModal(props: IPropsColorModal) {
     props.onChange({ ...color });
   };
 
-  // 删除
+  // Delete
   useEffect(() => {
     const deleteStop = e => {
       if ((e.key as string).toLocaleLowerCase() === 'delete') {
@@ -228,7 +228,7 @@ export function ColorModal(props: IPropsColorModal) {
   return (
     <div className={styles.modal}>
       <div className={styles.header}>
-        <h1>颜色设置</h1>
+        <h1>Color Settings</h1>
         {props.gradual && (
           <div className={styles.options}>
             <span
@@ -353,7 +353,7 @@ export function ColorModal(props: IPropsColorModal) {
       )}
       {propsColor.type === 'linear' && (
         <div className={styles.gradualRotate}>
-          <h2>角度</h2>
+          <h2>Angle</h2>
           <Slider
             value={calculateAngle(propsColor.from.x, propsColor.from.y, propsColor.to.x, propsColor.to.y)}
             onChange={v => {
@@ -406,14 +406,14 @@ export function ColorModal(props: IPropsColorModal) {
               <a
                 onClick={() => {
                   if (!(window as any).EyeDropper) {
-                    Toast.error('浏览器不支持');
+                    Toast.error('Browser not supported');
                     return;
                   }
-                  // 创建取色器
+                  // Create color picker
                   const drop = new (window as any).EyeDropper();
-                  // 进行取色
+                  // Pick color
                   drop.open().then(res => {
-                    // 获取取色结果
+                    // Get color result
                     const color = res.sRGBHex;
                     const v = tinycolor(color).toRgb();
                     setVal(v);

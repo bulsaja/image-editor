@@ -1,14 +1,14 @@
 import type { BaseLayer } from '@core/types/data';
 
-// 条形码
+// Barcode
 export interface BarcodeLayer extends BaseLayer {
   type: 'barcode';
-  // 镜像翻转，上下，左右
+  // Mirror flip, vertical, horizontal
   flipx: boolean;
   flipy: boolean;
   width: number;
   height: number;
-  content: string; // qrcode的内容
-  color: string; // 背景色
-  cornerRadius: [number, number, number, number]; // 圆角
+  content: string; // Barcode content
+  color: string; // Background color
+  cornerRadius: [number, number, number, number]; // Corner radius
 }

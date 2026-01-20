@@ -78,7 +78,7 @@ function Shadow(props: IProps) {
               onBlur={() => {
                 editor.record({
                   type: 'update',
-                  desc: '修改阴影blur',
+                  desc: '그림자 블러 수정',
                 });
               }}
             />
@@ -95,7 +95,7 @@ function Shadow(props: IProps) {
               onBlur={() => {
                 editor.record({
                   type: 'update',
-                  desc: '修改阴影扩展',
+                  desc: '그림자 확장 수정',
                 });
               }}
             />
@@ -114,7 +114,7 @@ function Shadow(props: IProps) {
               onBlur={() => {
                 editor.record({
                   type: 'update',
-                  desc: '修改阴影距离',
+                  desc: '그림자 거리 수정',
                 });
               }}
             />
@@ -131,7 +131,7 @@ function Shadow(props: IProps) {
               onBlur={() => {
                 editor.record({
                   type: 'update',
-                  desc: '修改阴影Y',
+                  desc: '그림자 Y 수정',
                 });
               }}
             />

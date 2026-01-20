@@ -8,7 +8,7 @@ export interface IProps {
   show: boolean;
 }
 
-// 判断是否加载了，只加载一次
+// Check if loaded, only load once
 let hasRender = false;
 
 export default function Image(props: IProps) {

@@ -3,7 +3,7 @@ import { nanoid } from 'nanoid';
 import { BaseLayer, GroupLayer, BasePage } from '../types/data';
 
 /**
- * 生成一个不重复的ID
+ * Generate a unique ID
  * @returns
  */
 export function createID(n?: number): string {
@@ -19,16 +19,16 @@ export function setURL(url: string, resourceHost: string) {
 }
 
 /**
- * 通过URL获取文件后缀
+ * Get file extension from URL
  * @param filePath
  * @returns
  */
 export function getFileExtension(filePath: string) {
-  // 使用split分割文件路径，并获取最后一部分
+  // Split file path and get the last part
   const fileName = filePath.split('/').pop();
-  // 使用split再次分割文件名，并获取最后一部分作为后缀名
+  // Split file name again and get the last part as extension
   const extension = fileName.split('.').pop();
-  // 返回后缀名
+  // Return the extension
   return extension.split('?')[0];
 }
 
@@ -71,7 +71,7 @@ export function replaceSveColor(svgString: string, newColor: string | string[]) 
 }
 
 /**
- * 随机
+ * Random
  * @param randomLength
  * @returns
  */
@@ -80,7 +80,7 @@ export function randomID(randomLength = 8): string {
 }
 
 /**
- * 只保留小数点后第n位，直接去掉，不做四舍五入
+ * Keep only n decimal places, truncate without rounding
  * @param val
  * @param n
  * @returns
@@ -94,7 +94,7 @@ export function toJS(obj: Record<string, any> | any[]) {
   try {
     return JSON.parse(JSON.stringify(obj));
   } catch (err) {
-    console.error('toJS数据异常', err, obj);
+    console.error('toJS data error', err, obj);
   }
 }
 
@@ -121,17 +121,17 @@ export function getIdsFromUI(target: IUI | IUI[]) {
 }
 
 /**
- * 对象数据拷贝
- * 将对象obj1的数据拷贝到obj2
+ * Object data copy
+ * Copy data from obj1 to obj2
  */
 export function objectCopyValue(obj1: Record<string, any>, obj2: Record<string, any>) {
   for (const key in obj1) {
     if (obj1.hasOwnProperty(key)) {
       if (typeof obj1[key] === 'object' && !Array.isArray(obj1[key])) {
-        // 如果当前属性是一个对象（非数组），则递归调用copyValues
+        // If current property is an object (not array), recursively call copyValues
         obj2[key] = objectCopyValue(obj1[key], obj2[key] || {});
       } else {
-        // 否则直接复制值
+        // Otherwise copy value directly
         obj2[key] = obj1[key];
       }
     }
@@ -140,7 +140,7 @@ export function objectCopyValue(obj1: Record<string, any>, obj2: Record<string, 
 }
 
 /**
- * 加载字体
+ * Load font
  * @param fontFamily
  * @param url
  */
@@ -149,7 +149,7 @@ if (!(window as any)._hasLoadFonts) {
 }
 export async function loadFont(fontFamily: string, url: string) {
   if ((window as any)._hasLoadFonts[fontFamily]) {
-    console.log('该字体已加载', fontFamily);
+    console.log('Font already loaded', fontFamily);
     return true;
   }
   (window as any)._hasLoadFonts[fontFamily] = true;
@@ -165,16 +165,16 @@ export async function loadFont(fontFamily: string, url: string) {
       document.fonts.add(res);
       return true;
     } catch (err) {
-      console.error('字体资源加载异常', url);
+      console.error('Font resource loading error', url);
     }
   } else {
-    console.error('字体资源文件不存在');
+    console.error('Font resource file does not exist');
   }
   return false;
 }
 
 /**
- * 通过id获取父元素对象
+ * Get parent element object by id
  * @param arr
  * @param id
  * @returns
@@ -183,28 +183,28 @@ export function findParentById(arr: GroupLayer[], id: string) {
   for (let i = 0; i < arr.length; i++) {
     const currentElement = arr[i];
 
-    // 检查当前元素是否包含子元素
+    // Check if current element contains child elements
     if (currentElement.childs && currentElement.childs.length > 0) {
-      // 递归调用，查找子元素中是否包含指定的 id
+      // Recursive call to find if child elements contain the specified id
       const childResult = findParentById(currentElement.childs as GroupLayer[], id);
 
-      // 如果找到了，返回当前元素作为父元素
+      // If found, return current element as parent
       if (childResult) {
         return currentElement;
       }
     }
 
-    // 检查当前元素是否是目标元素
+    // Check if current element is the target element
     if (currentElement.id === id) {
-      return null; // 如果当前元素就是目标元素，说明没有父元素，返回 null
+      return null; // If current element is the target, it has no parent, return null
     }
   }
 
-  return null; // 如果没有找到匹配的元素，返回 null
+  return null; // If no matching element found, return null
 }
 
 /**
- * 计算图片的最大完整居中显示尺寸
+ * Calculate the maximum full centered display size of an image
  * @param size
  * @returns
  */
@@ -225,7 +225,7 @@ export function calcSizeAndPosition(
   const imgWidth = itemSize.width;
   const imgHeight = itemSize.height;
 
-  // 计算图片的最大完整居中显示尺寸
+  // Calculate the maximum full centered display size of the image
   let maxWidth: number, maxHeight: number;
   const divRatio = divWidth / divHeight;
   const imgRatio = imgWidth / imgHeight;
@@ -250,7 +250,7 @@ export function calcSizeAndPosition(
   res.x = (divWidth - maxWidth) / 2;
   res.y = (divHeight - maxHeight) / 2;
 
-  // 居中
+  // Center
   res.x += res.width / 2;
   res.y += res.height / 2;
 
@@ -258,7 +258,7 @@ export function calcSizeAndPosition(
 }
 
 /**
- * 取整数
+ * Round to integer
  */
 export function toNum(n: number, m?: number) {
   if (m === undefined) {
@@ -280,12 +280,12 @@ export function toNum(n: number, m?: number) {
 }
 
 /**
- * 通过元素id获取对应的dom元素
+ * Get corresponding DOM element by element id
  * @param ids
  * @returns
  */
 export function getTargetByIds(ids: string[]) {
-  //元素选中
+  // Element selection
   const targets = [] as HTMLElement[];
   ids.forEach(id => {
     const target = document.querySelector(`[data-elementid="${id}"]`) as HTMLElement;

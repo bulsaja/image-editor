@@ -204,4 +204,9 @@ export const koKR = {
   qr_background_color: '배경색',
   qr_content: 'QR 코드 내용',
   qr_foreground_color: '전경색',
+
+  // Image source categories (translations from Chinese)
+  category_动物: '동물',
+  category_节日: '축제/명절',
+  category_风景: '풍경',
 };

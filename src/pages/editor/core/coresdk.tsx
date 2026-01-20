@@ -19,7 +19,7 @@ export default class CoreView {
     return new Promise(resolve => {
       const { target, callback, data, ...other } = this._props;
       if (!data) {
-        return new Error('data数据为页面数据，必须传入');
+        return new Error('data is page data, must be provided');
       }
       ReactDOM.createRoot(target!).render(
         <View

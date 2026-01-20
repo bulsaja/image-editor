@@ -1,6 +1,6 @@
 export const fontFamilys = [
   {
-    name: '默认',
+    name: 'Default',
     ttf: 'https://cdn.h5ds.com/assets/fonts/siYuanHeiTi/font.ttf',
     url: 'https://cdn.h5ds.com/assets/fonts/siYuanHeiTi/font.woff',
     thumb: '',

@@ -1,20 +1,20 @@
 module.exports = {
   // parser: 'babel',
-  arrowParens: 'avoid', // 箭头函数参数括号 默认avoid 可选 avoid| always
-  bracketSpacing: true, // 对象中打印空格 默认true
+  arrowParens: 'avoid', // Arrow function parameter parentheses, default: avoid, options: avoid | always
+  bracketSpacing: true, // Print spaces in object literals, default: true
   insertPragma: false,
-  printWidth: 120, // 换行长度
+  printWidth: 120, // Line wrap length
   proseWrap: 'always',
   requirePragma: false,
-  singleQuote: true, // 字符串使用单引号
-  semi: true, // 每行末尾自动添加分号
-  tabWidth: 2, // tab缩进大小,默认为2
-  // htmlWhitespaceSensitivity: 'ignore', //对HTML全局空白不敏感
-  // jsxSingleQuote: true, // jsx中使用单引号
-  // jsxBracketSameLine: true, //多属性html标签的‘>’折行放置
+  singleQuote: true, // Use single quotes for strings
+  semi: true, // Automatically add semicolons at the end of lines
+  tabWidth: 2, // Tab indentation size, default: 2
+  // htmlWhitespaceSensitivity: 'ignore', // Not sensitive to HTML global whitespace
+  // jsxSingleQuote: true, // Use single quotes in JSX
+  // jsxBracketSameLine: true, // Place '>' of multi-attribute HTML tags on the same line
   trailingComma: 'all',
-  embeddedLanguageFormatting: 'auto', //对引用代码进行格式化
-  useTabs: false, // 使用tab缩进，默认false
+  embeddedLanguageFormatting: 'auto', // Format embedded code
+  useTabs: false, // Use tab indentation, default: false
   overrides: [
     {
       files: '*.json',

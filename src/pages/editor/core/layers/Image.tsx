@@ -52,7 +52,7 @@ export default function ImageComp(props: LayerProps) {
     return [box, img];
   }, []);
 
-  // 公共use
+  // Common use
   useLayerBaseStyle(layer, imgBox as any, props.store, props.zIndex);
 
   const replaceColor = (txt: string) => {
@@ -60,7 +60,7 @@ export default function ImageComp(props: LayerProps) {
       layer.svgColorType = 'more';
     }
     console.log('layer.svgColorType', layer.svgColorType, layer.svgColors);
-    // 替换颜色
+    // Replace color
     if (layer.svgColorType === 'one') {
       if (layer.svgColors && layer.svgColors[0]) {
         txt = utils.replaceSveColor(txt, layer.svgColors[0] || '#000000');
@@ -73,7 +73,7 @@ export default function ImageComp(props: LayerProps) {
     return 'data:image/svg+xml,' + encodeURIComponent(txt);
   };
 
-  // 如果是svg，需要解析数据结构
+  // If SVG, need to parse data structure
   const svgHTML = async (url: string) => {
     const ext = getFileExtension(url);
     if (svgstr.current) {
@@ -85,7 +85,7 @@ export default function ImageComp(props: LayerProps) {
           if (response.ok) {
             const txt = await response.text();
             svgstr.current = txt;
-            console.log('首次加载svg', txt);
+            console.log('First load svg', txt);
             return replaceColor(txt);
           }
           throw new Error('Network response was not ok.');
@@ -124,11 +124,11 @@ export default function ImageComp(props: LayerProps) {
     imgUI.x = layer.width / 2;
     imgUI.y = layer.height / 2;
 
-    // 设置宽高
+    // Set width and height
     imgBox.width = layer.width;
     imgBox.height = layer.height;
 
-    // 翻转
+    // Flip
     if (layer.flipx) {
       imgUI.scaleX = -1;
     } else {
@@ -140,7 +140,7 @@ export default function ImageComp(props: LayerProps) {
       imgUI.scaleY = 1;
     }
 
-    //圆角
+    // Corner radius
     imgUI.cornerRadius = layer.cornerRadius ? [...layer.cornerRadius] : undefined;
   }, [
     layer.width,
@@ -161,7 +161,7 @@ export default function ImageComp(props: LayerProps) {
       imgUI.x = layer.width / 2;
       imgUI.y = layer.height / 2;
 
-      // 裁剪
+      // Crop
       const { x, y, width, height } = layer.cropSize || {
         x: 0,
         y: 0,

@@ -42,15 +42,15 @@ export default function BackgroundColor(props: IProps) {
 }
 
 function angleToCoordinates(angleInDegrees) {
-  // 将角度转换为弧度
+  // Convert degrees to radians
   const angleInRadians = (angleInDegrees * Math.PI) / 180;
 
-  // 计算x和y坐标
+  // Calculate x and y coordinates
   let x = Math.cos(angleInRadians);
   let y = Math.sin(angleInRadians);
 
   console.log({ x: x, y: y });
 
-  // 返回坐标对象
+  // Return coordinate object
   return { x: x, y: y };
 }

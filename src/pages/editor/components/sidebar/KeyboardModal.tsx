@@ -22,30 +22,30 @@ import { language } from '@language';
 export interface IProps {}
 
 /**
-  'ctrl+c', // 复制 -
-  'ctrl+v', // 粘贴 -
-  'ctrl+s', // 保存项目 -
-  'ctrl+x', // 剪切选中元素 -
-  'ctrl+-', // 居中缩小画布 -
-  'ctrl+=', // 居中放大画布 -
-  'ctrl+0', // 将画布缩放至适合屏幕大小 -
-  'ctrl+a', // 全选 -
-  'ctrl+d', // 取消选择 -
-  'ctrl+z', // 撤销 -
-  'ctrl+shift+z', // 重做 -
-  'ctrl+]', // 将选中图层向上移动一层 -
-  'ctrl+shift+]', // 将选中图层移到最上面 -
-  'ctrl+[', // 将选中图层向下移动一层 -
-  'ctrl+shift+[', // 将选中图层移到最下面 -
-  'shift+up', // 上移10px -
-  'shift+down', // 下移10px -
-  'shift+left', // 左移10px -
-  'shift+right', // 右移10px -
-  'up', // 上移1px -
-  'down', // 下移1px -
-  'left', // 左移1px -
-  'right', // 右移1px -
-  'delete', // 删除选中元素 -
+  'ctrl+c', // Copy -
+  'ctrl+v', // Paste -
+  'ctrl+s', // Save project -
+  'ctrl+x', // Cut selected element -
+  'ctrl+-', // Zoom out canvas centered -
+  'ctrl+=', // Zoom in canvas centered -
+  'ctrl+0', // Scale canvas to fit screen -
+  'ctrl+a', // Select all -
+  'ctrl+d', // Deselect -
+  'ctrl+z', // Undo -
+  'ctrl+shift+z', // Redo -
+  'ctrl+]', // Move selected layer up one level -
+  'ctrl+shift+]', // Move selected layer to top -
+  'ctrl+[', // Move selected layer down one level -
+  'ctrl+shift+[', // Move selected layer to bottom -
+  'shift+up', // Move up 10px -
+  'shift+down', // Move down 10px -
+  'shift+left', // Move left 10px -
+  'shift+right', // Move right 10px -
+  'up', // Move up 1px -
+  'down', // Move down 1px -
+  'left', // Move left 1px -
+  'right', // Move right 1px -
+  'delete', // Delete selected element -
  */
 export default function KeyboardModal(props: IProps) {
   const [visible, setVisible] = useState(false);

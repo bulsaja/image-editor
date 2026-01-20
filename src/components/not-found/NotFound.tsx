@@ -14,7 +14,7 @@ export default class NotFound extends Component {
         <div className={styles["not-found-title"]}>404----</div>
         <div className={styles["not-found-info"]}>Page Not Found</div>
         <div className={styles["not-found-content"]}>
-          <p>对不起,没有找到您所需要的页面,可能是URL不确定,或者页面已被移除。</p>
+          <p>Sorry, the page you requested was not found. The URL may be incorrect or the page has been removed.</p>
           <a type="primary" onClick={this.toHome}>
             Back Home
           </a>

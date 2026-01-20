@@ -38,7 +38,7 @@ function TextContent(props: IProps) {
           onBlur={() => {
             editor.record({
               type: 'update',
-              desc: '修改文本内容',
+              desc: '텍스트 내용 수정',
             });
           }}
         />

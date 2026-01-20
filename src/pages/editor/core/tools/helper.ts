@@ -5,7 +5,7 @@ import type { InjectParams } from '../types/helper';
 import * as util from './utils';
 
 /**
- * 子组件注入数据
+ * Inject data into child components
  * @param children
  * @param params
  * @returns
@@ -31,13 +31,13 @@ export function bindSelf(_target: any, _key: any, descriptor: any) {
 export function syncControlToElement(elementId: string, store: Store) {}
 
 /**
- * 创建元素
+ * Create element
  */
 export function createLayer<T extends LayerType>(type: T): BaseLayer {
   const base = {
     type: type,
     id: util.createID(),
-    name: '未命名',
+    name: 'Unnamed',
     desc: '',
     x: 0,
     y: 0,
@@ -59,38 +59,38 @@ export function createLayer<T extends LayerType>(type: T): BaseLayer {
     case 'group':
       return {
         ...base,
-        name: '组合元素',
+        name: 'Group Element',
         childs: [],
       } as GroupLayer;
     case 'text':
       return {
         ...base,
-        name: '文字元素',
-        fontFamilyURL: '', // 字体路径
-        text: '请输入文字', // 内容
-        fill: '', // 文字容器的颜色
+        name: 'Text Element',
+        fontFamilyURL: '', // Font path
+        text: 'Enter text', // Content
+        fill: '', // Text container color
         textStyle: {
           fontSize: 24,
           fill: '#000',
-        }, // 文字样式
+        }, // Text style
       } as TextLayer;
     case 'image':
       return {
         ...base,
-        name: '图片元素',
+        name: 'Image Element',
         width: 0,
         height: 0,
         naturalWidth: 0,
         naturalHeight: 0,
-        // 镜像翻转，上下，左右
+        // Mirror flip, vertical, horizontal
         flipx: false,
         flipy: false,
-        cropSize: null, // 裁剪
-        url: '', // 图片链接
-        cornerRadius: [0, 0, 0, 0], // 圆角
+        cropSize: null, // Crop
+        url: '', // Image URL
+        cornerRadius: [0, 0, 0, 0], // Corner radius
       } as ImageLayer;
     default:
-      console.error('未知类型');
+      console.error('Unknown type');
       return null;
   }
 }

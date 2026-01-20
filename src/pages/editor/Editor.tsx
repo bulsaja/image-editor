@@ -12,7 +12,7 @@ import ColorBg from './ColorBg';
 import { Left, Right } from '@icon-park/react';
 import { observer } from 'mobx-react';
 
-// Mock数据
+// Mock data
 import { editor } from '@stores/editor';
 import { pubsub } from '@utils/pubsub';
 import { userService } from '@server/user.service';
@@ -43,14 +43,14 @@ function Editor(props: IProps) {
   const [show, setShow] = useState({ sources: true, options: true });
   const [loading, setLoading] = useState(true);
 
-  // 拖动过程中center不要动画
+  // No animation for center during drag
   const [noAnimate, setNoAnimate] = useState(false);
 
-  // sourcesBar 移动
+  // sourcesBar movement
   const sourcesBarDrag = useCallback((e: any) => {
     setNoAnimate(true);
     const { sourcesWidth, optionsWidth } = layout;
-    // canvas最小600px
+    // Canvas minimum 600px
     const interval = [310, window.innerWidth - optionsWidth - 600];
     $(document)
       .on('mousemove.ievent.sourcesBar', (em: any) => {
@@ -71,7 +71,7 @@ function Editor(props: IProps) {
       });
   }, []);
 
-  // 设置区域拖动
+  // Options area drag
   const optionsBarDrag = useCallback((e: any) => {
     setNoAnimate(true);
     const { sourcesWidth, optionsWidth } = layout;
@@ -113,7 +113,7 @@ function Editor(props: IProps) {
       editor.appid = appid;
       const [res, err] = await server.getAppDetail(appid);
       if (err) {
-        // 去掉APPID
+        // Remove APPID
         // window.history.pushState(null, null, '/editor');
         location.href = '/editor';
         Toast.error(err);

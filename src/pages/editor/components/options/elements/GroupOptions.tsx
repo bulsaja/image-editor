@@ -14,7 +14,7 @@ export default function GroupOptions(props: IProps) {
         editor.elementOptionType = e as any;
       }}
     >
-      <TabPane tab="组合" itemKey="basic">
+      <TabPane tab="Group" itemKey="basic">
         <Group />
       </TabPane>
     </Tabs>

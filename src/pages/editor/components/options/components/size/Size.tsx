@@ -35,7 +35,7 @@ function Size(props: IProps) {
           onBlur={() => {
             editor.record({
               type: 'update',
-              desc: '修改W',
+              desc: '너비 수정',
             });
           }}
         />
@@ -47,14 +47,14 @@ function Size(props: IProps) {
           onChange={(v: number) => {
             elementData.height = Math.max(util.toNum(v), 1);
             elementData.width = Math.max(elementData.height * (elementData._ratio || 1), 1);
-            // 同步修改
+            // Sync changes
             editor.updateCanvas();
             forceUpdate();
           }}
           onBlur={() => {
             editor.record({
               type: 'update',
-              desc: '修改H',
+              desc: '높이 수정',
             });
           }}
         />

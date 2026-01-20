@@ -16,7 +16,7 @@ function BarOption(props: IProps) {
   const [forceUpdate] = useUpdate();
   return (
     <>
-      <Item title="条形码内容">
+      <Item title="Barcode Content">
         <TextArea
           value={elementData.content}
           onChange={e => {
@@ -25,7 +25,7 @@ function BarOption(props: IProps) {
               editor.updateCanvas();
               forceUpdate();
             } else {
-              Toast.error('请输入数字，字幕，中划线');
+              Toast.error('Please enter numbers, letters, or hyphens');
             }
           }}
           autosize
@@ -33,12 +33,12 @@ function BarOption(props: IProps) {
           onBlur={() => {
             editor.record({
               type: 'update',
-              desc: '修改二维码文本内容',
+              desc: 'Update barcode text content',
             });
           }}
         />
       </Item>
-      <Item title="颜色">
+      <Item title="Color">
         <SetColor
           list={true}
           color={{
@@ -51,7 +51,7 @@ function BarOption(props: IProps) {
             forceUpdate();
             editor.record({
               type: 'update',
-              desc: '修改二维码颜色',
+              desc: 'Update barcode color',
             });
           }}
         />

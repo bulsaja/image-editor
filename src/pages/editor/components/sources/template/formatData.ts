@@ -53,7 +53,7 @@ function formatTextLayer(layer) {
   layer.data.style.fontSize = parseInt(layer.data.style.fontSize, 10);
   delete layer.data.style.letterSpacing;
   delete layer.data.style.lineHeight;
-  if (layer.data.style.fontFamily === '默认字体') {
+  if (layer.data.style.fontFamily === 'Default Font') {
     delete layer.data.style.fontFamily;
   }
   return new TextData({

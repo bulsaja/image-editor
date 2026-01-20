@@ -1,7 +1,7 @@
 import React from 'react';
 import { Spin, Empty } from '@douyinfe/semi-ui';
 /**
- * data === null 表示 loading 状态
+ * data === null means loading state
  * @param {props}
  * @returns
  */
@@ -22,10 +22,10 @@ export default function ListStatus({ data, loading, empty, error, children }: Li
     );
   }
   if (!empty) {
-    empty = <Empty description="无数据" />;
+    empty = <Empty description="No data" />;
   }
   if (!error) {
-    error = <Empty description="加载失败" />;
+    error = <Empty description="Loading failed" />;
   }
   if (data === null) {
     return loading;

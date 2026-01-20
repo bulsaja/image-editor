@@ -9,6 +9,7 @@ import { server, getItems } from './server';
 import { IconSpin } from '@douyinfe/semi-icons';
 import SourceList from './SourceList';
 import type { SourceItem } from '../../types';
+import { translateCategoryName } from '@utils/categoryTranslation';
 
 export interface IProps {
   type: SourceType;
@@ -31,14 +32,14 @@ export default function Source(props: IProps) {
   });
   const { type } = props;
 
-  // 获取素材
+  // Get materials
   const getMaterialList = useCallback(async () => {
     const { list, hasMore } = await getItems(type, params.current, items);
     setItems(list);
     setHasMore(hasMore);
   }, [items]);
 
-  // 获取分类
+  // Get categories
   const getTypeList = useCallback(async () => {
     if (type === 'template') {
       const [res, err] = await server.getTemplateTypes();
@@ -55,7 +56,7 @@ export default function Source(props: IProps) {
   }, [type]);
 
   useEffect(() => {
-    // 获取分类列表
+    // Get category list
     getTypeList();
     getMaterialList();
   }, []);
@@ -74,7 +75,7 @@ export default function Source(props: IProps) {
                 }}
                 key={d.id}
               >
-                {d.name}
+                {translateCategoryName(d.name)}
               </li>
             );
           })}
@@ -118,7 +119,7 @@ export default function Source(props: IProps) {
             onEnterPress={(e: any) => {
               setKeywords(e.target.value);
             }}
-            placeholder="搜索"
+            placeholder="검색"
             suffix={<IconSearch size={18} style={{ marginRight: 5 }} />}
             showClear
           />
@@ -136,7 +137,7 @@ export default function Source(props: IProps) {
               types.map(d => {
                 return (
                   <li onClick={() => setKeywords(d.name)} key={d.id}>
-                    {d.name}
+                    {translateCategoryName(d.name)}
                   </li>
                 );
               })}

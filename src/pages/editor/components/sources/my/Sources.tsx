@@ -14,10 +14,10 @@ function Sources(props: IProps) {
     <div className={styles.sources} style={{ display: props.show ? 'block' : 'none' }}>
       {user.info ? (
         <Tabs lazyRender={true} className={styles.tabs} type="line">
-          <TabPane tab="当前项目" itemKey="1">
+          <TabPane tab="Current Project" itemKey="1">
             <List type="local" />
           </TabPane>
-          <TabPane tab="全部素材" itemKey="2">
+          <TabPane tab="All Materials" itemKey="2">
             <List type="cloud" />
           </TabPane>
         </Tabs>
@@ -29,10 +29,11 @@ function Sources(props: IProps) {
               darkModeImage={<IllustrationNoAccessDark style={{ width: 150, height: 150 }} />}
               description={
                 <div className={styles.loginTip}>
-                  您还未登录，请先
+                  You are not logged in. Please
                   <Login>
-                    <a>登录系统</a>
+                    <a>login</a>
                   </Login>
+                  first.
                 </div>
               }
               style={{ padding: 30 }}

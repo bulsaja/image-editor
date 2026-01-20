@@ -22,7 +22,7 @@ export interface IProps {
   // checkboxs
   checkboxs?: string[]; // id
   onChangeCheckboxs?: (n: string) => void;
-  sType?: string; // 标记是哪个组件引用 Collect Search等
+  sType?: string; // Mark which component reference: Collect, Search, etc.
   callback?: (id: string) => void;
 }
 
@@ -40,7 +40,7 @@ export default function SourceList(props: IProps) {
       <div className={styles.loadingMore}>
         <span>
           <IconSpin spin style={{ color: 'var(--theme-icon)' }} />
-          &nbsp;&nbsp;加载中...
+          &nbsp;&nbsp;Loading...
         </span>
       </div>
     );
@@ -51,7 +51,7 @@ export default function SourceList(props: IProps) {
     checkboxStyle.display = 'block';
   }
 
-  // 设置缓存数据，用于拖动元素的时候获取数据
+  // Set cache data for getting data when dragging elements
   editor.setActiveItems(items, props.type);
 
   return (
@@ -65,14 +65,14 @@ export default function SourceList(props: IProps) {
             <div className={styles.loadingMore}>
               <span>
                 <IconSpin spin style={{ color: 'var(--theme-icon)' }} />
-                &nbsp;&nbsp;加载中...
+                &nbsp;&nbsp;Loading...
               </span>
             </div>
           )}
         </>
       }
       scrollableTarget={scrollableTarget ? scrollableTarget : `sourceItemsScrollDOM_${props.type}`}
-      endMessage={<p className={styles.noMoreTips}>到底了~</p>}
+      endMessage={<p className={styles.noMoreTips}>No more items</p>}
     >
       <WaterFull
         itemWidth={{ video: 120, image: 120, filter: 80, text: 80, effect: 80, transition: 120 }[type]}
@@ -107,12 +107,12 @@ export default function SourceList(props: IProps) {
                     if (sType === 'collect') {
                       server.collectCancle([item.id]);
                       props.callback(item.id);
-                      Toast.success('取消收藏成功！');
+                      Toast.success('Unfavorited successfully!');
                       return;
                     }
                     server.collect(item.id, type);
                     console.log(type, 'type');
-                    Toast.success('已收藏！');
+                    Toast.success('Added to favorites!');
                   }}
                   className={styles.save}
                 >

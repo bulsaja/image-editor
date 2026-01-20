@@ -25,7 +25,7 @@ function CropperImage(props: IProps) {
 
   return (
     <>
-      <Tooltip content="裁切">
+      <Tooltip content="Crop">
         <a
           onClick={() => {
             setVisible(true);
@@ -37,7 +37,7 @@ function CropperImage(props: IProps) {
       </Tooltip>
       <Modal
         width={800 + 50}
-        title="图片裁剪"
+        title="Image Crop"
         maskClosable={false}
         footer={null}
         visible={visible}
@@ -66,7 +66,7 @@ function CropperImage(props: IProps) {
               />
               <div className={styles.btns}>
                 <Button onClick={() => setVisible(false)} type="danger">
-                  取消
+                  Cancel
                 </Button>
                 <Button
                   onClick={() => {
@@ -74,7 +74,7 @@ function CropperImage(props: IProps) {
                     const size = cropper.getData();
                     const { x, y, width, height } = size;
 
-                    // 因为裁剪数据不能超过原始尺寸，这里向下取整确保不会超过原始尺寸
+                    // Floor the values to ensure crop data doesn't exceed original dimensions
                     elementData.cropSize = {
                       x: ~~x,
                       y: ~~y,
@@ -85,7 +85,7 @@ function CropperImage(props: IProps) {
                     const scaley = elementData.height / elementData.cropSize.height;
                     const scale = Math.min(scalex, scaley);
 
-                    // 设置新的宽高
+                    // Set new width and height
                     elementData.width = ~~(elementData.cropSize.width * scale);
                     elementData.height = ~~(elementData.cropSize.height * scale);
 
@@ -93,7 +93,7 @@ function CropperImage(props: IProps) {
                     setVisible(false);
                   }}
                 >
-                  确认
+                  Confirm
                 </Button>
               </div>
             </>
