@@ -6,6 +6,8 @@ import { pubsub, util } from '@utils/index';
 import { config } from '@config/index';
 import { renderRoutes } from 'react-router-config';
 import { user } from '@stores/user';
+import { LocaleProvider } from '@douyinfe/semi-ui';
+import ko_KR from '@douyinfe/semi-ui/lib/es/locale/source/ko_KR';
 // import { theme, ThemeName } from './theme';
 
 interface AppProps {
@@ -62,9 +64,11 @@ class App extends Component<AppProps> {
     const { Router, routes, ...otherProps } = this.props;
 
     return (
-      <Router ref={this.routerRef} basename={config.basename} {...otherProps}>
-        {renderRoutes(routes)}
-      </Router>
+      <LocaleProvider locale={ko_KR}>
+        <Router ref={this.routerRef} basename={config.basename} {...otherProps}>
+          {renderRoutes(routes)}
+        </Router>
+      </LocaleProvider>
     );
   }
 }

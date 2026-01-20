@@ -3,7 +3,7 @@ import React from 'react';
 
 export const pageSize: PageSizeType[] = [
   {
-    name: 'Mobile Poster',
+    name: '모바일 포스터',
     width: 1242,
     height: 2208,
     icon: null,
@@ -11,7 +11,7 @@ export const pageSize: PageSizeType[] = [
     unit: 'px',
   },
   {
-    name: 'Horizontal Poster',
+    name: '가로 포스터',
     width: 900,
     height: 500,
     icon: null,
@@ -19,7 +19,7 @@ export const pageSize: PageSizeType[] = [
     unit: 'px',
   },
   {
-    name: 'WeChat Header',
+    name: '카카오톡 헤더',
     width: 900,
     height: 383,
     icon: null,
@@ -27,7 +27,7 @@ export const pageSize: PageSizeType[] = [
     unit: 'px',
   },
   {
-    name: 'WeChat Sub Image',
+    name: '카카오톡 서브 이미지',
     width: 500,
     height: 500,
     icon: null,
@@ -35,7 +35,7 @@ export const pageSize: PageSizeType[] = [
     unit: 'px',
   },
   {
-    name: 'Social Media Image',
+    name: 'SNS 이미지',
     width: 1242,
     height: 1660,
     icon: null,
@@ -43,7 +43,7 @@ export const pageSize: PageSizeType[] = [
     unit: 'px',
   },
   {
-    name: 'Long Article',
+    name: '긴 글 이미지',
     width: 1000,
     height: 1500,
     icon: null,
@@ -59,7 +59,7 @@ export const pageSize: PageSizeType[] = [
     unit: 'px',
   },
   {
-    name: 'Vertical Live Background',
+    name: '세로 라이브 배경',
     width: 1242,
     height: 2690,
     icon: null,
@@ -67,7 +67,7 @@ export const pageSize: PageSizeType[] = [
     unit: 'px',
   },
   {
-    name: 'Vertical Video Cover',
+    name: '세로 동영상 커버',
     width: 1242,
     height: 2208,
     icon: null,
@@ -75,7 +75,7 @@ export const pageSize: PageSizeType[] = [
     unit: 'px',
   },
   {
-    name: 'Horizontal Video Cover',
+    name: '가로 동영상 커버',
     width: 1920,
     height: 1080,
     icon: null,
@@ -83,7 +83,7 @@ export const pageSize: PageSizeType[] = [
     unit: 'px',
   },
   {
-    name: 'Product Main Image',
+    name: '상품 대표 이미지',
     width: 800,
     height: 800,
     icon: null,
@@ -91,7 +91,7 @@ export const pageSize: PageSizeType[] = [
     unit: 'px',
   },
   {
-    name: 'E-commerce Detail Page',
+    name: '쇼핑몰 상세페이지',
     width: 750,
     height: 1000,
     icon: null,
@@ -99,7 +99,7 @@ export const pageSize: PageSizeType[] = [
     unit: 'px',
   },
   {
-    name: 'PC Store Homepage',
+    name: 'PC 스토어 홈페이지',
     width: 1920,
     height: 1500,
     icon: null,
@@ -107,7 +107,7 @@ export const pageSize: PageSizeType[] = [
     unit: 'px',
   },
   {
-    name: 'Mobile Store Homepage',
+    name: '모바일 스토어 홈페이지',
     width: 750,
     height: 1000,
     icon: null,
@@ -115,7 +115,7 @@ export const pageSize: PageSizeType[] = [
     unit: 'px',
   },
   {
-    name: 'Store Banner',
+    name: '스토어 배너',
     width: 1920,
     height: 150,
     icon: null,
@@ -123,7 +123,7 @@ export const pageSize: PageSizeType[] = [
     unit: 'px',
   },
   {
-    name: 'E-commerce Horizontal Poster',
+    name: '쇼핑몰 가로 포스터',
     width: 750,
     height: 390,
     icon: null,
@@ -131,7 +131,7 @@ export const pageSize: PageSizeType[] = [
     unit: 'px',
   },
   {
-    name: 'E-commerce Vertical Poster',
+    name: '쇼핑몰 세로 포스터',
     width: 750,
     height: 950,
     icon: null,
@@ -139,7 +139,7 @@ export const pageSize: PageSizeType[] = [
     unit: 'px',
   },
   {
-    name: 'E-commerce Full Screen Poster',
+    name: '쇼핑몰 풀스크린 포스터',
     width: 1920,
     height: 700,
     icon: null,
@@ -147,7 +147,7 @@ export const pageSize: PageSizeType[] = [
     unit: 'px',
   },
   {
-    name: 'Daily Quote',
+    name: '오늘의 명언',
     width: 1242,
     height: 2208,
     icon: null,
@@ -155,7 +155,7 @@ export const pageSize: PageSizeType[] = [
     unit: 'px',
   },
   {
-    name: 'Mini Program Cover',
+    name: '미니 프로그램 커버',
     width: 520,
     height: 416,
     icon: null,
@@ -163,7 +163,7 @@ export const pageSize: PageSizeType[] = [
     unit: 'px',
   },
   {
-    name: 'Business Card',
+    name: '명함',
     width: 96,
     height: 60,
     icon: null,
@@ -171,7 +171,7 @@ export const pageSize: PageSizeType[] = [
     unit: 'mm',
   },
   {
-    name: 'Wall Poster',
+    name: '벽 포스터',
     width: 426,
     height: 576,
     icon: null,
@@ -179,7 +179,7 @@ export const pageSize: PageSizeType[] = [
     unit: 'mm',
   },
   {
-    name: '2m Roll-up Banner',
+    name: '2m 롤업 배너',
     width: 80,
     height: 200,
     icon: null,
@@ -187,7 +187,7 @@ export const pageSize: PageSizeType[] = [
     unit: 'cm',
   },
   {
-    name: '1.8m Display Stand',
+    name: '1.8m 디스플레이 스탠드',
     width: 80,
     height: 180,
     icon: null,
@@ -195,7 +195,7 @@ export const pageSize: PageSizeType[] = [
     unit: 'cm',
   },
   {
-    name: 'Coupon',
+    name: '쿠폰',
     width: 186,
     height: 66,
     icon: null,
@@ -203,7 +203,7 @@ export const pageSize: PageSizeType[] = [
     unit: 'mm',
   },
   {
-    name: 'Ticket',
+    name: '티켓',
     width: 206,
     height: 86,
     icon: null,
@@ -211,7 +211,7 @@ export const pageSize: PageSizeType[] = [
     unit: 'mm',
   },
   {
-    name: 'ID Photo',
+    name: '증명사진',
     width: 25,
     height: 35,
     icon: null,
