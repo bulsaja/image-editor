@@ -5,17 +5,20 @@ import { storage, crypto } from '@utils/index';
  * @desc Store external props data
  */
 class User {
-  @observable token: string = crypto.encrypt(storage.local.get('token')) || ''; // External parameter
-  @observable info: any = null; // External parameter
+  @observable token: string = storage.local.get('bulsaja_access_token') || ''; // Access Token
+  @observable refreshToken: string = storage.local.get('bulsaja_refresh_token') || ''; // Refresh Token
+  @observable info: any = storage.local.get('bulsaja_user_info') ? JSON.parse(storage.local.get('bulsaja_user_info')) : null;
 
   /**
    * Set user info
    * @param {*} info
-   * @param {*} token
    */
   @action
   setUserInfo = (info: any) => {
     this.info = info;
+    if (info) {
+      storage.local.set('bulsaja_user_info', JSON.stringify(info));
+    }
   };
 
   @action
@@ -29,10 +32,28 @@ class User {
   };
 
   @action
+  getRefreshToken = () => {
+    return this.refreshToken;
+  };
+
+  @action
   setToken = (token: string) => {
-    token = token;
     this.token = token;
-    storage.local.set('token', crypto.decrypt(token));
+    storage.local.set('bulsaja_access_token', token);
+  };
+
+  @action
+  setRefreshToken = (token: string) => {
+    this.refreshToken = token;
+    storage.local.set('bulsaja_refresh_token', token);
+  };
+
+  @action
+  setTokens = (accessToken: string, refreshToken: string) => {
+    this.token = accessToken;
+    this.refreshToken = refreshToken;
+    storage.local.set('bulsaja_access_token', accessToken);
+    storage.local.set('bulsaja_refresh_token', refreshToken);
   };
 
   @action
@@ -41,6 +62,7 @@ class User {
       for (let key in values) {
         this.info[key] = values[key];
       }
+      storage.local.set('bulsaja_user_info', JSON.stringify(this.info));
     });
   };
 
@@ -55,8 +77,11 @@ class User {
     transaction(() => {
       this.info = null;
       this.token = '';
+      this.refreshToken = '';
     });
-    storage.local.remove('token');
+    storage.local.remove('bulsaja_access_token');
+    storage.local.remove('bulsaja_refresh_token');
+    storage.local.remove('bulsaja_user_info');
   };
 }
 

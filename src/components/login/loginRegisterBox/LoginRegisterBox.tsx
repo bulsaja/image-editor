@@ -1,41 +1,10 @@
 import styles from './login-register-box.module.less';
-import React, { useState, useEffect, useRef } from 'react';
-import { config } from '@config/index';
-import { Divider, Toast } from '@douyinfe/semi-ui';
-import LoginQrcode from '../loginQrcode';
+import React from 'react';
 import LoginMobile from '../loginMobile';
-import { userService } from '@server/index';
 import { withRouter } from 'react-router-dom';
-import { Wechat, Phone, Check } from '@icon-park/react';
+import { Check } from '@icon-park/react';
 
 function LoginRegisterBox() {
-  const [show, setShow] = useState('loginQrcode');
-
-  const showOAuthWindow = () => {
-    let url = `${config.apiHost}/account/login/provider/qq?type=login`;
-    window.open(url, '', 'width=500,height=500,channelmode=yes');
-  };
-
-  const handlePostMessage = async (evt: any) => {
-    if (evt.data.msgType !== 'oauth-login') {
-      return;
-    }
-    const { provider, code } = evt.data;
-    if (provider) {
-      const hide = Toast.info('로그인 중, 잠시만 기다려주세요');
-      await userService.oauthLogin(code);
-      Toast.close(hide);
-      (window as any).RouterHistory.push(location.pathname);
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener('message', handlePostMessage);
-    return () => {
-      window.removeEventListener('message', handlePostMessage);
-    };
-  });
-
   return (
     <div className={styles.loginRegisterBox}>
       <div className={styles.loginRegisterInfo}>
@@ -75,19 +44,7 @@ function LoginRegisterBox() {
       </div>
       <div className={styles.loginRegisterForm}>
         <div className={styles.loginRegisterTabs}>
-          {show === 'loginQrcode' && <LoginQrcode />}
-          {show === 'loginMobile' && <LoginMobile setShow={setShow} />}
-        </div>
-        <Divider>다른 로그인 방법</Divider>
-        <div className={styles.loginRegisterActions}>
-          <a className={styles.item} onClick={() => setShow('loginMobile')}>
-            <Phone theme="filled" size="24" fill="#666" />
-            <span>휴대폰 로그인</span>
-          </a>
-          <a className={styles.item} onClick={() => setShow('loginQrcode')}>
-            <Wechat theme="filled" size="24" fill="#666" />
-            <span>카카오 로그인</span>
-          </a>
+          <LoginMobile />
         </div>
       </div>
     </div>

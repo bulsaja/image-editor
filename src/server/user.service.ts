@@ -204,13 +204,18 @@ class UserService extends BasicService {
         headers: {
           'Content-Type': 'application/json',
         },
+        credentials: 'include',
         body: JSON.stringify(params),
       });
       const res = await response.json();
 
       if (res && res.loginSuccess) {
-        this._setRqHeaderToken(res.accessToken);
-        user.setToken(res.accessToken);
+        // accessToken과 refreshToken 저장
+        const accessToken = res.accessToken;
+        const refreshToken = res.refreshToken;
+
+        this._setRqHeaderToken(accessToken);
+        user.setTokens(accessToken, refreshToken);
         user.setUserInfo({
           id: res.userData.user_id,
           nick_name: res.userData.nickname || res.userData.email,
@@ -224,6 +229,44 @@ class UserService extends BasicService {
     } catch (err: any) {
       console.error('Bulsaja login error:', err);
       return [null, err.message || '로그인 중 오류 발생'];
+    }
+  };
+
+  /**
+   * Bulsaja Token Refresh
+   */
+  refreshBulsajaToken = async () => {
+    try {
+      const refreshToken = user.getRefreshToken();
+      if (!refreshToken) {
+        return [null, '리프레시 토큰이 없습니다'];
+      }
+
+      const response = await fetch(`${config.bulsajaApiHost}/auth/refresh`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+        body: JSON.stringify({ refreshToken }),
+      });
+      const res = await response.json();
+
+      if (res && res.accessToken) {
+        const newAccessToken = res.accessToken;
+        const newRefreshToken = res.refreshToken || refreshToken;
+
+        this._setRqHeaderToken(newAccessToken);
+        user.setTokens(newAccessToken, newRefreshToken);
+        return [res, null];
+      }
+      // 리프레시 실패 시 로그아웃
+      user.clearUserInfo();
+      return [null, '토큰 갱신 실패'];
+    } catch (err: any) {
+      console.error('Bulsaja token refresh error:', err);
+      user.clearUserInfo();
+      return [null, err.message || '토큰 갱신 중 오류 발생'];
     }
   };
 
@@ -242,7 +285,19 @@ class UserService extends BasicService {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json',
         },
+        credentials: 'include',
       });
+
+      // 401 에러 시 토큰 갱신 시도
+      if (response.status === 401) {
+        const [refreshRes, refreshErr] = await this.refreshBulsajaToken();
+        if (refreshErr) {
+          return [null, refreshErr];
+        }
+        // 갱신된 토큰으로 다시 시도
+        return await this.getUserDetailBulsaja();
+      }
+
       const res = await response.json();
 
       if (res && res.user_id) {
@@ -258,7 +313,6 @@ class UserService extends BasicService {
       return [null, '사용자 정보 조회 실패'];
     } catch (err: any) {
       console.error('Bulsaja get user error:', err);
-      user.logout();
       return [null, err.message || '사용자 정보 조회 중 오류 발생'];
     }
   };
@@ -270,6 +324,22 @@ class UserService extends BasicService {
     user.clearUserInfo();
     _window.RouterHistory.push('/');
     return [true, null];
+  };
+
+  /**
+   * 저장된 토큰으로 자동 로그인 시도
+   */
+  autoLoginBulsaja = async () => {
+    const token = user.getToken();
+    if (!token) {
+      return [null, '저장된 토큰이 없습니다'];
+    }
+
+    // 토큰이 있으면 헤더에 설정
+    this._setRqHeaderToken(token);
+
+    // 사용자 정보 조회 시도
+    return await this.getUserDetailBulsaja();
   };
 }
 

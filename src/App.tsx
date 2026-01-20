@@ -50,11 +50,30 @@ class App extends Component<AppProps> {
     (window as any).RouterHistory = this.routerRef.current.history;
     this.urlTokenLogin();
 
+    // 불사자 자동 로그인 시도 (저장된 토큰이 있으면)
+    this.autoLoginBulsaja();
+
     // Multi-language handling
     pubsub.subscribe('setLanguage', () => {
       this.forceUpdate();
     });
   }
+
+  /**
+   * 불사자 자동 로그인
+   */
+  autoLoginBulsaja = async () => {
+    const token = user.getToken();
+    if (token) {
+      console.log('저장된 토큰으로 자동 로그인 시도...');
+      const [res, err] = await userService.autoLoginBulsaja();
+      if (res) {
+        console.log('자동 로그인 성공:', res);
+      } else {
+        console.log('자동 로그인 실패:', err);
+      }
+    }
+  };
 
   componentWillUnmount() {
     pubsub.unsubscribe('setLanguage');

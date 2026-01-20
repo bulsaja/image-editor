@@ -20,8 +20,9 @@ function LoginMobile({ setShow }: any) {
 
       if (res && res.loginSuccess) {
         Toast.success('로그인 성공!');
-        (window as any).RouterHistory.push('./manage');
         pubsub.publish('showLoginModal', false);
+        // 페이지 새로고침으로 상태 업데이트
+        window.location.reload();
       } else {
         Toast.error(err || '로그인 실패');
       }
