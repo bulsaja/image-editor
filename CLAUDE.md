@@ -215,3 +215,12 @@ getUserDetail()       // 사용자 정보 조회
 - 상위: `..` (bulsaja-issue)
 - API 서버: `../bulsa_server` (이미지 에디터 라우트: `src/routes/api/imageEditor.ts`)
 - 프론트: `../bulsaja-wep-app`
+
+---
+## HH OpenSearch / 인프라 변경 동기화
+
+- 본 레포의 OpenSearch·PM2·SSH·크론 관련 운영은 루트 `../AGENTS.md`(또는 본 루트 상대 경로 `./AGENTS.md`)의 `HH OpenSearch 벤치마킹 반영 개선 계획` 항목을 먼저 따른다.
+- OpenSearch 인증/응답 기준: API 미인증 401 / 인증 200, Dashboard 미인증 401 / 인증 302, 단일노드 `yellow`는 정상 범위.
+- 배포/재기동/구성 변경 시 `docs/migration/hh-opensearch-vendor-migration.md`에 변경일시와 검증 내역을 남긴다.
+- 민감 정보(비밀번호/토큰)는 커밋·문서·채팅에 노출하지 않는다.
+
